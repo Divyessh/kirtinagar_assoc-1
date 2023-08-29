@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "authore" : "Mihir Aman Raj",
   "dependencies": {
     "autoprefixer": "10.4.15",
     "eslint": "8.48.0",
