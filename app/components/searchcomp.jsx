@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Searchcomp() {
   return (
-    <div>
+    <div className="md:block hidden bg-primary text-primary">
     <div className="form-control">
     <div className="input-group">
       <input type="text" placeholder="Search…" className="input input-bordered" />

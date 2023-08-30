@@ -12,7 +12,7 @@ export const metadata = {
 // eslint-disable-next-line react/prop-types
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" theme="autumn">
+    <html lang="en" data-theme="mytheme">
       <body className={inter.className}>{children}</body>
     </html>
   );

@@ -12,12 +12,8 @@
   "authore": "Mihir Aman Raj",
   "dependencies": {
     "autoprefixer": "10.4.15",
-<<<<<<< HEAD
     "daisyui": "^3.6.3",
     "eslint": "8.48.0",
-=======
-    "eslint": "^7.32.0 || ^8.2.0",
->>>>>>> 867e23e1d30d4a091b77b32dcb281bcca59feb70
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",
     "postcss": "8.4.28",

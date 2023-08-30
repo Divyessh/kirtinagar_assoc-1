@@ -4,7 +4,7 @@ import kirti from '../assets/svg/kirti.svg';
 import SearchComponent from './searchcomp';
 import { CiUser } from 'react-icons/ci';
 import Image from 'next/image'; // Use Image from next/image
-
+import {GiHamburgerMenu} from 'react-icons/gi'
 function Navbar() {
   const data = [
     {
@@ -45,25 +45,45 @@ function Navbar() {
   ];
 
   return (
-    <div className="navbar bg-[#F9F8F2] px-4 py-5">
-      <div className="flex w-full">
-        <Link href="/">
-          <Image src={kirti} alt='kirti_timberworks' width={100} height={50} />
-        </Link>
-      </div>
-      <div className="flex-start navbar w-full space-x-4 ">
-        {data.map((item) => (
-          <Link href={item.link} key={item.id} className="text-xl font-bold text-[#413833] hover:text-[#EC5B2D] mx-4 px-2 whitespace-nowrap">
-              {item.name}
-          </Link>
-        ))}
-        <div className='flex w-full  pr-4 mt-0'>
-          <SearchComponent />
-          <CiUser className='text-5xl text-center border-2 rounded-full m-2 ml-2' />
-        </div>
-      </div>
+    <div className="navbar bg-primary md:h-[130px] overflow px-2">
+  <div className="navbar-start">
+    <Link href="/">
+    <Image src={kirti} alt='kirti_timberworks'  />
+  </Link> 
+  </div>
+  <div className="navbar-center hidden lg:flex">
+    <ul className="menu menu-horizontal px-1">
+    {data.map((item) => (
+      <Link href={item.link} key={item.id} className="text-xl font-bold text-[#413833] hover:text-[#EC5B2D] whitespace-nowrap m-3">
+          {item.name}
+      </Link>
+    ))}
+    </ul>
+  </div>
+  <div className="navbar-end">
+    <SearchComponent />
+    <CiUser className='text-4xl text-center m-2 ml-2 md:block hidden text-black' />
+    <div className="dropdown">
+      <label tabIndex={0} className="btn btn-ghost lg:hidden ">
+      <GiHamburgerMenu className='text-black object-cover text-4xl'/>
+      </label>
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box  bg-primary right-2 text-black">
+        <li><a>Item 1</a></li>
+        <li>
+          <a>Parent</a>
+          <ul className="p-2">
+            <li><a>Submenu 1</a></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+        </li>
+        <li><a>Item 3</a></li>
+      </ul>
     </div>
+  </div>
+</div>  
   );
 }
 
 export default Navbar;
+
+
