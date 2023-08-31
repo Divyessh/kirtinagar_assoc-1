@@ -46,7 +46,7 @@ function Navbar() {
 
   return (
     <div className="navbar bg-primary md:h-[130px] overflow px-2">
-  <div className="navbar-start">
+  <div className="navbar-start ml-2">
     <Link href="/">
     <Image src={kirti} alt='kirti_timberworks'  />
   </Link> 
@@ -67,15 +67,10 @@ function Navbar() {
       <label tabIndex={0} className="btn btn-ghost lg:hidden ">
       <GiHamburgerMenu className='text-black object-cover text-4xl'/>
       </label>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box  bg-primary right-2 text-black">
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box z-50 bg-primary right-2 text-black">
         <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
+        <li><a>Item 2</a></li>
+
         <li><a>Item 3</a></li>
       </ul>
     </div>
