@@ -31,23 +31,18 @@ const Footer = () => {
 
   return (
     <div className="bg-[#413833] ">
-      <h1 className="text-white text-4xl font-bold text-center py-2 border-b-1">
-        New Timber Market Dealer
-      </h1>
+      <h1 className="text-white text-4xl font-bold text-center py-2 border-b-1">New Timber Market Dealer</h1>
       <div className="md:flex ">
         {data.map((item) => (
           <div className="card p-8 " key={item.id}>
             <div className="flex items-center justify-center">
               <span className="flex items-center justify-center bg-stone-200 w-[94px] h-[92px] rounded-full">
                 <Image src={item.icon} alt="members" className="object-cover" />
-                {' '}
               </span>
             </div>
             <div className="card-body flex-col justify-center items-center">
               <h1 className="text-xl">{item.title}</h1>
-              <p className="text-md text-[#DDC5C5] text-center px-8">
-                {item.subtitle}
-              </p>
+              <p className="text-md text-[#DDC5C5] text-center px-8">{item.subtitle}</p>
             </div>
           </div>
         ))}
@@ -106,22 +101,17 @@ const Footer = () => {
           <span className="text-xl text-center uppercase">SHOP LISTING</span>
           <h1 className="text-2xl">
             Want the shop to be
-            {' '}
             <br />
-            {' '}
             listed?
           </h1>
           <button type="button" className="btn btn-primary rounded-full">
             See Pricing
-            {' '}
             <IoIosArrowForward />
           </button>
         </div>
       </div>
       <div className="mx-2 text-center">
-        Made with 🌌 by
-        {' '}
-        <Link href="$">VOID</Link>
+        Made with 🌌 by <Link href="$">VOID</Link>
       </div>
     </div>
   );

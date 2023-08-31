@@ -55,11 +55,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           {data.map((item) => (
-            <Link
-              href={item.link}
-              key={item.id}
-              className="text-xl font-bold text-[#413833] hover:text-[#EC5B2D] whitespace-nowrap m-3"
-            >
+            <Link href={item.link} key={item.id} className="text-xl font-bold text-[#413833] hover:text-[#EC5B2D] whitespace-nowrap m-3">
               {item.name}
             </Link>
           ))}
