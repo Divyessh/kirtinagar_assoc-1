@@ -3,7 +3,7 @@ import Image from 'next/image'; // Use Image from next/image
 import CardImg from '../assets/png/cardimg.png';
 import Featured from '../assets/svg/featured.svg';
 
-export default function Card() {
+function Card() {
   return (
     <div className="card w-96 bg-base-100 shadow-xl ">
       <figure>
@@ -23,3 +23,5 @@ export default function Card() {
     </div>
   );
 }
+
+export default Card;

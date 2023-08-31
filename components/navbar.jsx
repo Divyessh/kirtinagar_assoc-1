@@ -69,20 +69,13 @@ function Navbar() {
         <SearchComponent />
         <CiUser className="text-4xl text-center m-2 ml-2 md:block hidden text-black" />
         <div className="dropdown">
-          <span className="btn btn-ghost lg:hidden ">
+          <button type="button" className="btn btn-ghost lg:hidden ">
             <GiHamburgerMenu className="text-black object-cover text-4xl" />
-          </span>
+          </button>
           <ul className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box z-50 bg-primary right-2 text-black">
-            <li>
-              <a href="$">Item 1</a>
-            </li>
-            <li>
-              <a href="$">Item 2</a>
-            </li>
-
-            <li>
-              <a href="$">Item 3</a>
-            </li>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
           </ul>
         </div>
       </div>

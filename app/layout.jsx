@@ -1,6 +1,8 @@
 import React from 'react';
 import './globals.css';
 import { Poppins } from 'next/font/google';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 
 const poppins = Poppins({
   weight: '400',
@@ -16,7 +18,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="mytheme">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
