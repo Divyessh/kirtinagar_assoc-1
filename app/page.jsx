@@ -5,9 +5,9 @@ import Footer from './components/footer';
 
 export default function Home() {
   return (
-    <main className="" >
+    <main className="bg-primary" >
         <Navbar />
-        <Card className=""/>
+        <Card />
         <Footer/>
     </main>
   );

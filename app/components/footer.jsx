@@ -32,7 +32,7 @@ export default function Footer() {
 
     return (
         <div className='bg-[#413833] '>
-            <h1 className="text-white text-[42px] font-bold text-center py-2 ">New Timber Market Dealer</h1>
+            <h1 className="text-white text-4xl font-bold text-center py-2 border-b-1">New Timber Market Dealer</h1>
             <div className='md:flex '>
                 {
                     data.map((item) => (
@@ -84,7 +84,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className='mx-2 text-center'>
-                Made with ❤️ by <Link href="">VOID</Link>
+                Made with 🌌 by <Link href="">VOID</Link>
             </div>
         </div>
     )
