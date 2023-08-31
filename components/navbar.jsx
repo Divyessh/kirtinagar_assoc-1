@@ -6,7 +6,7 @@ import Image from 'next/image'; // Use Image from next/image
 import kirti from '../assets/svg/kirti.svg';
 import SearchComponent from './searchcomp';
 
-function Navbar() {
+const Navbar = () => {
   const data = [
     {
       id: 1,
@@ -81,6 +81,6 @@ function Navbar() {
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;

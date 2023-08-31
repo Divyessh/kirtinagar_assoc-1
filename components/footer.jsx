@@ -7,7 +7,7 @@ import welfare from '../assets/svg/Group 42.svg';
 import business from '../assets/svg/Group 43.svg';
 import location from '../assets/svg/location.svg';
 
-export default function Footer() {
+const Footer = () => {
   const data = [
     {
       id: 1,
@@ -125,4 +125,6 @@ export default function Footer() {
       </div>
     </div>
   );
-}
+};
+
+export default Footer;
