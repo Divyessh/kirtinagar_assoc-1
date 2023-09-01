@@ -5,7 +5,7 @@ import dropdownIcon from '../../assets/svg/dropdownIcon.svg';
 
 const CategoryDropdown = () => {
   return (
-    <form className="w-full">
+    <form className="w-full z-10">
       <div
         className="grid grid-cols-2 md:grid-cols-5 gap-3 place-items-center md:place-items-stretch md:gap-6 w-full bg-[#E5DFCF] py-[10px] md:py-[30px] px-[5px] md:px-[24px]"
         style={{ boxShadow: '6px 9px 12px 0px #00000040' }}
