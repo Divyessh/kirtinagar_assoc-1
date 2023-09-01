@@ -46,7 +46,10 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="navbar bg-primary md:h-[130px] overflow px-2">
+    <div
+      className="sticky top-0 left-0 w-[100%] z-[999] navbar bg-[#F9F8F2] md:h-[130px] overflow px-2"
+      style={{ boxShadow: '2px 2px 4px 0px #00000040' }}
+    >
       <div className="navbar-start ml-2">
         <Link href="/">
           <Image src={kirti} alt="kirti_timberworks" />
