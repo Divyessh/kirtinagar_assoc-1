@@ -1,0 +1,12 @@
+.hero-bg {
+  background-image: url("../assets/svg/doodleBg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.hero_search-bg {
+  background-image: url("../assets/svg/heroBanner.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
