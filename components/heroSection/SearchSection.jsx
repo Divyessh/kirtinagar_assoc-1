@@ -10,11 +10,19 @@ const SearchSection = () => {
       <Image
         src={heroBanner}
         alt="image"
-        width="100%"
         height="100%"
         placeholder="blur"
         priority
-        style={{ position: 'absolute', top: 0, left: 0, zIndex: 1, height: '600px', objectFit: 'cover' }}
+        style={{
+          position: 'absolute',
+          borderRadius: '10px',
+          top: 0,
+          left: 0,
+          zIndex: 1,
+          height: '600px',
+          objectFit: 'cover',
+          width: '100%',
+        }}
       />
       <CategoryDropdown />
       <Socials />

@@ -9,10 +9,10 @@ const HeroSection = () => {
     <div className="grid grid-rows-[600px,1fr] gap-4 h-[100%] md:h-screen md:grid-cols-8 pt-[30px] px-[22px] mb-3">
       <Image
         src={doodleBg}
-        alt="images"
+        alt="banner"
         placeholder="empty"
         height="100%"
-        width={2000}
+        width="2000px"
         objectFit="cover"
         priority
         style={{
@@ -20,7 +20,6 @@ const HeroSection = () => {
           top: 0,
           left: 0,
           zIndex: 1,
-          width: '2000px',
         }}
       />
       <SearchSection />
