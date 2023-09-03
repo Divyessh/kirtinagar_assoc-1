@@ -6,7 +6,7 @@ import doodleBg from '../../assets/png/doodleBg.png';
 
 const HeroSection = () => {
   return (
-    <div className="grid grid-rows-[600px,1fr] gap-4 h-[100%] md:h-screen md:grid-cols-8 pt-[30px] px-[22px] mb-3">
+    <div className="grid grid-rows-[500px, 1fr] md:grid-rows-[600px,1fr] gap-4 h-[100%] md:h-screen md:grid-cols-8 pt-[30px] px-[22px] mb-3">
       <Image
         src={doodleBg}
         alt="banner"
@@ -19,7 +19,7 @@ const HeroSection = () => {
           position: 'absolute',
           top: 0,
           left: 0,
-          zIndex: 1,
+          zIndex: -1,
         }}
       />
       <SearchSection />
