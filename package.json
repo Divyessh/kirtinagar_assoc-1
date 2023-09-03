@@ -13,6 +13,8 @@
   "dependencies": {
     "autoprefixer": "10.4.15",
     "daisyui": "^3.6.3",
+    "embla-carousel-autoplay": "^8.0.0-rc12",
+    "embla-carousel-react": "^8.0.0-rc12",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",
