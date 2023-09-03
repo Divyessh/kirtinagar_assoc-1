@@ -13,7 +13,17 @@ import heroBanner4 from '../../assets/jpeg/heroBanner4.jpeg';
 import heroBanner5 from '../../assets/jpeg/heroBanner5.jpeg';
 
 const BgCarousel = () => {
-  const [emblaRef] = useEmblaCarousel({ loop: true, startIndex: 0 }, [Autoplay()]);
+  const [emblaRef] = useEmblaCarousel(
+    {
+      loop: true,
+      startIndex: 0,
+      autoplay: {
+        delay: 800, // Set the autoplay speed to 2 seconds (2000 milliseconds)
+        stopOnInteraction: true, // Stop autoplay on user interaction (optional)
+      },
+    },
+    [Autoplay()],
+  );
   const imageArray = [
     {
       src: heroBanner,
