@@ -46,7 +46,7 @@ const BgCarousel = () => {
             alt="image"
             height="100%"
             placeholder="blur"
-            priority
+            loading="lazy"
             style={{
               borderRadius: '10px',
               zIndex: 20,
