@@ -5,8 +5,10 @@ import { CiUser } from 'react-icons/ci';
 import Image from 'next/image'; // Use Image from next/image
 import kirti from '../assets/svg/kirti.svg';
 import SearchComponent from './searchcomp';
+import LoginModal from './auth/loginModal';
 
 const Navbar = () => {
+  const loggedIn = false;
   const data = [
     {
       id: 1,
@@ -66,7 +68,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <SearchComponent />
-        <CiUser className="text-4xl text-center m-2 ml-2 md:block hidden text-black" />
+        {loggedIn ? <CiUser className="text-4xl text-center m-2 ml-2 md:block hidden text-black" /> : <LoginModal />}
         <div className="dropdown">
           <button type="button" className="btn btn-ghost lg:hidden ">
             <GiHamburgerMenu className="text-black object-cover text-4xl" />
