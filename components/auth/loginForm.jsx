@@ -1,10 +1,19 @@
 import React from 'react';
 import { BiSolidUser, BiLogInCircle } from 'react-icons/bi';
 import { AiOutlineLock } from 'react-icons/ai';
+import { useForm } from 'react-hook-form';
 
-const LoginForm = (props) => {
+const LoginForm = () => {
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = (data) => {
+    // eslint-disable-next-line no-console
+    console.log(data);
+    reset();
+    const modal = document.getElementById('my_modal_4');
+    modal.close();
+  };
   return (
-    <div className="col-span-6 flex items-center justify-center flex-col gap-[18px]">
+    <form onSubmit={handleSubmit(onSubmit)} className="col-span-7 flex items-center justify-center flex-col gap-[18px]">
       <div>
         <BiLogInCircle className="text-[#FBBC05] text-[60px]" />
         <h1 className="font-extrabold text-[21px]">Log In</h1>
@@ -20,9 +29,9 @@ const LoginForm = (props) => {
           <input
             type="text"
             placeholder="Username"
-            className="outline-none bg-[#f1f0f1]"
+            className="outline-none bg-[#f1f0f1] md:w-[200px]"
             // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
-            {...props.register('username', {
+            {...register('username', {
               required: true,
             })}
           />
@@ -37,9 +46,9 @@ const LoginForm = (props) => {
           <input
             type="password"
             placeholder="Password"
-            className="outline-none bg-[#f1f0f1]"
+            className="outline-none bg-[#f1f0f1] md:w-[200px]"
             // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
-            {...props.register('password', {
+            {...register('password', {
               required: true,
             })}
           />
@@ -54,7 +63,11 @@ const LoginForm = (props) => {
           Log In
         </button>
       </div>
-    </div>
+      <div className="grid grid-cols-2 gap-[2px] w-[80%] place-items-center">
+        <p className="text-[#00000080] text-[13px] font-400">Don’t have an account?</p>
+        <p className="text-[#00000080] text-[13px] font-400">Forgot password</p>
+      </div>
+    </form>
   );
 };
 
