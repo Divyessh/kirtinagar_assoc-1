@@ -1,14 +1,10 @@
 import React from 'react';
-import Link from 'next/link'; // Use Link from next/link
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { CiUser } from 'react-icons/ci';
-import Image from 'next/image'; // Use Image from next/image
+import Link from 'next/link';
+import Image from 'next/image';
 import kirti from '../assets/svg/kirti.svg';
-import SearchComponent from './searchcomp';
-import LoginModal from './auth/loginModal';
+import NavBarUser from './navBarUser';
 
-const Navbar = () => {
-  const loggedIn = false;
+const Navbar = async () => {
   const data = [
     {
       id: 1,
@@ -66,20 +62,7 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
-      <div className="navbar-end">
-        <SearchComponent />
-        {loggedIn ? <CiUser className="text-4xl text-center m-2 ml-2 md:block hidden text-black" /> : <LoginModal />}
-        <div className="dropdown">
-          <button type="button" className="btn btn-ghost lg:hidden ">
-            <GiHamburgerMenu className="text-black object-cover text-4xl" />
-          </button>
-          <ul className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box z-50 bg-primary right-2 text-black">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-          </ul>
-        </div>
-      </div>
+      <NavBarUser />
     </div>
   );
 };

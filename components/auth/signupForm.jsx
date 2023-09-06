@@ -1,45 +1,26 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { customerArray, providerArray } from './inputArray';
+import { registerUser } from '../../lib/auth/registerUser';
 
 const SignupForm = () => {
   const { register, handleSubmit, reset } = useForm();
-  const onSubmit = (data) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+  const [role, setRole] = React.useState('provider');
+
+  // eslint-disable-next-line consistent-return
+  const onSubmit = async (data) => {
+    if (role === 'customer') {
+      const { username, email, password, confirmPassword } = data;
+      // eslint-disable-next-line no-console
+      if (confirmPassword !== password) return console.log('passwords do not match');
+      const payload = { username, email, password, role };
+      await registerUser(payload);
+    }
     reset();
     const modal = document.getElementById('my_modal_4');
     modal.close();
   };
-  const inputArray = [
-    {
-      label: 'Name of the firm*',
-      name: 'nameOfFirm',
-    },
-    {
-      label: 'Owner Name(s)*',
-      name: 'ownerName',
-    },
-    {
-      label: 'Address*',
-      name: 'address',
-    },
-    {
-      label: 'Contact Number(s)*',
-      name: 'contactNumber',
-    },
-    {
-      label: 'Services*',
-      name: 'services',
-    },
-    {
-      label: 'Website link*',
-      name: 'websiteLink',
-    },
-    {
-      label: 'Additional Links*',
-      name: 'additionalLinks',
-    },
-  ];
+  const inputArray = role === 'provider' ? providerArray : customerArray;
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -49,15 +30,19 @@ const SignupForm = () => {
       <div className="rounded-[4px] mb-[8px]">
         <button
           type="button"
-          className="font-400 text-[12px] bg-[#F8B800] px-[14px] py-[6px] rounded-tl-[4px] rounded-bl-[4px]"
+          className={`font-400 text-[12px] px-[14px] py-[6px] rounded-tl-[4px] rounded-bl-[4px] 
+          ${role === 'provider' ? 'bg-[#F8B800]' : 'bg-[#FFFDFD]'}`}
           style={{ border: '1px solid #F8B800' }}
+          onClick={() => setRole('provider')}
         >
           Provider
         </button>
         <button
           type="button"
-          className="font-400 text-[12px] bg-[#FFFDFD] px-[14px] py-[6px] rounded-tr-[4px] rounded-br-[4px] border-[#8B8484]"
+          className={`font-400 text-[12px] px-[14px] py-[6px] rounded-tr-[4px] rounded-br-[4px] border-[#8B8484]
+          ${role === 'customer' ? 'bg-[#F8B800]' : 'bg-[#FFFDFD]'}`}
           style={{ border: '0.5px solid #8B8484' }}
+          onClick={() => setRole('customer')}
         >
           Customer
         </button>
@@ -68,7 +53,7 @@ const SignupForm = () => {
             <span className="text-[#4E4949] px-[2px] text-[9px] bg-[white] absolute -top-[6px] left-[10px]">{input.label}</span>
             <input
               type="text"
-              className="outline-none p-1 px-[10px] rounded-[6px] text-[16px]"
+              className="outline-none p-1 px-[10px] rounded-[6px] text-[14px] text-[#3f3c3c]"
               style={{ border: '0.5px solid #4E4949' }}
               // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
               {...register(`${input.name}`, {

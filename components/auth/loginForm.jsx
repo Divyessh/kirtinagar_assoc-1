@@ -2,15 +2,30 @@ import React from 'react';
 import { BiSolidUser, BiLogInCircle } from 'react-icons/bi';
 import { AiOutlineLock } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
+import { signIn } from 'next-auth/react';
 
 const LoginForm = () => {
   const { register, handleSubmit, reset } = useForm();
-  const onSubmit = (data) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
-    reset();
-    const modal = document.getElementById('my_modal_4');
-    modal.close();
+  // eslint-disable-next-line consistent-return
+  const onSubmit = async (data) => {
+    const { username, password } = data;
+    try {
+      const res = await signIn('credentials', {
+        username,
+        password,
+        redirect: false,
+      });
+      if (res?.error) {
+        return res?.error;
+      }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    } finally {
+      reset();
+      const modal = document.getElementById('my_modal_4');
+      modal.close();
+    }
   };
   return (
     <form
