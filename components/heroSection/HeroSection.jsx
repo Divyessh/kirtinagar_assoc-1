@@ -13,13 +13,13 @@ const HeroSection = () => {
         placeholder="empty"
         height="100%"
         width="2000px"
-        objectFit="cover"
         priority
         style={{
           position: 'absolute',
           top: 0,
           left: 0,
           zIndex: -1,
+          objectFit: 'cover',
         }}
       />
       <SearchSection />
