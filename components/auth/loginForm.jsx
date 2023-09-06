@@ -13,7 +13,10 @@ const LoginForm = () => {
     modal.close();
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="col-span-7 flex items-center justify-center flex-col gap-[18px]">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="py-10 md:p-0 col-span-11 md:col-span-7 flex items-center justify-center flex-col gap-[18px]"
+    >
       <div>
         <BiLogInCircle className="text-[#FBBC05] text-[60px]" />
         <h1 className="font-extrabold text-[21px]">Log In</h1>
@@ -63,9 +66,10 @@ const LoginForm = () => {
           Log In
         </button>
       </div>
-      <div className="grid grid-cols-2 gap-[2px] w-[80%] place-items-center">
-        <p className="text-[#00000080] text-[13px] font-400">Don’t have an account?</p>
-        <p className="text-[#00000080] text-[13px] font-400">Forgot password</p>
+      <div className="grid grid-cols-7 gap-[2px] w-[80%] place-items-center">
+        <p className="col-span-3 text-[#00000080] text-[13px] font-400 text-center">Don’t have an account?</p>
+        <span className="w-[0.8px] h-full bg-[#8B8484]" />
+        <p className="col-span-3 text-[#00000080] text-[13px] font-400 text-center">Forgot password</p>
       </div>
     </form>
   );

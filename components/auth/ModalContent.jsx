@@ -5,7 +5,7 @@ import signmodalBg from '../../assets/jpeg/signmodalBg.jpeg';
 const ModalContent = ({ btnName, modalContent, setisLoginModal }) => {
   return (
     <div
-      className="col-span-4 relative flex items-center justify-center flex-col gap-[23px]"
+      className="py-10 md:p-0 col-span-11 md:col-span-4 relative flex items-center justify-center flex-col gap-[23px]"
       style={{
         background: 'linear-gradient(180deg, rgba(57, 28, 8, 0.73) 0%, rgba(69, 33, 7, 0.56) 100%)',
       }}
