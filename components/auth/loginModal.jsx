@@ -1,34 +1,35 @@
 'use client';
 
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import { IoMdLogIn } from 'react-icons/io';
 import LoginForm from './loginForm';
 import ModalContent from './ModalContent';
+import SignupForm from './signupForm';
 
 const LoginModal = () => {
-  const { register, handleSubmit, reset } = useForm();
-  const onSubmit = (data) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
-    reset();
-    const modal = document.getElementById('my_modal_4');
-    modal.close();
-  };
+  const [isLoginModal, setisLoginModal] = React.useState(true);
   return (
     <>
       <button type="button" onClick={() => window.my_modal_4.showModal()}>
         <IoMdLogIn className="text-black m-2 ml-2 object-cover text-4xl cursor-pointer" />
       </button>
       <dialog id="my_modal_4" className="modal">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="modal-box bg-white grid grid-cols-11 grid-rows-[375px, 1fr] md:h-[375px]"
+        <div
+          className="modal-box bg-white grid grid-cols-11 grid-rows-[405px, 1fr] md:h-[405px] w-8/12 md:w-6/12 max-w-5xl"
           style={{ padding: 0 }}
         >
-          <ModalContent />
-          <LoginForm register={register} />
-        </form>
+          {isLoginModal ? (
+            <>
+              <ModalContent btnName="Sign Up" modalContent="New here?" setisLoginModal={setisLoginModal} />
+              <LoginForm />
+            </>
+          ) : (
+            <>
+              <SignupForm />
+              <ModalContent btnName="Log In" modalContent="Already Signed up?" setisLoginModal={setisLoginModal} />
+            </>
+          )}
+        </div>
       </dialog>
     </>
   );
