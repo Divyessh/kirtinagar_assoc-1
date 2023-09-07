@@ -1,6 +1,7 @@
 import React from 'react';
 import './globals.css';
 import { Poppins } from 'next/font/google';
+import NextSessionProvider from '../components/Provider';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 
@@ -19,9 +20,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="mytheme">
       <body className={poppins.className}>
-        <Navbar />
-        {children}
-        <Footer />
+        <NextSessionProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </NextSessionProvider>
       </body>
     </html>
   );
