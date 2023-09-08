@@ -1,9 +1,10 @@
 'use client';
 
-import React,{ useCallback } from 'react';
+import React, { useCallback } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import useEmblaCarousel from 'embla-carousel-react';
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import heroBanner from '../../assets/png/heroBanner.png';
@@ -11,10 +12,9 @@ import heroBanner2 from '../../assets/jpeg/heroBanner2.jpeg';
 import heroBanner3 from '../../assets/jpeg/heroBanner3.jpeg';
 import heroBanner4 from '../../assets/jpeg/heroBanner4.jpeg';
 import heroBanner5 from '../../assets/jpeg/heroBanner5.jpeg';
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 
 const BgCarousel = () => {
-  const [emblaRef,emblaApi] = useEmblaCarousel(
+  const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
       startIndex: 0,
@@ -26,12 +26,12 @@ const BgCarousel = () => {
     [Autoplay()],
   );
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev()
-  }, [emblaApi])
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext()
-  }, [emblaApi])
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
   const imageArray = [
     {
       src: heroBanner,
@@ -70,20 +70,20 @@ const BgCarousel = () => {
               objectFit: 'cover',
               width: '419px',
               height: '392px',
-              position: 'relative'
+              position: 'relative',
             }}
             className="embla__slide h-[500px] md:h-[600px]"
           />
         ))}
       </div>
       <div className="absolute flex justify-between top-[180px] w-full px-2">
-        <button className="embla__prev" onClick={scrollPrev} >
+        <button className="embla__prev" onClick={scrollPrev} type="button">
           <MdArrowBackIos className="text-black text-4xl shadow-md rounded-full p-2 bg-primary backdrop-blur-md " />
         </button>
-        <button className="embla__next" onClick={scrollNext}>
+        <button className="embla__next" onClick={scrollNext} type="button">
           <MdArrowForwardIos className="text-black text-4xl shadow-md rounded-full p-2 bg-primary backdrop-blur-md" />
         </button>
-    </div>
+      </div>
     </div>
   );
 };
