@@ -32,26 +32,26 @@ const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
-    slidesToSlide: 3, // optional, default to 1.
+    slidesToSlide: 1, // optional, default to 1.
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
     items: 2,
-    slidesToSlide: 2, // optional, default to 1.
+    slidesToSlide: 1, // optional, default to 1.
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 3, // optional, default to 1.
+    items: 2,
+    slidesToSlide: 1, // optional, default to 1.
   },
 };
 const ButtonGroup = ({ next, previous }) => {
   return (
     <div className="carousel-button-group absolute bottom-0 flex justify-center items-center w-full space-x-8 mb-2">
-      <button type="button" onClick={() => previous()}>
+      <button onClick={() => previous()} type="button">
         <MdArrowBackIos className="text-black text-4xl shadow-md rounded-full p-2 bg-primary" />
       </button>
-      <button type="button" onClick={() => next()}>
+      <button onClick={() => next()} type="button">
         <MdArrowForwardIos className="text-black text-4xl shadow-md rounded-full p-2 bg-primary" />
       </button>
     </div>
@@ -63,10 +63,9 @@ const MyCarousel = () => {
       <span className="flex justify-center items-center">
         <h1 className="text-4xl text-black text-center border-b-2 border-b-black mb-3 mt-6">Latest From Blogs</h1>
       </span>
-      <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="py-6 pb-14">
+      <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="py-6 pb-14 pl-10">
         {data.map((item) => (
           <Card key={item.blogTitle} blogImage={item.blogImage} blogTitle={item.blogTitle} blogAuthor={item.blogAuthor} />
-        ))}
       </Carousel>
     </>
   );

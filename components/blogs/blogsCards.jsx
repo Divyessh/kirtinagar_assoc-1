@@ -6,6 +6,7 @@ const Card = ({ blogImage, blogTitle, blogAuthor }) => (
     <Image src={blogImage} alt="image" className="rounded-xl" />
     <div className="bg-[#E5DFCF] text-black text-center md:p-4 rounded-b-xl shadow-2xl">
       <span className=" font-bold md:text-2xl ">{blogTitle}</span>
+      <br />
       <span className="font-semibold text-md">
         Posted By: <span className="text-[#EC5B2D]">{blogAuthor}</span>
       </span>

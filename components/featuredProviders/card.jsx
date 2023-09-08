@@ -23,7 +23,7 @@ const Card = () => (
     </span>
     <div className="bg-[#E5DFCF] text-black text-center md:p-4 rounded-b-xl shadow-2xl">
       <span className=" font-bold md:text-2xl ">WOODMAN FURNITURE INDIA PVT. LTD.</span>
-      <p>If a dog chews shoes, whose shoes does he choose?</p>
+      <p>New Delhi,India</p>
     </div>
   </div>
 );
