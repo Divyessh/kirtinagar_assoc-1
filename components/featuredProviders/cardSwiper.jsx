@@ -3,10 +3,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-import { Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Image from 'next/image';
 import CardImg from '../assets/png/cardimg.png';
-
 import Featured from '../assets/svg/featured.svg';
 
 const CardslideShow = () => (

@@ -10,18 +10,20 @@ const Card = () => (
   <div className="card  md:w-[400px] w-[200px] bg-[#E5DFCF] shadow-2xl rounded-xl">
     <Image src={Featured} alt="image" className="absolute top-14 left-0 " />
     <Image src={CardImg} alt="image" className="rounded-xl" />
-    <span className='absolute top-0 flex justify-between border-b-2 border-[#D9D9D9] w-full px-16  items-center'>
+    <span className="absolute top-0 flex justify-between border-b-2 border-[#D9D9D9] w-full px-16  items-center">
       <div className="hover:cursor-pointer">
-      <Image src={services} alt="image" className="pt-1 " />
+        <Image src={services} alt="image" className="pt-1 " />
       </div>
-      <div className="bg-[#E5DFCF] "><Image src={line} alt="image" /></div>
-      <div className="hover:cursor-pointer"> 
-      <Image src={quote} alt="image" className="pt-1 " />
+      <div className="bg-[#E5DFCF] ">
+        <Image src={line} alt="image" />
       </div>
-     </span>
+      <div className="hover:cursor-pointer">
+        <Image src={quote} alt="image" className="pt-1 " />
+      </div>
+    </span>
     <div className="bg-[#E5DFCF] text-black text-center md:p-4 rounded-b-xl shadow-2xl">
       <span className=" font-bold md:text-2xl ">WOODMAN FURNITURE INDIA PVT. LTD.</span>
-      <p>If a dog chews shoes, whose shoes does he choose?</p>
+      <p>New Delhi,India</p>
     </div>
   </div>
 );
