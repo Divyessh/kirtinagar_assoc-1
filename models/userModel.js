@@ -51,15 +51,18 @@ const userSchema = new Schema({
   contactNumber: {
     type: Number,
   },
-  services: {
-    type: String,
-  },
+  services: [
+    {
+      type: String,
+    },
+  ],
   website: {
     type: String,
   },
   additionalLinks: {
     type: String,
   },
+  gallery: [{ type: Schema.Types.ObjectId, ref: 'Gallery' }],
 });
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);
