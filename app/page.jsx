@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from '../components/featuredProviders/card';
 import HeroSection from '../components/heroSection/HeroSection';
 import Carousel from '../components/featuredProviders/Carousel';
 import BlogsSection from '../components/blogs/blogsSection';
@@ -9,7 +8,7 @@ export default function Home() {
     <main className="bg-primary">
       <HeroSection />
       <Carousel deviceType="desktop" />
-      <BlogsSection/>
+      <BlogsSection />
     </main>
   );
 }
