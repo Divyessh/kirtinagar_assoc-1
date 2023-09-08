@@ -66,6 +66,7 @@ const MyCarousel = () => {
       <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="py-6 pb-14 pl-10">
         {data.map((item) => (
           <Card key={item.blogTitle} blogImage={item.blogImage} blogTitle={item.blogTitle} blogAuthor={item.blogAuthor} />
+        ))}
       </Carousel>
     </>
   );

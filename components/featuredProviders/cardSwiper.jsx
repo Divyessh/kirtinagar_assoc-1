@@ -11,7 +11,6 @@ import CardImg from '../../assets/png/cardimg.png';
 
 import Featured from '../../assets/svg/featured.svg';
 
-
 const CardslideShow = () => (
   <Swiper
     spaceBetween={30}
