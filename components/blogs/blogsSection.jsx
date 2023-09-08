@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Carousel from 'react-multi-carousel';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-multi-carousel/lib/styles.css';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 import Card from './blogsCards'; // Assuming Card component is in the same directory
@@ -62,8 +64,8 @@ const MyCarousel = () => {
         <h1 className="text-4xl text-black text-center border-b-2 border-b-black mb-3 mt-6">Latest From Blogs</h1>
       </span>
       <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="py-6 pb-14 pl-10">
-        {data.map((item,i) => (
-          <Card key={i} blogImage={item.blogImage} blogTitle={item.blogTitle} blogAuthor={item.blogAuthor} />
+        {data.map((item) => (
+          <Card key={item.blogTitle} blogImage={item.blogImage} blogTitle={item.blogTitle} blogAuthor={item.blogAuthor} />
         ))}
       </Carousel>
     </>

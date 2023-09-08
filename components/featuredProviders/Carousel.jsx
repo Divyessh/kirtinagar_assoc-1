@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Carousel from 'react-multi-carousel';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-multi-carousel/lib/styles.css';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 import Card from './card'; // Assuming Card component is in the same directory
@@ -25,7 +27,7 @@ const responsive = {
 };
 const ButtonGroup = ({ next, previous }) => {
   return (
-    <div className="carousel-button-group absolute bottom-0 flex justify-center items-center w-full space-x-8 mb-2 ">
+    <div className="carousel-button-group absolute bottom-0 flex justify-center items-center w-full space-x-8 mb-2">
       <button onClick={() => previous()} type="button">
         <MdArrowBackIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary" />
       </button>

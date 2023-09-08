@@ -1,12 +1,15 @@
 'use client';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Swiper, SwiperSlide } from 'swiper/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'swiper/css';
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Image from 'next/image';
-import CardImg from '../assets/png/cardimg.png';
-import Featured from '../assets/svg/featured.svg';
+import CardImg from '../../assets/png/cardimg.png';
+
+import Featured from '../../assets/svg/featured.svg';
 
 const CardslideShow = () => (
   <Swiper

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import HeroSection from '../components/heroSection/HeroSection';
 import Carousel from '../components/featuredProviders/Carousel';
 import BlogsSection from '../components/blogs/blogsSection';
