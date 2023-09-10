@@ -7,10 +7,10 @@ import line from '../../assets/svg/line.svg';
 import CardslideShow from './cardSwiper';
 
 const Card = () => (
-  <div className="card  md:w-[350px] w-[200px] bg-[#E5DFCF] shadow-2xl rounded-xl">
+  <div className="card  md:w-[350px] w-[180px] bg-[#E5DFCF] shadow-2xl rounded-xl flex md:justify-center md:items-center">
     <CardslideShow />
-    <Image src={Featured} alt="image" className="absolute top-14 left-0 " />
-    <span className="absolute top-0 flex justify-between border-b-2 border-[#D9D9D9] w-full px-16  items-center">
+    <Image src={Featured} alt="image" className="absolute top-6 left-0 w-1/2 md:w-1/4 h-1/4" />
+    <span className="absolute top-0 flex justify-between border-b-2 border-[#D9D9D9] w-full md:px-16 px-6  items-center">
       <div className="hover:cursor-pointer">
         <Image src={services} alt="image" className="pt-1 " />
       </div>

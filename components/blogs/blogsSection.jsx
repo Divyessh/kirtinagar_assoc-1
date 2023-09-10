@@ -47,12 +47,12 @@ const responsive = {
 };
 const ButtonGroup = ({ next, previous }) => {
   return (
-    <div className="carousel-button-group absolute bottom-0 flex justify-center items-center w-full space-x-8 mb-2">
+    <div className="carousel-button-group absolute bottom-0 flex justify-center items-center w-full space-x-8 mb-2 mr-12">
       <button onClick={() => previous()} type="button">
-        <MdArrowBackIos className="text-black text-4xl shadow-md rounded-full p-2 bg-primary" />
+        <MdArrowBackIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary" />
       </button>
       <button onClick={() => next()} type="button">
-        <MdArrowForwardIos className="text-black text-4xl shadow-md rounded-full p-2 bg-primary" />
+        <MdArrowForwardIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary" />
       </button>
     </div>
   );
@@ -61,9 +61,9 @@ const MyCarousel = () => {
   return (
     <>
       <span className="flex justify-center items-center">
-        <h1 className="text-4xl text-black text-center border-b-2 border-b-black mb-3 mt-6">Latest From Blogs</h1>
+        <h1 className="md:text-4xl text-xl text-black text-center border-b-2 border-b-black mb-3 mt-6">Latest From Blogs</h1>
       </span>
-      <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="py-6 pb-14 pl-10">
+      <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14  md:pl-14 pl-2 py-6">
         {data.map((item) => (
           <Card key={item.blogTitle} blogImage={item.blogImage} blogTitle={item.blogTitle} blogAuthor={item.blogAuthor} />
         ))}
