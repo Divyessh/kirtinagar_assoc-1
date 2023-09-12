@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import { connectMongoDB, disconnectMongoDB } from '../../../lib/mongodb';
 import User from '../../../models/userModel';
+import { sendEmail } from '../../../lib/mailer';
 
 export async function POST(req) {
   try {
@@ -47,6 +48,9 @@ export async function POST(req) {
 
     // eslint-disable-next-line no-underscore-dangle
     const { password: userPassword, ...data } = newUser._doc;
+
+    // eslint-disable-next-line no-underscore-dangle
+    await sendEmail({ email, emailType: 'VERIFY', userId: newUser._id });
 
     return NextResponse.json({ message: 'User Registered', data }, { status: 200 });
   } catch (error) {
