@@ -3,9 +3,12 @@ import { BiSolidUser, BiLogInCircle } from 'react-icons/bi';
 import { AiOutlineLock } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
+import { CgDanger } from 'react-icons/cg';
 
 const LoginForm = () => {
   const { register, handleSubmit, reset } = useForm();
+  const [verified, setVerified] = React.useState(true);
+  const [error, setError] = React.useState('');
   // eslint-disable-next-line consistent-return
   const onSubmit = async (data) => {
     const { username, password } = data;
@@ -15,16 +18,21 @@ const LoginForm = () => {
         password,
         redirect: false,
       });
+      // eslint-disable-next-line no-console
+      console.log(res, 'res');
       if (res?.error) {
-        return res?.error;
+        setError(res?.error);
+        setVerified(false);
+        return;
       }
+      const modal = document.getElementById('my_modal_4');
+      modal.close();
+      // eslint-disable-next-line no-shadow
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(error);
     } finally {
       reset();
-      const modal = document.getElementById('my_modal_4');
-      modal.close();
     }
   };
   return (
@@ -72,6 +80,11 @@ const LoginForm = () => {
           />
         </div>
       </div>
+      {!verified && (
+        <p className="text-[white] flex items-center gap-[5px] border-2 bg-[red] border-[red] p-[5px] rounded-lg">
+          <CgDanger /> {error}
+        </p>
+      )}
       <div className="modal-action ">
         <button
           className="btn bg-[#FBBC05] hover:bg-[#fbbd05dc] border-none text-[#765D5F] px-[47px] normal-case font-700"

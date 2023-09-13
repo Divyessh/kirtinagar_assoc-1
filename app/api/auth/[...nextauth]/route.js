@@ -30,17 +30,21 @@ const authOptions = {
           const user = await User.findOne({ username });
 
           if (!user) {
-            return null;
+            throw new Error('User Not Found');
           }
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
 
           if (!passwordsMatch) {
-            return null;
+            throw new Error('Wrong Password');
+          }
+          if (user?.isVerified === false) {
+            throw new Error('Please verify your email');
           }
           return user;
         } catch (error) {
           console.log('Error: ', error);
+          throw new Error(error);
         } finally {
           await disconnectMongoDB();
         }
