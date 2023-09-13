@@ -18,8 +18,6 @@ const LoginForm = () => {
         password,
         redirect: false,
       });
-      // eslint-disable-next-line no-console
-      console.log(res, 'res');
       if (res?.error) {
         setError(res?.error);
         setVerified(false);
@@ -35,6 +33,7 @@ const LoginForm = () => {
       reset();
     }
   };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -80,12 +79,15 @@ const LoginForm = () => {
           />
         </div>
       </div>
-      {!verified && (
-        <p className="text-[white] flex items-center gap-[5px] border-2 bg-[red] border-[red] p-[5px] rounded-lg">
-          <CgDanger /> {error}
-        </p>
-      )}
-      <div className="modal-action ">
+      <div className="flex items-center justify-center flex-col">
+        {!verified && (
+          <p className="text-[white] flex items-center gap-[5px] border-2 bg-[red] border-[red] p-[5px] rounded-lg">
+            <CgDanger /> {error}
+          </p>
+        )}
+        {!verified && error === 'Error: Please verify your email' && <p>Check Your Email</p>}
+      </div>
+      <div className="modal-action">
         <button
           className="btn bg-[#FBBC05] hover:bg-[#fbbd05dc] border-none text-[#765D5F] px-[47px] normal-case font-700"
           type="submit"
