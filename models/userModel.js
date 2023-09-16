@@ -56,7 +56,7 @@ const userSchema = new Schema({
       type: String,
     },
   ],
-  website: {
+  websiteLink: {
     type: String,
   },
   additionalLinks: {

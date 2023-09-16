@@ -9,15 +9,29 @@ export async function POST(req) {
   try {
     await connectMongoDB();
 
-    const { username, email, password, role, nameOftheFirm, ownerName, address, contactNumber, services, website } = await req.json();
+    const {
+      firstName,
+      lastName,
+      username,
+      email,
+      password,
+      role,
+      nameOftheFirm,
+      ownerName,
+      address,
+      contactNumber,
+      services,
+      websiteLink,
+      additionalLinks,
+    } = await req.json();
 
     if (!username || !email || !password) {
-      return NextResponse.json({ message: 'Please fill all the required fields' }, { status: 400 });
+      return NextResponse.json({ message: 'Please fill all the required fields first' }, { status: 400 });
     }
 
     if (role !== 'customer') {
-      if (!nameOftheFirm || !ownerName || !address || !contactNumber || !services || !website) {
-        return NextResponse.json({ message: 'Please fill all the required fields' }, { status: 400 });
+      if (!nameOftheFirm || !ownerName || !address || !contactNumber || !services || !websiteLink || !additionalLinks) {
+        return NextResponse.json({ message: 'Please fill all the required fields second' }, { status: 400 });
       }
     }
 
@@ -36,12 +50,15 @@ export async function POST(req) {
     };
 
     if (role !== 'customer') {
+      userData.firstName = firstName;
+      userData.lastName = lastName;
       userData.nameOftheFirm = nameOftheFirm;
       userData.ownerName = ownerName;
       userData.address = address;
       userData.contactNumber = contactNumber;
       userData.services = services;
-      userData.website = website;
+      userData.websiteLink = websiteLink;
+      userData.additionalLinks = additionalLinks;
     }
 
     const newUser = await User.create(userData);
