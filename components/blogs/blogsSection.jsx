@@ -7,26 +7,25 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 import Card from './blogsCards'; // Assuming Card component is in the same directory
-import CardImg2 from '../../assets/png/joseph-greve-Xdk7tFHP6kU-unsplash 1.png';
-import CardImg from '../../assets/png/julian-hochgesang-4DqsMC4-QQc-unsplash 1 (1).png';
+import { getBlog } from '@/lib/blog/blog';
 
-const data = [
-  {
-    blogImage: CardImg,
-    blogTitle: 'WOODMAN FURNITURE INDIA PVT. LTD.',
-    blogAuthor: 'Kirtinagar',
-  },
-  {
-    blogImage: CardImg2,
-    blogTitle: 'WOODMAN FURNITURE INDIA PVT. LTD.',
-    blogAuthor: 'Kirtinagar',
-  },
-  {
-    blogImage: CardImg,
-    blogTitle: 'WOODMAN FURNITURE INDIA PVT. LTD.',
-    blogAuthor: 'Kirtinaga',
-  },
-];
+// const data = [
+//   {
+//     blogImage: CardImg,
+//     blogTitle: 'WOODMAN FURNITURE INDIA PVT. LTD.',
+//     blogAuthor: 'Kirtinagar',
+//   },
+//   {
+//     blogImage: CardImg2,
+//     blogTitle: 'WOODMAN FURNITURE INDIA PVT. LTD.',
+//     blogAuthor: 'Kirtinagar',
+//   },
+//   {
+//     blogImage: CardImg,
+//     blogTitle: 'WOODMAN FURNITURE INDIA PVT. LTD.',
+//     blogAuthor: 'Kirtinaga',
+//   },
+// ];
 
 const responsive = {
   desktop: {
@@ -57,15 +56,16 @@ const ButtonGroup = ({ next, previous }) => {
     </div>
   );
 };
-const MyCarousel = () => {
+const MyCarousel = (props) => {
+  const { blogData } = props;
   return (
     <>
       <span className="flex justify-center items-center">
         <h1 className="md:text-4xl text-xl text-black text-center border-b-2 border-b-black mb-3 mt-6">Latest From Blogs</h1>
       </span>
       <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14  md:pl-14 pl-2 py-6">
-        {data.map((item) => (
-          <Card key={item.blogTitle} blogImage={item.blogImage} blogTitle={item.blogTitle} blogAuthor={item.blogAuthor} />
+        {blogData.map((item) => (
+          <Card key={item._id} blogImage={item.image} blogTitle={item.title} blogAuthor={item.postedBy} />
         ))}
       </Carousel>
     </>
