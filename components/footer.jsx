@@ -33,7 +33,7 @@ const Footer = () => {
     <div className="bg-[#413833] ">
       <h1 className="text-white text-4xl font-bold text-center py-2 border-b-1 tracking-4">New Timber Market Dealer</h1>
       <div className="md:flex ">
-        {data?.map((item) => (
+        {data.map((item) => (
           <div className="card p-8 " key={item.id}>
             <div className="flex items-center justify-center">
               <span className="flex items-center justify-center bg-stone-200 w-[94px] h-[92px] rounded-full">

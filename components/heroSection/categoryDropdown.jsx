@@ -40,7 +40,7 @@ const CategoryDropdown = () => {
             {...register('keyword', { required: true, maxLength: 20 })}
           />
           <div>
-            {keywordValue?.length > 0 && (
+            {keywordValue.length > 0 && (
               <div className="absolute top-full left-0 w-full h-[150px] md:h-[200px] overflow-y-scroll bg-white rounded-[10px] rounded-tl-none rounded-tr-none py-[10px] shadow-md text-black">
                 {keyword.map((item) => (
                   // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
@@ -64,7 +64,7 @@ const CategoryDropdown = () => {
             <Image alt="image" src={dropdownIcon} />
           </span>
           <div>
-            {category?.length > 0 && categoryItem && (
+            {category.length > 0 && categoryItem && (
               <div className="absolute top-full left-0 w-full h-[150px] md:h-[200px] overflow-y-scroll bg-white rounded-[10px] rounded-tl-none rounded-tr-none py-[10px] shadow-md">
                 {category.map((item) => (
                   // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
