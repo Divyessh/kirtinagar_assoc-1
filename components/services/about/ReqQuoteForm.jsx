@@ -28,7 +28,7 @@ const ReqQuoteForm = () => {
             className="col-span-1 py-[8px] md:py-[24px] px-[8px] md:px-[20px] rounded-[10px] relative"
             style={{ border: '2px solid black' }}
           >
-            <span className="absolute bg-[white] -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
+            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
               Name *
             </span>
             <input
@@ -45,7 +45,7 @@ const ReqQuoteForm = () => {
             className="col-span-1 py-[8px] md:py-[24px] px-[8px] md:px-[20px] rounded-[10px] relative"
             style={{ border: '2px solid black' }}
           >
-            <span className="absolute bg-[white] -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
+            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
               Email *
             </span>
             <input
@@ -62,7 +62,7 @@ const ReqQuoteForm = () => {
             className="col-span-1 py-[8px] md:py-[24px] px-[8px] md:px-[20px] rounded-[10px] relative"
             style={{ border: '2px solid black' }}
           >
-            <span className="absolute bg-[white] -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
+            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
               Phone *
             </span>
             <input
@@ -79,7 +79,7 @@ const ReqQuoteForm = () => {
             className="col-span-1 py-[8px] md:py-[24px] px-[8px] md:px-[20px] rounded-[10px] relative"
             style={{ border: '2px solid black' }}
           >
-            <span className="absolute bg-[white] -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
+            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
               Message *
             </span>
             <input
@@ -96,7 +96,7 @@ const ReqQuoteForm = () => {
         <div className="flex items-center justify-center w-full mb-[10px]">
           <button
             type="submit"
-            className="bg-[#FF9800] w-fit py-[5px] px-[20px] md:px-[55px] font-[700] text-[14px] md:text-[28px] rounded-[7px]"
+            className="bg-[#FF9800] w-fit py-[5px] text-black px-[20px] md:px-[55px] font-[700] text-[14px] md:text-[28px] rounded-[7px]"
           >
             Send
           </button>

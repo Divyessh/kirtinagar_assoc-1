@@ -54,14 +54,14 @@ const ImageCarousel = ({ imageArray }) => {
           className="embla__prev absolute top-1/2 left-[3%] -translate-y-1/2 w-fit rounded-full p-[3px] bg-[#F5F5F5]"
           onClick={scrollPrev}
         >
-          <BsChevronLeft className="font-[600] text-[1rem] md:text-[2rem]" />
+          <BsChevronLeft className="font-[600] text-black text-[1rem] md:text-[2rem]" />
         </button>
         <button
           type="button"
           className="embla__next absolute top-1/2 right-[3%] -translate-y-1/2 w-fit rounded-full p-[3px] bg-[#F5F5F5]"
           onClick={scrollNext}
         >
-          <BsChevronRight className="font-[600] text-[1rem] md:text-[2rem]" />
+          <BsChevronRight className="font-[600] text-black text-[1rem] md:text-[2rem]" />
         </button>
       </div>
     </div>

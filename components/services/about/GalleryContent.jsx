@@ -34,7 +34,7 @@ const GalleryContent = ({ id }) => {
         <ImageCarousel imageArray={imageArray} />
         <Link
           href={`/services/${id}/gallery`}
-          className="bg-[#626262] rounded-sm md:rounded-[11px] px-[6px] md:px-[16px] py-[2px] text-[13px] md:text-[25px] font-[700] text-[#D9D9D9] absolute bottom-1 left-1/2 -translate-x-1/2"
+          className="bg-[#626262]  rounded-sm md:rounded-[11px] px-[6px] md:px-[16px] py-[2px] text-[13px] md:text-[25px] font-[700] text-[#D9D9D9] absolute bottom-1 left-1/2 -translate-x-1/2"
         >
           View All
         </Link>

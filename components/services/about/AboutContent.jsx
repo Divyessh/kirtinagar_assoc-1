@@ -45,13 +45,13 @@ const AboutContent = () => {
           </div>
         </div>
       </div>
-      <h1 className="font-[700] text-[13px] md:text-[28px] mt-[5px]">Naveen goyal</h1>
-      <p className="font-[700] text-[13px] md:text-[28px] w-[80%] md:w-[60%]">
+      <h1 className="font-[700] text-[13px] md:text-[28px] mt-[5px] text-black">Naveen goyal</h1>
+      <p className="font-[700] text-[13px] md:text-[28px] w-[80%] md:w-[60%] text-black">
         123, sample address lines, block random, sab kirti nagar mein GST No. 1234567890ABCD
       </p>
       <button
         type="button"
-        className="rounded-[8px] mt-[13px] flex items-center gap-2 py-[3px] px-[10px] w-fit bg-[#FF9800] font-[700] text-[15px] md:text-[30px]"
+        className="text-black rounded-[8px] mt-[13px] flex items-center gap-2 py-[3px] px-[10px] w-fit bg-[#FF9800] font-[700] text-[15px] md:text-[30px]"
       >
         <AiFillFile /> Request a quote
       </button>

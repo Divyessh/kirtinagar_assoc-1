@@ -14,7 +14,7 @@ const ServiceContent = () => {
       <Heading title="Services" />
       <div className="flex items-start w-full">
         <div className="w-[10%]">
-          <IoSettings className="text-[20px] md:text-[40px]" />
+          <IoSettings className="text-[20px] md:text-[40px] text-black" />
         </div>
         <div className="flex flex-wrap w-[90%] gap-[5px] md:gap-[20px]">
           {serviceArray?.map((service) => (
@@ -22,7 +22,7 @@ const ServiceContent = () => {
               className="w-[45%] md:w-[27%] rounded-[20px] md:rounded-[50px] md:h-full overflow-hidden px-[6px] py-[5px] text-center bg-[#FBA832]"
               key={service}
             >
-              <h1 className="text-[10px] md:text-[24px] font-[600]" style={ellipsisStyle}>
+              <h1 className="text-[10px] text-black md:text-[24px] font-[600]" style={ellipsisStyle}>
                 {service}
               </h1>
             </div>

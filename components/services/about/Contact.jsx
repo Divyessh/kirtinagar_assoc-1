@@ -18,15 +18,17 @@ const Contact = () => {
               <MdLocationOn />
             </div>
             <div className="w-[95%]">
-              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
+              <h1 className="w-[100%] text-black text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
                 123, sample address lines, block random, sab kirti nagar mein
               </h1>
-              <h1 className="w-[80%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">GST No. 1234567890ABCD</h1>
+              <h1 className="w-[80%] text-[13px] text-black md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
+                GST No. 1234567890ABCD
+              </h1>
             </div>
           </div>
           <div className="flex items-start justify-center gap-[10px] md:gap-[20px]">
             <div className="w-[5%] text-[13px] md:text-[30px] mt-[0px] md:mt-[7px]">
-              <BsFillTelephoneFill />
+              <BsFillTelephoneFill className="text-black" />
             </div>
             <div className="w-[95%]">
               <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">1234567890</h1>
@@ -34,43 +36,49 @@ const Contact = () => {
           </div>
           <div className="flex items-start justify-center gap-[10px] md:gap-[20px]">
             <div className="w-[5%] text-[13px] md:text-[30px] mt-[0px] md:mt-[7px]">
-              <GiEarthAfricaEurope />
+              <GiEarthAfricaEurope className="text-black" />
             </div>
             <div className="w-[95%]">
-              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">www.kirtinagar.com</h1>
+              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">
+                www.kirtinagar.com
+              </h1>
             </div>
           </div>
           <div className="flex items-start justify-center gap-[10px] md:gap-[20px]">
             <div className="w-[5%] text-[13px] md:text-[30px] mt-[0px] md:mt-[7px]">
-              <FaEnvelope />
+              <FaEnvelope className="text-black" />
             </div>
             <div className="w-[95%]">
-              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">Request a quote</h1>
+              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">
+                Request a quote
+              </h1>
             </div>
           </div>
           <div className="flex items-start justify-center gap-[10px] md:gap-[20px]">
             <div className="w-[5%] text-[13px] md:text-[30px] mt-[0px] md:mt-[7px]">
-              <AiFillFile />
+              <AiFillFile className="text-black" />
             </div>
             <div className="w-[95%]">
-              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">kirtinagar@gmail.com</h1>
+              <h1 className="w-[100%] text-[13px] text-black md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
+                kirtinagar@gmail.com
+              </h1>
             </div>
           </div>
           <div className="flex items-start justify-center gap-[10px] md:gap-[20px]">
             <div className="w-[5%] text-[13px] md:text-[30px] mt-[0px] md:mt-[7px]">
-              <AiFillClockCircle />
+              <AiFillClockCircle className="text-black" />
             </div>
             <div className="w-[95%]">
-              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">Timings</h1>
+              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">Timings</h1>
             </div>
           </div>
         </div>
         <div className="col-span-2 md:col-span-4 text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-center">
-          <h1>LOCATION</h1>
+          <h1 className="text-black">LOCATION</h1>
         </div>
       </div>
       <div className="text-center flex items-center justify-center gap-2">
-        <h1 className="font-[600] text-[15px] md:text-[23px]">9 AM - 9 PM</h1>
+        <h1 className="font-[600] text-[15px] md:text-[23px] text-black">9 AM - 9 PM</h1>
         <button type="button" className=" w-fit rounded-full p-[3px] bg-[#382F2A]">
           <BsChevronDown className="font-[600] text-[8px] text-white md:text-[16px]" />
         </button>
