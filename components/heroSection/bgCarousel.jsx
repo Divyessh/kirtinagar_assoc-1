@@ -49,7 +49,7 @@ const BgCarousel = () => {
   return (
     <div className="absolute rounded-[10px] top-0 left-0 z-12 w-[100%] h-[500px] md:h-[600px] embla" ref={emblaRef}>
       <div className="relative embla__container">
-        {imageArray.map((image) => (
+        {imageArray?.map((image) => (
           <Image
             key={image.id}
             src={image.src}

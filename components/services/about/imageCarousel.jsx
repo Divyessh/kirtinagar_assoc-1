@@ -31,7 +31,7 @@ const ImageCarousel = ({ imageArray }) => {
     <div className="col-span-7 md:rounded-[2px] embla">
       <div className="embla__viewport relative" ref={emblaRef}>
         <div className="relative embla__container">
-          {imageArray.map((image) => (
+          {imageArray?.map((image) => (
             <Image
               key={image.id}
               src={image.src}

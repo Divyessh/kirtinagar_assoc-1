@@ -5,7 +5,7 @@ const Nav = ({ pageName, id }) => {
   const navItems = ['About', 'Gallery', 'Contact', 'Services'];
   return (
     <div className="w-full flex items-center justify-center rounded-[4px] overflow-hidden mb-[30px]">
-      {navItems.map((item) => (
+      {navItems?.map((item) => (
         <div
           key={item}
           className={`py-[8px] border-2 border-[#FF9800] w-1/4 text-center ${pageName === item ? 'bg-[#FF9800]' : 'bg-[#FFFFFF]'}`}
