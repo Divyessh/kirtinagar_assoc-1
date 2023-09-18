@@ -1,11 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { customerArray, providerArray } from './inputArray';
+import { customerArray, providerArray, initialProviderArray } from './inputArray';
 import { registerUser } from '../../lib/auth/registerUser';
 
 const SignupForm = () => {
   const { register, handleSubmit, reset } = useForm();
   const [role, setRole] = React.useState('provider');
+  const [next, setNext] = React.useState(false);
 
   // eslint-disable-next-line consistent-return
   const onSubmit = async (data) => {
@@ -16,11 +17,49 @@ const SignupForm = () => {
       const payload = { username, email, password, role };
       await registerUser(payload);
     }
+    if (role === 'provider') {
+      const {
+        username,
+        email,
+        password,
+        confirmPassword,
+        firstName,
+        lastName,
+        phoneNumber,
+        address,
+        nameOftheFirm,
+        ownerName,
+        contactNumber,
+        services,
+        websiteLink,
+        additionalLinks,
+      } = data;
+      // eslint-disable-next-line no-console
+      if (confirmPassword !== password) return console.log('passwords do not match');
+      const payload = {
+        username,
+        email,
+        password,
+        role,
+        firstName,
+        lastName,
+        phoneNumber,
+        address,
+        nameOftheFirm,
+        ownerName,
+        contactNumber,
+        services,
+        websiteLink,
+        additionalLinks,
+      };
+      await registerUser(payload);
+    }
     reset();
     const modal = document.getElementById('my_modal_4');
     modal.close();
   };
-  const inputArray = role === 'provider' ? providerArray : customerArray;
+  // eslint-disable-next-line no-nested-ternary
+  const inputArray = role === 'customer' ? customerArray : next ? providerArray : initialProviderArray;
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -52,7 +91,7 @@ const SignupForm = () => {
           <div className="relative col-span-2 md:col-span-1" key={input.name}>
             <span className="text-[#4E4949] px-[2px] text-[9px] bg-[white] absolute -top-[6px] left-[10px]">{input.label}</span>
             <input
-              type="text"
+              type={input?.name === 'password' || input?.name === 'confirmPassword' ? 'password' : 'text'}
               className="outline-none p-1 px-[10px] rounded-[6px] text-[14px] text-[#3f3c3c]"
               style={{ border: '0.5px solid #4E4949' }}
               // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
@@ -64,13 +103,36 @@ const SignupForm = () => {
         ))}
       </div>
       <div className="modal-action flex flex-col gap-[7px] justify-center items-center">
-        <button
-          className="btn bg-[#FBBC05] hover:bg-[#fbbd05dc] border-none text-[#765D5F] px-[47px] normal-case font-700"
-          type="submit"
-          style={{ boxShadow: '7px 8px 10px 0px #00000040' }}
-        >
-          Sign Up
-        </button>
+        {!next && role !== 'customer' ? (
+          <button
+            className="btn bg-[#FBBC05] hover:bg-[#fbbd05dc] border-none text-[#765D5F] px-[47px] normal-case font-700"
+            style={{ boxShadow: '7px 8px 10px 0px #00000040' }}
+            type="button"
+            onClick={() => setNext(true)}
+          >
+            Next
+          </button>
+        ) : (
+          <div className="flex gap-[10px]">
+            {role !== 'customer' && (
+              <button
+                className="btn bg-[#FBBC05] hover:bg-[#fbbd05dc] border-none text-[#765D5F] px-[30px] md:px-[47px] normal-case font-700"
+                style={{ boxShadow: '7px 8px 10px 0px #00000040' }}
+                type="button"
+                onClick={() => setNext(false)}
+              >
+                Prev
+              </button>
+            )}
+            <button
+              className="btn bg-[#FBBC05] hover:bg-[#fbbd05dc] border-none text-[#765D5F] px-[20px] md:px-[47px] normal-case font-700"
+              type="submit"
+              style={{ boxShadow: '7px 8px 10px 0px #00000040' }}
+            >
+              Sign Up
+            </button>
+          </div>
+        )}
         <span className="text-[#00000080] text-[12px]">Already Registered?</span>
       </div>
     </form>

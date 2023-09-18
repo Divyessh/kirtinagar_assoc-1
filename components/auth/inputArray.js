@@ -1,7 +1,34 @@
+export const initialProviderArray = [
+  {
+    label: 'First Name*',
+    name: 'firstName',
+  },
+  {
+    label: 'Last Name*',
+    name: 'lastName',
+  },
+  {
+    label: 'Username*',
+    name: 'username',
+  },
+  {
+    label: 'Email*',
+    name: 'email',
+  },
+  {
+    label: 'Password*',
+    name: 'password',
+  },
+  {
+    label: 'Confirm Password*',
+    name: 'confirmPassword',
+  },
+];
+
 export const providerArray = [
   {
     label: 'Name of the firm*',
-    name: 'nameOfFirm',
+    name: 'nameOftheFirm',
   },
   {
     label: 'Owner Name(s)*',
