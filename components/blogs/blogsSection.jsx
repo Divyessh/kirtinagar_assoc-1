@@ -7,25 +7,6 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 import Card from './blogsCards'; // Assuming Card component is in the same directory
-import { getBlog } from '@/lib/blog/blog';
-
-// const data = [
-//   {
-//     blogImage: CardImg,
-//     blogTitle: 'WOODMAN FURNITURE INDIA PVT. LTD.',
-//     blogAuthor: 'Kirtinagar',
-//   },
-//   {
-//     blogImage: CardImg2,
-//     blogTitle: 'WOODMAN FURNITURE INDIA PVT. LTD.',
-//     blogAuthor: 'Kirtinagar',
-//   },
-//   {
-//     blogImage: CardImg,
-//     blogTitle: 'WOODMAN FURNITURE INDIA PVT. LTD.',
-//     blogAuthor: 'Kirtinaga',
-//   },
-// ];
 
 const responsive = {
   desktop: {
@@ -64,7 +45,8 @@ const MyCarousel = (props) => {
         <h1 className="md:text-4xl text-xl text-black text-center border-b-2 border-b-black mb-3 mt-6">Latest From Blogs</h1>
       </span>
       <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14  md:pl-14 pl-2 py-6">
-        {blogData.map((item) => (
+        {blogData?.map((item) => (
+          // eslint-disable-next-line no-underscore-dangle
           <Card key={item._id} blogImage={item.image} blogTitle={item.title} blogAuthor={item.postedBy} />
         ))}
       </Carousel>
