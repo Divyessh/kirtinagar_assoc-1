@@ -15,7 +15,7 @@ const Contact = () => {
         <div className="col-span-3 md:col-span-8 flex flex-col gap-[15px] md:gap-[30px]">
           <div className="flex items-start justify-center gap-[10px] md:gap-[20px]">
             <div className="w-[5%] text-[13px] md:text-[30px] mt-[0px] md:mt-[7px]">
-              <MdLocationOn />
+              <MdLocationOn className="text-black" />
             </div>
             <div className="w-[95%]">
               <h1 className="w-[100%] text-black text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
@@ -31,7 +31,7 @@ const Contact = () => {
               <BsFillTelephoneFill className="text-black" />
             </div>
             <div className="w-[95%]">
-              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">1234567890</h1>
+              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">1234567890</h1>
             </div>
           </div>
           <div className="flex items-start justify-center gap-[10px] md:gap-[20px]">
