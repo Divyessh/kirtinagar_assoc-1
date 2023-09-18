@@ -31,9 +31,9 @@ const CategoryDropdown = () => {
         className="grid grid-cols-2 md:grid-cols-5 gap-3 place-items-center md:place-items-stretch md:gap-6 w-full bg-[#E5DFCF] py-[10px] md:py-[30px] px-[5px] md:px-[24px]"
         style={{ boxShadow: '6px 9px 12px 0px #00000040' }}
       >
-        <div className="bg-white py-[8px] md:py-[12px] px-[18px] col-span-1 md:col-span-2 rounded-[10px] flex items-center relative">
+        <div className="bg-white py-[8px] md:py-[12px] px-[18px] col-span-1 md:col-span-2 rounded-[10px] flex items-center relative text-black">
           <input
-            className="outline-none w-full"
+            className="outline-none w-full text-black"
             placeholder="Keyword"
             type="text"
             // eslint-disable-next-line react/jsx-props-no-spreading
@@ -41,7 +41,7 @@ const CategoryDropdown = () => {
           />
           <div>
             {keywordValue.length > 0 && (
-              <div className="absolute top-full left-0 w-full h-[150px] md:h-[200px] overflow-y-scroll bg-white rounded-[10px] rounded-tl-none rounded-tr-none py-[10px] shadow-md">
+              <div className="absolute top-full left-0 w-full h-[150px] md:h-[200px] overflow-y-scroll bg-white rounded-[10px] rounded-tl-none rounded-tr-none py-[10px] shadow-md text-black">
                 {keyword.map((item) => (
                   // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
                   <p
@@ -56,7 +56,7 @@ const CategoryDropdown = () => {
             )}
           </div>
         </div>
-        <div className="bg-white py-[8px] md:py-[12px] px-[18px] col-span-1 md:col-span-2 rounded-[10px] relative flex items-center">
+        <div className="bg-white py-[8px] md:py-[12px] px-[18px] col-span-1 md:col-span-2 rounded-[10px] relative flex items-center text-black">
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <input placeholder="Category" type="text" className="w-full outline-none pr-4" {...register('category', { required: true })} />
           {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}

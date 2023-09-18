@@ -10,3 +10,12 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+.furniture-section {
+  background-image: url("../assets/svg/Bg-01\ 1.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+

@@ -31,7 +31,7 @@ const Footer = () => {
 
   return (
     <div className="bg-[#413833] ">
-      <h1 className="text-white text-4xl font-bold text-center py-2 border-b-1">New Timber Market Dealer</h1>
+      <h1 className="text-white text-4xl font-bold text-center py-2 border-b-1 tracking-4">New Timber Market Dealer</h1>
       <div className="md:flex ">
         {data.map((item) => (
           <div className="card p-8 " key={item.id}>
@@ -47,12 +47,12 @@ const Footer = () => {
           </div>
         ))}
       </div>
-      <div className="md:flex justify-evenly border-b-2 border-white space-y-2">
+      <div className="md:flex flex-2 justify-evenly text-center items-center border-b-2 border-white space-y-2">
         <div>
-          <span className="text-xl uppercase">Service Provider</span>
+          <span className="text-xl uppercase text-white text-center">Service Provider</span>
           <ul className="text-[#DDC5C5] text-center text-lg ">
             <li>
-              <Link className="hover:border-b-2 hover:text-white" href="/">
+              <Link className="hover:border-b-2 hover:text-white " href="/">
                 Branding
               </Link>
             </li>
@@ -74,7 +74,7 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <span className="text-xl">USEFUL LINKS</span>
+          <span className="text-xl text-white">USEFUL LINKS</span>
           <ul className="text-[#DDC5C5] text-lg  text-center">
             <li>
               <Link className="hover:border-b-2 hover:text-white" href="/">
@@ -94,23 +94,23 @@ const Footer = () => {
           </ul>
         </div>
         <div className="">
-          <h1 className="text-xl text-center uppercase">Location</h1>
-          <Image src={location} alt="members" className="object-cover p-3" />
+          <h1 className="text-xl text-center uppercase text-white ">Location</h1>
+          <Image src={location} alt="members" className="object-cover p-3 w-full flex justify-center items-center" />
         </div>
-        <div className="space-y-4">
+        <div className="space-y-3 ">
           <span className="text-xl text-center uppercase">SHOP LISTING</span>
           <h1 className="text-2xl">
             Want the shop to be
             <br />
             listed?
           </h1>
-          <button type="button" className="btn btn-primary rounded-full">
+          <button type="button" className="btn btn-primary rounded-full ">
             See Pricing
             <IoIosArrowForward />
           </button>
         </div>
       </div>
-      <div className="mx-2 text-center">
+      <div className="mx-2 text-center text-white">
         Made with 🌌 by <Link href="$">VOID</Link>
       </div>
     </div>

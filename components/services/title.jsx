@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
-import shareIcon from '../../assets/svg/shareIcon.svg';
+import shareIcon from '../../assets/png/shareIcon.png';
 
 const Title = () => {
   return (
