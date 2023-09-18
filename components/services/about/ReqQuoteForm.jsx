@@ -28,13 +28,13 @@ const ReqQuoteForm = () => {
             className="col-span-1 py-[8px] md:py-[24px] px-[8px] md:px-[20px] rounded-[10px] relative"
             style={{ border: '2px solid black' }}
           >
-            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
+            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px] ">
               Name *
             </span>
             <input
               type="text"
               placeholder="Enter Name"
-              className="outline-none w-full text-[13px] md:text-[24px]"
+              className="outline-none w-full text-[13px] md:text-[24px] text-black"
               // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
               {...register('name', {
                 required: true,
@@ -45,13 +45,13 @@ const ReqQuoteForm = () => {
             className="col-span-1 py-[8px] md:py-[24px] px-[8px] md:px-[20px] rounded-[10px] relative"
             style={{ border: '2px solid black' }}
           >
-            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
+            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px] ">
               Email *
             </span>
             <input
               type="email"
               placeholder="Enter Email"
-              className="outline-none w-full text-[13px] md:text-[24px]"
+              className="outline-none w-full text-[13px] md:text-[24px] text-black"
               // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
               {...register('email', {
                 required: true,
@@ -62,13 +62,13 @@ const ReqQuoteForm = () => {
             className="col-span-1 py-[8px] md:py-[24px] px-[8px] md:px-[20px] rounded-[10px] relative"
             style={{ border: '2px solid black' }}
           >
-            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
+            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px] ">
               Phone *
             </span>
             <input
               type="text"
               placeholder="Enter Phone"
-              className="outline-none w-full text-[13px] md:text-[24px]"
+              className="outline-none w-full text-[13px] md:text-[24px] text-black"
               // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
               {...register('phone', {
                 required: true,
@@ -79,13 +79,13 @@ const ReqQuoteForm = () => {
             className="col-span-1 py-[8px] md:py-[24px] px-[8px] md:px-[20px] rounded-[10px] relative"
             style={{ border: '2px solid black' }}
           >
-            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px]">
+            <span className="absolute bg-[white] text-black -top-[10px] md:-top-[19px] px-[4px] left-[10px] md:left-[20px] text-[12px] md:text-[24px] ">
               Message *
             </span>
             <input
               type="text"
               placeholder="Enter Message"
-              className="outline-none w-full text-[13px] md:text-[24px]"
+              className="outline-none w-full text-[13px] md:text-[24px]  text-black"
               // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
               {...register('message', {
                 required: true,
