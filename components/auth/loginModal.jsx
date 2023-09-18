@@ -15,7 +15,7 @@ const LoginModal = () => {
       </button>
       <dialog id="my_modal_4" className="modal">
         <div
-          className="modal-box bg-white grid grid-cols-11 grid-rows-[405px, 1fr] md:min-h-[405px] pb-3 w-8/12 md:w-6/12 max-w-5xl"
+          className="modal-box bg-white grid grid-cols-11 grid-rows-[405px, 1fr] md:h-[405px] w-8/12 md:w-6/12 max-w-5xl"
           style={{ padding: 0 }}
         >
           {isLoginModal ? (

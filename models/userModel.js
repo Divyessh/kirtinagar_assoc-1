@@ -56,21 +56,13 @@ const userSchema = new Schema({
       type: String,
     },
   ],
-  websiteLink: {
+  website: {
     type: String,
   },
   additionalLinks: {
     type: String,
   },
-  isVerified: {
-    type: Boolean,
-    default: false,
-  },
   gallery: [{ type: Schema.Types.ObjectId, ref: 'Gallery' }],
-  forgotPasswordToken: { type: String },
-  forgotPasswordTokenExpiry: { type: Date },
-  verifyToken: { type: String },
-  verifyTokenExpiry: { type: Date },
 });
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);
