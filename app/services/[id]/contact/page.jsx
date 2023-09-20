@@ -3,7 +3,7 @@ import Title from '../../../../components/services/title';
 import ServiceWrapper from '../../../../components/services/serviceWrapper';
 import Nav from '../../../../components/services/nav';
 
-const GalleryServices = ({ params }) => {
+const ContactServices = ({ params }) => {
   const { id } = params;
   return (
     <ServiceWrapper>
@@ -13,4 +13,4 @@ const GalleryServices = ({ params }) => {
   );
 };
 
-export default GalleryServices;
+export default ContactServices;
