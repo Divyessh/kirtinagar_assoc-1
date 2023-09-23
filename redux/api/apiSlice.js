@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const apiSlice = createApi({
   reducerPath: 'blogApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api' }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${process.env.DOMAIN}` }),
   tagTypes: ['Blog'],
   // eslint-disable-next-line no-unused-vars
   endpoints: (builder) => ({
