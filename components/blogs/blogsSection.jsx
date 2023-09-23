@@ -11,7 +11,7 @@ import { useGetBlogsQuery } from '../../redux/api/apiSlice';
 import Card from './blogsCards';
 import SkeletonCard from './skeletonCard';
 
-const responsive = {
+export const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
@@ -28,9 +28,9 @@ const responsive = {
     slidesToSlide: 1,
   },
 };
-const ButtonGroup = ({ next, previous }) => {
+export const ButtonGroup = ({ next, previous }) => {
   return (
-    <div className="carousel-button-group absolute bottom-0 flex justify-center items-center w-full space-x-8 mb-2 mr-12">
+    <div className="carousel-button-group absolute bottom-0 left-1/2 -translate-x-1/2 space-x-8 mb-2 mr-8">
       <button onClick={() => previous()} type="button">
         <MdArrowBackIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary" />
       </button>
