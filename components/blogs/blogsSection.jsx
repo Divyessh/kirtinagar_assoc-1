@@ -1,28 +1,31 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-extraneous-dependencies */
+
 'use client';
 
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import Carousel from 'react-multi-carousel';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-multi-carousel/lib/styles.css';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
-import Card from './blogsCards'; // Assuming Card component is in the same directory
+import { useGetBlogsQuery } from '../../redux/api/apiSlice';
+import Card from './blogsCards';
+import SkeletonCard from './skeletonCard';
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
-    slidesToSlide: 1, // optional, default to 1.
+    slidesToSlide: 1,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
     items: 2,
-    slidesToSlide: 1, // optional, default to 1.
+    slidesToSlide: 1,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 2,
-    slidesToSlide: 1, // optional, default to 1.
+    slidesToSlide: 1,
   },
 };
 const ButtonGroup = ({ next, previous }) => {
@@ -37,19 +40,31 @@ const ButtonGroup = ({ next, previous }) => {
     </div>
   );
 };
-const MyCarousel = (props) => {
-  const { blogData } = props;
+
+const CarouselComponent = () => {
+  const { data, isLoading } = useGetBlogsQuery('getBlogs');
+  // eslint-disable-next-line no-console
+  console.log(data);
+  const blogData = data?.data;
+  return isLoading ? (
+    <SkeletonCard />
+  ) : (
+    <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14  md:pl-14 pl-2 py-6">
+      {blogData?.map((item) => (
+        // eslint-disable-next-line no-underscore-dangle
+        <Card key={item._id} blogImage={item.image} blogTitle={item.title} blogAuthor={item.postedBy} />
+      ))}
+    </Carousel>
+  );
+};
+
+const MyCarousel = () => {
   return (
     <>
       <span className="flex justify-center items-center">
         <h1 className="md:text-4xl text-xl text-black text-center border-b-2 border-b-black mb-3 mt-6">Latest From Blogs</h1>
       </span>
-      <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14  md:pl-14 pl-2 py-6">
-        {blogData?.map((item) => (
-          // eslint-disable-next-line no-underscore-dangle
-          <Card key={item._id} blogImage={item.image} blogTitle={item.title} blogAuthor={item.postedBy} />
-        ))}
-      </Carousel>
+      <CarouselComponent />
     </>
   );
 };
