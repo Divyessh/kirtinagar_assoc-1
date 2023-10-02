@@ -2,6 +2,8 @@ import React from 'react';
 import galleryBanner from '../../assets/png/services.png';
 import PricingCard from '../../components/pricing/pricingCard'; // Make sure to import the correct component
 import PagesHeader from '../../components/galleryComponents/pagesheader';
+import generateUniqueKey from '../../constants/generateUid';
+
 const PricingComponent = () => {
   const data = {
     Basic: {
@@ -44,13 +46,8 @@ const PricingComponent = () => {
       {/* Render the header component */}
       <PagesHeader title="Pricing" bannerImage={galleryBanner} />
       <div className="flex flex-col sm:flex-col lg:flex-row xl:flex-row md:flex-row justify-evenly  py-8">
-        {Object.keys(data).map((plan, index) => (
-          <PricingCard
-            key={index}
-            title={data[plan].title}
-            price={data[plan].price}
-            features={data[plan].features}
-          />
+        {Object.keys(data).map((plan) => (
+          <PricingCard key={generateUniqueKey(plan)} title={data[plan].title} price={data[plan].price} features={data[plan].features} />
         ))}
       </div>
     </div>
