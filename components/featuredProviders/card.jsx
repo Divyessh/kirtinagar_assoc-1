@@ -8,7 +8,7 @@ import CardslideShow from './cardSwiper';
 
 const Card = () => (
   <div
-    className="card  md:w-[350px] w-[180px] bg-[#E5DFCF] shadow-2xl rounded-xl flex md:justify-center md:items-center"
+    className="card  w-[300px] md:w-[350px]  bg-[#E5DFCF] shadow-2xl rounded-xl flex md:justify-center md:items-center"
     style={{ border: 'none', padding: 0 }}
   >
     <CardslideShow />
@@ -24,7 +24,7 @@ const Card = () => (
         <Image src={quote} alt="image" className="pt-1 " />
       </div>
     </span>
-    <div className="bg-[#E5DFCF] text-black text-center md:p-4 rounded-b-xl shadow-2xl">
+    <div className="bg-[#E5DFCF] text-black text-center p-4 rounded-b-xl shadow-2xl">
       <span className=" font-bold md:text-2xl ">WOODMAN FURNITURE INDIA PVT. LTD.</span>
       <p>New Delhi,India</p>
     </div>

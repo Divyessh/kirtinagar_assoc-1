@@ -24,7 +24,7 @@ export const responsive = {
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 2,
+    items: 1,
     slidesToSlide: 1,
   },
 };
@@ -49,7 +49,7 @@ const CarouselComponent = () => {
   return isLoading ? (
     <SkeletonCard />
   ) : (
-    <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14  md:pl-14 pl-2 py-6">
+    <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14 md:pl-14 pl-2 py-6">
       {blogData?.map((item) => (
         // eslint-disable-next-line no-underscore-dangle
         <Card key={item._id} blogImage={item.image} blogTitle={item.title} blogAuthor={item.postedBy} />
