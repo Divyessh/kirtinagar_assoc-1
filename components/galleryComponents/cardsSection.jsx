@@ -1,4 +1,5 @@
 import GalleryCards from './galleryCard';
+import PaginationButton from './paginationButton';
 
 const GallerySection = () => {
   return (
