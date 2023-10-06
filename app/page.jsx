@@ -4,8 +4,6 @@ import Carousel from '../components/featuredProviders/Carousel';
 import FurnitureRangeSection from '../components/furnitureRange/furnitureSection';
 import BlogsSection from '../components/blogs/blogsSection';
 
-
-
 export default function Home() {
   return (
     <main className="bg-primary">
