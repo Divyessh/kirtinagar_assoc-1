@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import User from '../../../../models/userModel';
 import { connectMongoDB, disconnectMongoDB } from '../../../../lib/mongodb';
+import { sendEmail } from '../../../../lib/mailer';
 
 const authOptions = {
   providers: [
@@ -30,17 +31,23 @@ const authOptions = {
           const user = await User.findOne({ username });
 
           if (!user) {
-            return null;
+            throw new Error('User Not Found');
           }
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
 
           if (!passwordsMatch) {
-            return null;
+            throw new Error('Wrong Password');
+          }
+          if (user?.isVerified === false) {
+            // eslint-disable-next-line no-underscore-dangle
+            await sendEmail({ email: user.email, emailType: 'VERIFY', userId: user._id });
+            throw new Error('Please verify your email');
           }
           return user;
         } catch (error) {
           console.log('Error: ', error);
+          throw new Error(error);
         } finally {
           await disconnectMongoDB();
         }
