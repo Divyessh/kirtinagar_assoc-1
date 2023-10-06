@@ -18,7 +18,7 @@ const pricingCard = ({ title, price, features }) => {
         <div className="text-start mt-3">
           {features.map((item) => (
             <li key={generateUniqueKey(item)} className="flex text-sm text-opacity-80 list-none">
-              <Image src={tick} width={15} height={10} className="mr-2" />
+              <Image src={tick} width={15} height={10} className="mr-2" alt="items" />
               {item}
             </li>
           ))}

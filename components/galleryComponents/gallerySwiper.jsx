@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useCallback } from 'react';
+import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import useEmblaCarousel from 'embla-carousel-react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import heroBanner from '../../assets/png/heroBanner.png';
@@ -14,7 +13,7 @@ import heroBanner4 from '../../assets/jpeg/heroBanner4.jpeg';
 import heroBanner5 from '../../assets/jpeg/heroBanner5.jpeg';
 
 const BgCarousel = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
+  const [emblaRef] = useEmblaCarousel(
     {
       dots: true,
       loop: true,
@@ -26,13 +25,6 @@ const BgCarousel = () => {
     },
     [Autoplay()],
   );
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
   const imageArray = [
     {
       src: heroBanner,
@@ -77,7 +69,7 @@ const BgCarousel = () => {
           />
         ))}
       </div>
-      <div className="embla__dot"></div>
+      <div className="embla__dot" />
     </div>
   );
 };
