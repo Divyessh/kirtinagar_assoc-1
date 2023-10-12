@@ -66,7 +66,7 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  gallery: [{ type: Schema.Types.ObjectId, ref: 'Gallery' }],
+  shopgallery: [{ type: String }],
   forgotPasswordToken: { type: String },
   forgotPasswordTokenExpiry: { type: Date },
   verifyToken: { type: String },
