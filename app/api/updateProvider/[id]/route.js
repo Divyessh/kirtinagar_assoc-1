@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { connectMongoDB, disconnectMongoDB } from '../../../../lib/mongodb';
 import User from '../../../../models/userModel';
 import Gallery from '../../../../models/galleryModel';

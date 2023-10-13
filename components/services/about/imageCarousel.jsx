@@ -6,9 +6,13 @@ import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import useEmblaCarousel from 'embla-carousel-react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Autoplay from 'embla-carousel-autoplay';
+import { useGetProvidersByIdQuery } from '../../../redux/api/apiSlice';
+import SkeletonCard from '../../blogs/skeletonCard';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
-const ImageCarousel = ({ imageArray }) => {
+const ImageCarousel = ({ id }) => {
+  const { data, isLoading } = useGetProvidersByIdQuery(id);
+  const imageArray = data?.data?.shopgallery;
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -27,25 +31,29 @@ const ImageCarousel = ({ imageArray }) => {
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
+  if (isLoading) return <SkeletonCard />;
   return (
     <div className="col-span-7 md:rounded-[2px] embla">
       <div className="embla__viewport relative" ref={emblaRef}>
         <div className="relative embla__container">
-          {imageArray.map((image) => (
+          {imageArray?.map((image, i) => (
             <Image
-              key={image.id}
-              src={image.src}
+              // eslint-disable-next-line react/no-array-index-key
+              key={i}
+              src={image}
               alt="image"
-              height="auto"
-              placeholder="blur"
+              width={1000}
+              height={1000}
+              placeholder="empty"
               loading="lazy"
               style={{
                 borderRadius: '2px',
                 zIndex: 20,
                 objectFit: 'cover',
                 width: '100%',
+                // height: '500px',
               }}
-              className="embla__slide"
+              className="embla__slide h-auto md:h-[500px]"
             />
           ))}
         </div>

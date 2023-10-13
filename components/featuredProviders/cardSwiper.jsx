@@ -62,7 +62,8 @@ const BgCarousel = ({ gallery }) => {
             key={image.id}
             src={gallery ? image : image.src}
             alt="image"
-            placeholder={gallery ? 'empty' : 'blur'}
+            placeholder="blur"
+            blurDataURL="L6E.FODh00_403tS%0r;00?Hb_D$"
             loading="lazy"
             width={419}
             height={392}
