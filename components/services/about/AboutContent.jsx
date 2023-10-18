@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { AiFillSetting, AiFillFile } from 'react-icons/ai';
+// import { useSession } from 'next-auth/react';
 import ImageCarousel from './imageCarousel';
 // import aboutService from '../../../assets/png/aboutService.png';
 import { useGetProvidersByIdQuery } from '../../../redux/api/apiSlice';
@@ -10,6 +11,9 @@ import SkeletonCard from '../../blogs/skeletonCard';
 const AboutContent = ({ id }) => {
   const { data, isLoading } = useGetProvidersByIdQuery(id);
   const providerData = data?.data;
+  // const { data: session } = useSession();
+  // console.log(session?.user);
+
   return isLoading ? (
     <SkeletonCard />
   ) : (

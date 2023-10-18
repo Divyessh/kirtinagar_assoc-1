@@ -11,7 +11,7 @@ const GalleryServices = ({ params }) => {
     <ServiceWrapper>
       <Title />
       <Nav pageName="Gallery" id={id} />
-      <GalleryContent />
+      <GalleryContent id={id} />
       <RelatedProviders />
     </ServiceWrapper>
   );
