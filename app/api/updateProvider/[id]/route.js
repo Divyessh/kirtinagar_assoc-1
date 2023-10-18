@@ -1,10 +1,9 @@
 import { NextResponse } from 'next/server';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { connectMongoDB, disconnectMongoDB } from '../../../../lib/mongodb';
 import User from '../../../../models/userModel';
 import Gallery from '../../../../models/galleryModel';
 
-export async function POST(req, context) {
+export async function PUT(req, context) {
   try {
     await connectMongoDB();
 
@@ -29,7 +28,7 @@ export async function GET(req, context) {
   try {
     await connectMongoDB();
 
-    const gallery = await Gallery.find({ userId: context.params.id });
+    const gallery = await User.findById(context.params.id);
     return NextResponse.json({ message: 'Gallery fetched successfully', data: gallery }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: 'Something went completely wrong' }, { status: 500 });

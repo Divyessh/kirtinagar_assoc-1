@@ -23,6 +23,7 @@ export async function POST(req) {
       services,
       websiteLink,
       additionalLinks,
+      shopgallery,
     } = await req.json();
 
     if (!username || !email || !password) {
@@ -59,6 +60,7 @@ export async function POST(req) {
       userData.services = services;
       userData.websiteLink = websiteLink;
       userData.additionalLinks = additionalLinks;
+      userData.shopgallery = shopgallery;
     }
 
     const newUser = await User.create(userData);
