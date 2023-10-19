@@ -1,9 +1,12 @@
 
-const GallerySection = () => {
+import React from 'react';
+
+const AboutUsSection = () => {
   return (
-    <div className="bg-primary">
-      <PagesHeader title="Gallery" bannerImage={galleryBanner} />
-    </div>
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
+      <div className="bg-primary"> About us</div>
+    </>
   );
 };
-export default GallerySection;
+export default AboutUsSection;
