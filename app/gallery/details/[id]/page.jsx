@@ -1,4 +1,4 @@
-import GalleryDetails from '../../../components/galleryComponents/galleryDetails';
+import GalleryDetails from '../../../../components/galleryComponents/galleryDetails';
 
 const GallerySection = () => {
   return (

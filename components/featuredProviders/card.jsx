@@ -12,15 +12,15 @@ const Card = () => (
     style={{ border: 'none', padding: 0 }}
   >
     <CardslideShow />
-    <Image src={Featured} alt="image" className="absolute top-6 left-0 w-1/2 md:w-1/4 h-1/4" />
+    <Image src={Featured} alt="image" className="absolute md:top-6 left-0 top-[80px] w-[80px] md:w-1/4 md:h-1/4" />
     <span className="absolute top-0 flex justify-between border-b-2 border-[#D9D9D9] w-full md:px-16 px-6  items-center">
-      <div className="hover:cursor-pointer">
+      <div className="hover:cursor-pointer tooltip " data-tip="Services">
         <Image src={services} alt="image" className="pt-1 " />
       </div>
-      <div className="bg-[#E5DFCF] ">
+      <div className="bg-[#E5DFCF]">
         <Image src={line} alt="image" />
       </div>
-      <div className="hover:cursor-pointer">
+      <div className="hover:cursor-pointer tooltip " data-tip="Request a Quote">
         <Image src={quote} alt="image" className="pt-1 " />
       </div>
     </span>

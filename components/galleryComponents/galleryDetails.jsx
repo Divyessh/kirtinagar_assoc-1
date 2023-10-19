@@ -4,23 +4,23 @@ import GallerySwiper from './gallerySwiper';
 
 const GalleryDetails = () => {
   return (
-    <div className="w-full flex-col justify-center items-center md:px-6 px-3">
+    <div className="w-full flex-col justify-center items-center md:px-12 px-3">
       <div className="flex justify-center items-center">
         <span className="border-b-2 text-black text-xl font-semibold border-black py-2">Gallery</span>
       </div>
-      <div className="flex p-4 justify-center items-center w-full">
+      <div className="flex p-8 justify-center items-center w-full">
         <div className="rounded-sm shadow-xl">
           <div>
-            <h1 className="bg-secondary text-black text-center text-2xl font-bold py-2 rounded-t-md">
+            <h1 className="bg-secondary text-black text-center md:text-3xl text-xl font-bold py-2 rounded-t-md">
               FELICITATION OF DIGNITORIES AND PATRONS
             </h1>
           </div>
-          <div className="px-5 py-4 pt-4">
+          <div className="px-5 py-2 pt-4">
             <GallerySwiper />
           </div>
-          <span className="text-gray-800 text-lg font-semibold px-5 py-4 text-start ">
+          <span className="text-gray-800 text-lg font-semibold px-5 py-2 text-start ">
             <p className="text-break px-5">
-              <p className="py-4">
+              <p className="py-2 text-2xl">
                 FELICITATION OF DIGNITORIES AND PATRONS <br />
               </p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque
