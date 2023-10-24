@@ -1,14 +1,18 @@
+'use client';
+
 import React from 'react';
 import { IoSettings } from 'react-icons/io5';
 import Heading from './heading';
+import { useGetProvidersByIdQuery } from '../../../redux/api/apiSlice';
 
-const ServiceContent = ({ title }) => {
-  const serviceArray = ['Imported Furniture', 'Import consultant', 'Export consultant', 'Wooden Interior'];
+const ServiceContent = ({ title, id }) => {
+  const { data, isLoading } = useGetProvidersByIdQuery(id);
   const ellipsisStyle = {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   };
+  if (isLoading) return <div className="flex items-center">Loading....</div>;
   return (
     <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
       {title && <Heading title="Services" />}
@@ -17,7 +21,7 @@ const ServiceContent = ({ title }) => {
           <IoSettings className="text-[20px] md:text-[40px] text-black" />
         </div>
         <div className="flex flex-wrap w-[90%] gap-[5px] md:gap-[20px]">
-          {serviceArray?.map((service) => (
+          {data?.data?.services?.map((service) => (
             <div
               className="w-[45%] md:w-[30%] rounded-[20px] md:rounded-[50px] md:h-full overflow-hidden px-[6px] py-[5px] text-center bg-[#FBA832]"
               key={service}

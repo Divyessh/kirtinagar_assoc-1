@@ -4,6 +4,7 @@ import React from 'react';
 // import { useSession } from 'next-auth/react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useSession, signOut } from 'next-auth/react';
+import Link from 'next/link';
 import { CiUser } from 'react-icons/ci';
 import { FiLogOut } from 'react-icons/fi';
 import SearchComponent from './searchcomp';
@@ -21,9 +22,15 @@ const NavBarUser = () => {
           <CiUser className="text-4xl text-center m-2 ml-2 md:block hidden text-black" />
           {openDropDown ? (
             <div
-              className="bg-white absolute flex items-center justify-center top-full translate-y-3 -translate-x-1 w-[150px] -left-[100px] rounded-[4px] px-[8px] py-[4px]"
+              className="bg-white absolute flex flex-col items-center justify-center top-full translate-y-3 -translate-x-1 w-[150px] -left-[100px] rounded-[4px] px-[8px] py-[4px]"
               style={{ border: '1px solid black' }}
             >
+              <div className="flex items-center gap-[10px] cursor-pointer">
+                {/* eslint-disable-next-line no-underscore-dangle */}
+                <Link href={`/services/${session?.user?._id}/about`}>
+                  <h1 className="text-[18px]">My Profile</h1>
+                </Link>
+              </div>
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
               <div className="flex items-center gap-[10px] cursor-pointer" onClick={signOut}>
                 <FiLogOut className="text-[red] text-[18px]" />

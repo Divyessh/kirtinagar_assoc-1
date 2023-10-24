@@ -7,6 +7,6 @@ const gallerySchema = new Schema({
   gallery: { type: String, required: true },
 });
 
-const Gallery = mongoose.model('Gallery', gallerySchema);
+const Gallery = mongoose.models.Gallery || mongoose.model('Gallery', gallerySchema);
 
 export default Gallery;

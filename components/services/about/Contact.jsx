@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { MdLocationOn } from 'react-icons/md';
 import { BsFillTelephoneFill, BsChevronDown } from 'react-icons/bs';
@@ -5,10 +7,16 @@ import { FaEnvelope } from 'react-icons/fa';
 import { GiEarthAfricaEurope } from 'react-icons/gi';
 import { AiFillFile, AiFillClockCircle } from 'react-icons/ai';
 import Heading from './heading';
+import { useGetProvidersByIdQuery } from '../../../redux/api/apiSlice';
+import SkeletonCard from '../../blogs/skeletonCard';
 
-const Contact = () => {
+const Contact = ({ id }) => {
   // Not mapping cuz contact will not be in array format
-  return (
+  const { data, isLoading } = useGetProvidersByIdQuery(id);
+  const providerData = data?.data;
+  return isLoading ? (
+    <SkeletonCard />
+  ) : (
     <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
       <Heading title="Contact" />
       <div className="grid grid-cols-5 md:grid-cols-12 gap-[80px] mt-[40px]">
@@ -19,7 +27,7 @@ const Contact = () => {
             </div>
             <div className="w-[95%]">
               <h1 className="w-[100%] text-black text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
-                123, sample address lines, block random, sab kirti nagar mein
+                {providerData?.address}
               </h1>
               <h1 className="w-[80%] text-[13px] text-black md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
                 GST No. 1234567890ABCD
@@ -31,7 +39,9 @@ const Contact = () => {
               <BsFillTelephoneFill className="text-black" />
             </div>
             <div className="w-[95%]">
-              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">1234567890</h1>
+              <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">
+                {providerData?.contactNumber}
+              </h1>
             </div>
           </div>
           <div className="flex items-start justify-center gap-[10px] md:gap-[20px]">
@@ -40,7 +50,7 @@ const Contact = () => {
             </div>
             <div className="w-[95%]">
               <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">
-                www.kirtinagar.com
+                {providerData?.websiteLink}
               </h1>
             </div>
           </div>
@@ -60,7 +70,7 @@ const Contact = () => {
             </div>
             <div className="w-[95%]">
               <h1 className="w-[100%] text-[13px] text-black md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
-                kirtinagar@gmail.com
+                {providerData?.email}
               </h1>
             </div>
           </div>

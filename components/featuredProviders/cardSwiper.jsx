@@ -13,7 +13,7 @@ import heroBanner3 from '../../assets/jpeg/heroBanner3.jpeg';
 import heroBanner4 from '../../assets/jpeg/heroBanner4.jpeg';
 import heroBanner5 from '../../assets/jpeg/heroBanner5.jpeg';
 
-const BgCarousel = () => {
+const BgCarousel = ({ gallery }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -32,7 +32,7 @@ const BgCarousel = () => {
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
-  const imageArray = [
+  const imageArray = gallery || [
     {
       src: heroBanner,
       id: 1,
@@ -60,10 +60,13 @@ const BgCarousel = () => {
         {imageArray.map((image) => (
           <Image
             key={image.id}
-            src={image.src}
+            src={gallery ? image : image.src}
             alt="image"
             placeholder="blur"
+            blurDataURL="L6E.FODh00_403tS%0r;00?Hb_D$"
             loading="lazy"
+            width={419}
+            height={392}
             style={{
               borderRadius: '10px',
               zIndex: 20,

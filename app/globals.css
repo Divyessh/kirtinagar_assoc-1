@@ -35,3 +35,32 @@ body {
   flex: 0 0 100%;
   min-width: 0;
 }
+
+/* Flip card_flip  */
+
+.card_flip {
+  perspective: 1000px;
+  position:relative;
+  height: 235px;
+}
+
+.card_flip-content {
+  transition: all 1.5s;
+  position:absolute;
+  top:0;
+  left:0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card_flip-back{
+  transform:rotateY(180deg);
+}
+
+.card_flip:hover .card_flip-front {
+  transform: rotateY(-180deg);
+}
+
+.card_flip:hover .card_flip-back {
+  transform: rotateY(0);
+}

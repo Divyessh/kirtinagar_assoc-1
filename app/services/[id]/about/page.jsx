@@ -15,7 +15,7 @@ const AboutServices = ({ params }) => {
     <ServiceWrapper>
       <Title />
       <Nav pageName="About" id={id} />
-      <AboutContent />
+      <AboutContent id={id} />
       <GalleryContent id={id} />
       <Contact id={id} />
       <ServiceContent id={id} title />

@@ -12,7 +12,15 @@ export const apiSlice = createApi({
       query: () => '/blog',
       providesTags: (result, error, arg) => [{ type: 'BLOG', id: 'LIST' }],
     }),
+    getProviders: builder.query({
+      query: () => '/provider',
+      providesTags: (result, error, arg) => [{ type: 'PROVIDER', id: 'LIST' }],
+    }),
+    getProvidersById: builder.query({
+      query: (id) => `/provider/${id}`,
+      providesTags: (result, error, arg) => [{ type: 'PROVIDER', id: arg }],
+    }),
   }),
 });
 
-export const { useGetBlogsQuery } = apiSlice;
+export const { useGetBlogsQuery, useGetProvidersQuery, useGetProvidersByIdQuery } = apiSlice;
