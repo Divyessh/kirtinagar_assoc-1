@@ -34,3 +34,33 @@ body {
   flex: 0 0 100%;
   min-width: 0;
 }
+
+/* Flip card  */
+
+.card {
+  perspective: 1000px;
+  position:relative;
+  height: 235px;
+}
+
+.card-content {
+  transition: all 1.5s;
+  position:absolute;
+  top:0;
+  left:0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-back{
+  transform:rotateY(180deg);
+}
+
+.card:hover .card-front {
+  transform: rotateY(-180deg);
+}
+
+.card:hover .card-back {
+  transform: rotateY(0);
+}
+
