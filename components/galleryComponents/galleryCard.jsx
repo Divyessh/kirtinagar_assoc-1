@@ -2,7 +2,7 @@ import CardSwiper from '../featuredProviders/cardSwiper';
 
 const Cards = () => {
   return (
-    <div className="card border shadow-lg w-[380px] ">
+    <div className="card  w-[380px] ">
       <figure className="h-[200px] rounded-md">
         <CardSwiper />
       </figure>
