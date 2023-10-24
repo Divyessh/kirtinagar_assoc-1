@@ -5,7 +5,7 @@ import PagitnationButton from '../../components/galleryComponents/paginationButt
 
 const GallerySection = () => {
   return (
-    <div className="bg-primary">
+    <div className="bg-white">
       <PagesHeader title="Gallery" bannerImage={galleryBanner} />
       <CardsSection />
       <PagitnationButton />

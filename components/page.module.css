@@ -23,4 +23,17 @@
   background-position: center center;
 }
 
+.header{
+  background-image: url("../assets/svg/pexels-tima-miroshnichenko-5725589\ 1.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.section3 {
+  background-image: url("../assets/png/pexels-charlotte-may-5824519\ 1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 334px;
+  width: 100%;
+  
+}
 

@@ -34,14 +34,14 @@ const Footer = () => {
       <h1 className="text-white text-4xl font-bold text-center py-2 border-b-1 tracking-4">New Timber Market Dealer</h1>
       <div className="md:flex ">
         {data.map((item) => (
-          <div className="card p-8 " key={item.id}>
+          <div className="card p-8 text-white" key={item.id}>
             <div className="flex items-center justify-center">
               <span className="flex items-center justify-center bg-stone-200 w-[94px] h-[92px] rounded-full">
                 <Image src={item.icon} alt="members" className="object-cover" />
               </span>
             </div>
             <div className="card-body flex-col justify-center items-center">
-              <h1 className="text-xl">{item.title}</h1>
+              <h1 className="text-xl text-white">{item.title}</h1>
               <p className="text-md text-[#DDC5C5] text-center px-8">{item.subtitle}</p>
             </div>
           </div>
@@ -97,7 +97,7 @@ const Footer = () => {
           <h1 className="text-xl text-center uppercase text-white ">Location</h1>
           <Image src={location} alt="members" className="object-cover p-3 w-full flex justify-center items-center" />
         </div>
-        <div className="space-y-3 ">
+        <div className="space-y-3 text-white">
           <span className="text-xl text-center uppercase">SHOP LISTING</span>
           <h1 className="text-2xl">
             Want the shop to be
