@@ -5,10 +5,12 @@ import BgCarousel from './bgCarousel';
 
 const SearchSection = () => {
   return (
-    <div className="col-span-6 pb-[1px] rounded-[10px] h-[500px] md:h-[600px] px-[9px] flex items-end relative">
-      <BgCarousel />
+    <div className="flex-col col-span-6 pb-[1px] rounded-[10px] px-[9px] ">
+      <div className="col-span-6 pb-[1px] rounded-[10px] h-[500px] md:h-[600px] px-[9px] flex items-end relative">
+        <BgCarousel />
+        <Socials />
+      </div>
       <CategoryDropdown />
-      <Socials />
     </div>
   );
 };

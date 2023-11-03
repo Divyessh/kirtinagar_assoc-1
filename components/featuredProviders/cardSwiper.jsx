@@ -13,7 +13,7 @@ import heroBanner3 from '../../assets/jpeg/heroBanner3.jpeg';
 import heroBanner4 from '../../assets/jpeg/heroBanner4.jpeg';
 import heroBanner5 from '../../assets/jpeg/heroBanner5.jpeg';
 
-const BgCarousel = ({ gallery }) => {
+const BgCarousel = ({ gallery, feature }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -72,7 +72,7 @@ const BgCarousel = ({ gallery }) => {
               zIndex: 20,
               objectFit: 'cover',
               width: '419px',
-              height: '392px',
+              height: feature ? '280px' : '392px',
               position: 'relative',
             }}
             className="embla__slide h-[500px] md:h-[600px]"
