@@ -10,7 +10,7 @@ const LoginModal = () => {
   const [isLoginModal, setisLoginModal] = React.useState(true);
   return (
     <>
-      <button type="button" onClick={() => window.my_modal_4.showModal()}>
+      <button type="button" onClick={() => window.my_modal_4.showModal()} aria-label="Open Login Modal">
         <IoMdLogIn className="text-black m-2 ml-2 object-cover text-4xl cursor-pointer" />
       </button>
       <dialog id="my_modal_4" className="modal">
