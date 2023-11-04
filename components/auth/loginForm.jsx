@@ -45,7 +45,7 @@ const LoginForm = () => {
       </div>
       <div className="flex gap-[15px] flex-col">
         <div
-          className="flex items-center gap-[10px] bg-[#f1f0f1] w-fit px-[6px] py-[11px] rounded-[7px]  border-[#8B8484]"
+          className="flex items-center gap-[10px] bg-[#f1f0f1] w-[205px] md:w-fit px-[6px] py-[11px] rounded-[7px]  border-[#8B8484]"
           style={{
             boxShadow: '7px 8px 10px 0px #00000040',
           }}
@@ -62,7 +62,7 @@ const LoginForm = () => {
           />
         </div>
         <div
-          className="flex items-center gap-[10px] bg-[#f1f0f1] w-fit px-[6px] py-[11px] rounded-[7px]  border-[#8B8484]"
+          className="flex items-center gap-[10px] bg-[#f1f0f1] w-[205px] md:w-fit px-[6px] py-[11px] rounded-[7px]  border-[#8B8484]"
           style={{
             boxShadow: '7px 8px 10px 0px #00000040',
           }}
