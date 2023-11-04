@@ -89,7 +89,7 @@ const Contact = ({ id }) => {
       </div>
       <div className="text-center flex items-center justify-center gap-2">
         <h1 className="font-[600] text-[15px] md:text-[23px] text-black">9 AM - 9 PM</h1>
-        <button type="button" className=" w-fit rounded-full p-[3px] bg-[#382F2A]">
+        <button type="button" className=" w-fit rounded-full p-[3px] bg-[#382F2A]" aria-label="Time">
           <BsChevronDown className="font-[600] text-[8px] text-white md:text-[16px]" />
         </button>
       </div>

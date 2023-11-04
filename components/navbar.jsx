@@ -28,12 +28,12 @@ const Navbar = async () => {
     },
     {
       id: 5,
-      name: 'Pricing',
+      name: 'Members Section',
       link: '/pricing',
     },
     {
       id: 6,
-      name: 'Services',
+      name: 'Products & Services',
       link: '/services',
     },
     {
@@ -45,7 +45,7 @@ const Navbar = async () => {
 
   return (
     <div
-      className="sticky top-0 left-0 w-[100%] z-[999] navbar bg-[#F9F8F2] md:h-[130px] overflow px-2"
+      className="sticky top-0 left-0 w-[100%] z-[999] navbar bg-[#F9F8F2] md:h-[105px] overflow px-2"
       style={{ boxShadow: '2px 2px 4px 0px #00000040' }}
     >
       <div className="navbar-start ml-2">

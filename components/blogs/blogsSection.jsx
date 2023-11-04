@@ -31,10 +31,10 @@ export const responsive = {
 export const ButtonGroup = ({ next, previous }) => {
   return (
     <div className="carousel-button-group absolute bottom-0 left-1/2 -translate-x-1/2 space-x-8 mb-2 mr-8">
-      <button onClick={() => previous()} type="button">
+      <button onClick={() => previous()} type="button" aria-label="Previous Slide">
         <MdArrowBackIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary" />
       </button>
-      <button onClick={() => next()} type="button">
+      <button onClick={() => next()} type="button" aria-label="Next Slide">
         <MdArrowForwardIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary" />
       </button>
     </div>

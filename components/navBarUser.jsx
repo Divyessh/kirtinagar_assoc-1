@@ -43,13 +43,13 @@ const NavBarUser = () => {
         <LoginModal />
       )}
       <div className="dropdown">
-        <button type="button" className="btn btn-ghost lg:hidden ">
+        <button type="button" className="btn btn-ghost lg:hidden " aria-label="Open Menu">
           <GiHamburgerMenu className="text-black object-cover text-4xl" />
         </button>
         <ul className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box z-50 bg-primary right-2 text-black">
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
+          <li aria-label="Item 1">Item 1</li>
+          <li aria-label="Item 2">Item 2</li>
+          <li aria-label="Item 3">Item 3</li>
         </ul>
       </div>
     </div>

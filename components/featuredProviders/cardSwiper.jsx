@@ -13,7 +13,7 @@ import heroBanner3 from '../../assets/jpeg/heroBanner3.jpeg';
 import heroBanner4 from '../../assets/jpeg/heroBanner4.jpeg';
 import heroBanner5 from '../../assets/jpeg/heroBanner5.jpeg';
 
-const BgCarousel = ({ gallery }) => {
+const BgCarousel = ({ gallery, feature }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -72,7 +72,7 @@ const BgCarousel = ({ gallery }) => {
               zIndex: 20,
               objectFit: 'cover',
               width: '419px',
-              height: '392px',
+              height: feature ? '280px' : '392px',
               position: 'relative',
             }}
             className="embla__slide h-[500px] md:h-[600px]"
@@ -80,10 +80,10 @@ const BgCarousel = ({ gallery }) => {
         ))}
       </div>
       <div className="absolute flex justify-between top-[180px] w-full px-2">
-        <button className="embla__prev" onClick={scrollPrev} type="button">
+        <button className="embla__prev" onClick={scrollPrev} type="button" aria-label="Prev Image">
           <MdArrowBackIos className="text-black text-4xl shadow-md rounded-full p-2 bg-primary backdrop-blur-md " />
         </button>
-        <button className="embla__next" onClick={scrollNext} type="button">
+        <button className="embla__next" onClick={scrollNext} type="button" aria-label="Next Image">
           <MdArrowForwardIos className="text-black text-4xl shadow-md rounded-full p-2 bg-primary backdrop-blur-md" />
         </button>
       </div>
