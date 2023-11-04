@@ -54,7 +54,7 @@ const LoginForm = () => {
           <input
             type="text"
             placeholder="Username"
-            className="outline-none bg-[#f1f0f1] md:w-[200px]"
+            className="outline-none bg-[#f1f0f1] w-full md:w-[200px]"
             // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
             {...register('username', {
               required: true,
@@ -71,7 +71,7 @@ const LoginForm = () => {
           <input
             type="password"
             placeholder="Password"
-            className="outline-none bg-[#f1f0f1] md:w-[200px]"
+            className="outline-none bg-[#f1f0f1] w-full md:w-[200px]"
             // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
             {...register('password', {
               required: true,
