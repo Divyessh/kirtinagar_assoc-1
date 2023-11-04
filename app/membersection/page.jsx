@@ -7,7 +7,7 @@ const MemberSection = () => {
   return (
     <div>
       <PagesHeader title="Members Section" bannerImage={galleryBanner} />
-      <MemberDetails/>
+      <MemberDetails />
     </div>
   );
 };

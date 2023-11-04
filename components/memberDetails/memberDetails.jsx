@@ -1,12 +1,12 @@
-import React from 'react'
-import MembersTable from './membersTable'
+import React from 'react';
+import MembersTable from './membersTable';
 
 function memberDetails() {
   return (
     <div>
-        <MembersTable/>
+      <MembersTable />
     </div>
-  )
+  );
 }
 
-export default memberDetails
+export default memberDetails;
