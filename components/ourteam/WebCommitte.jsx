@@ -11,7 +11,7 @@ const WebCommitte = () => {
   return (
     <div className={styles.bg_office}>
       <TeamHeader title="WEBSITE COMMITTE" />
-      <div className="grid grid-cols-5 gap-[60px] px-2 py-8">
+      <div className="grid grid-cols-4 md:grid-cols-5 gap-[10px] md:gap-[60px] px-2 py-8">
         {dummy.slice(0, members)?.map((item) => (
           <MemberCard key={item} />
         ))}

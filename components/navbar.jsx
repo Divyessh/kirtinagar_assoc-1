@@ -45,18 +45,22 @@ const Navbar = async () => {
 
   return (
     <div
-      className="sticky top-0 left-0 w-[100%] z-[999] navbar bg-[#F9F8F2] md:h-[105px] overflow px-2"
+      className="sticky top-0 left-0 w-[100%] z-[999] navbar bg-[#F9F8F2] md:h-[95px] overflow px-2"
       style={{ boxShadow: '2px 2px 4px 0px #00000040' }}
     >
       <div className="navbar-start ml-2">
         <Link href="/">
-          <Image src={kirti} alt="kirti_timberworks" />
+          <Image src={kirti} alt="kirti_timberworks" width={200} height={200} />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           {data.map((item) => (
-            <Link href={item.link} key={item.id} className="text-xl font-bold text-[#413833] hover:text-[#EC5B2D] whitespace-nowrap m-3">
+            <Link
+              href={item.link}
+              key={item.id}
+              className="text-[18px] font-bold text-[#413833] hover:text-[#EC5B2D] whitespace-nowrap m-3"
+            >
               {item.name}
             </Link>
           ))}

@@ -92,7 +92,7 @@ const SignupForm = () => {
             <span className="text-[#4E4949] px-[2px] text-[9px] bg-[white] absolute -top-[6px] left-[10px]">{input.label}</span>
             <input
               type={input?.name === 'password' || input?.name === 'confirmPassword' ? 'password' : 'text'}
-              className="outline-none p-1 px-[10px] rounded-[6px] text-[14px] text-[#3f3c3c]"
+              className="outline-none p-1 px-[10px] w-[165px] md:w-fit rounded-[6px] text-[14px] text-[#3f3c3c]"
               style={{ border: '0.5px solid #4E4949' }}
               // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
               {...register(`${input.name}`, {
