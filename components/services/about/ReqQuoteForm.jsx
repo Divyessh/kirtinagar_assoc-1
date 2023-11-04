@@ -23,7 +23,7 @@ const ReqQuoteForm = () => {
     <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
       <Heading title="Request a quote" />
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-2 gap-[10px] md:gap-[20px] my-[20px]">
+        <div className="grid grid-cols-2 gap-[10px] md:gap-[30px] my-[20px]">
           <div
             className="col-span-1 py-[8px] md:py-[24px] px-[8px] md:px-[20px] rounded-[10px] relative"
             style={{ border: '2px solid black' }}

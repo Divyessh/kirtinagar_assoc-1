@@ -14,8 +14,7 @@ const ServicesCard = () => {
   const providerData = data?.data;
 
   return (
-    <div className="bg-white text-black flex-col w-full justify-center items-center text-center">
-      <h1 className="mb-2 text-black  md:text-2xl text-md py-6">Featured Providers</h1>
+    <div className="bg-white text-black flex-col w-full justify-center items-center text-center pt-[50px]">
       <div className="grid grid-cols-4 gap-[20px] pt-4 pb-12">
         {isLoading ? (
           <SkeletonCard />

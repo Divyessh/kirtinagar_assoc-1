@@ -58,12 +58,12 @@ const BgCarousel = () => {
             placeholder="blur"
             loading="lazy"
             style={{
-              borderRadius: '10px',
+              borderRadius: '10px 10px 0 0',
               zIndex: 20,
               objectFit: 'cover',
               width: '100%',
             }}
-            className="embla__slide h-[500px] md:h-[600px]"
+            className="embla__slide h-[500px] md:h-[550px]"
           />
         ))}
       </div>
