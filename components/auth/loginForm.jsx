@@ -37,7 +37,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="py-10 md:p-0 col-span-11 md:col-span-7 flex items-center justify-center flex-col gap-[18px]"
+      className="py-10 md:p-0 col-span-11 md:col-span-7 flex items-center justify-center flex-col gap-[18px] relative"
     >
       <div>
         <BiLogInCircle className="text-[#FBBC05] text-[60px]" />
