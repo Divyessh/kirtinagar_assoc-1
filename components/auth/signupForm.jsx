@@ -63,7 +63,7 @@ const SignupForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="py-6 md:p-0 col-span-11 md:col-span-7 flex items-center justify-center flex-col gap-[10px] md:gap-[15px]"
+      className="relative py-6 md:p-0 col-span-11 md:col-span-7 flex items-center justify-center flex-col gap-[10px] md:gap-[15px]"
     >
       <h1 className="font-extrabold text-[21px]">Sign Up</h1>
       <div className="rounded-[4px] mb-[8px]">
