@@ -26,6 +26,7 @@ const LoginModal = () => {
               const modal = document.getElementById('my_modal_4');
               modal.close();
             }}
+            aria-label="Close Modal"
           >
             <AiOutlineCloseCircle className=" text-[30px] text-[#c15959]" />
           </button>
