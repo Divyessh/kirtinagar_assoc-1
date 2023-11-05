@@ -66,7 +66,7 @@ const Navbar = async () => {
           ))}
         </ul>
       </div>
-      <NavBarUser />
+      <NavBarUser navItems={data} />
     </div>
   );
 };

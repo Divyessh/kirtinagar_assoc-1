@@ -10,7 +10,7 @@ import { FiLogOut } from 'react-icons/fi';
 import SearchComponent from './searchcomp';
 import LoginModal from './auth/loginModal';
 
-const NavBarUser = () => {
+const NavBarUser = ({ navItems }) => {
   const { data: session } = useSession();
   const [openDropDown, setOpenDropDown] = React.useState(false);
   return (
@@ -46,11 +46,13 @@ const NavBarUser = () => {
         <button type="button" className="btn btn-ghost lg:hidden " aria-label="Open Menu">
           <GiHamburgerMenu className="text-black object-cover text-4xl" />
         </button>
-        <ul className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box z-50 bg-primary right-2 text-black">
-          <li aria-label="Item 1">Item 1</li>
-          <li aria-label="Item 2">Item 2</li>
-          <li aria-label="Item 3">Item 3</li>
-        </ul>
+        <div className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box z-50 bg-primary right-2 text-black">
+          {navItems?.map((item) => (
+            <Link key={item?.id} href={item?.link} className="w-[190px] text-[14px] my-3">
+              {item?.name}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
