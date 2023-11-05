@@ -6,7 +6,7 @@ export default function MembersTable() {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const initialLetter = ''; // Initial selected letter
   const [selectedLetter, setSelectedLetter] = useState(initialLetter);
-  const [filteredMembers, setFilteredMembers] = useState([]);
+  // const [filteredMembers, setFilteredMembers] = useState([]);
 
   // Sample data (you can replace this with your actual data)
   const members = [
@@ -35,9 +35,9 @@ export default function MembersTable() {
   const filterMembersByLetter = (letter) => {
     setSelectedLetter(letter);
     // Filter the members array based on the selected letter
-    const filterMembers = members.filter((member) => selectedLetter === '' || member.name.startsWith(selectedLetter));
+    // const filterMembers = members.filter((member) => selectedLetter === '' || member.name.startsWith(selectedLetter));
     // Update the state with the filtered members
-    setFilteredMembers(filterMembers);
+    // setFilteredMembers(filterMembers);
   };
 
   return (
@@ -70,7 +70,7 @@ export default function MembersTable() {
           {/* head */}
           <thead aria-label="members-table" className="text-lg text-black">
             <tr>
-              <th />
+              <th aria-label="Member table Head" />
               <th>Name</th>
               <th>Phone Number</th>
               <th>Address</th>
