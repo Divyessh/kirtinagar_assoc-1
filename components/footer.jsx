@@ -83,7 +83,7 @@ const Footer = () => {
             </li>
             <li>
               <Link className="hover:border-b-2 hover:text-white" href="/">
-                Membership
+                Member Section
               </Link>
             </li>
             <li>

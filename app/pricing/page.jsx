@@ -7,7 +7,7 @@ import generateUniqueKey from '../../constants/generateUid';
 const PricingComponent = () => {
   const data = {
     Basic: {
-      title: 'Basic',
+      title: 'Annual Membership',
       features: [
         'Shop featured for one week.',
         'Shop logo and description displayed.',
@@ -18,7 +18,7 @@ const PricingComponent = () => {
       price: 'Free',
     },
     Standard: {
-      title: 'Standard',
+      title: 'Ads On Landing Page',
       features: [
         'Shop featured for one Month.',
         'Shop logo, description, and Banner displayed.',
@@ -29,7 +29,7 @@ const PricingComponent = () => {
       price: 'INR 1000',
     },
     Premium: {
-      title: 'Premium',
+      title: 'Featured Providers',
       features: [
         'Shop featured for 3 Months.',
         'Shop logo, description and banner displayed.',
@@ -44,8 +44,8 @@ const PricingComponent = () => {
   return (
     <div className="bg-primary">
       {/* Render the header component */}
-      <PagesHeader title="Pricing" bannerImage={galleryBanner} />
-      <div className="flex flex-col sm:flex-col lg:flex-row xl:flex-row md:flex-row justify-evenly  py-8">
+      <PagesHeader title="Membership" bannerImage={galleryBanner} />
+      <div className="flex flex-col sm:flex-col lg:flex-row xl:flex-row md:flex-row justify-evenly space-y-4 md:space-y-0 py-8">
         {Object.keys(data).map((plan) => (
           <PricingCard key={generateUniqueKey(plan)} title={data[plan].title} price={data[plan].price} features={data[plan].features} />
         ))}

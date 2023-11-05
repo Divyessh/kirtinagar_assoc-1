@@ -35,16 +35,16 @@ export default function MembersTable() {
   const filterMembersByLetter = (letter) => {
     setSelectedLetter(letter);
     // Filter the members array based on the selected letter
-    filteredMembers = members.filter((member) => selectedLetter === '' || member.name.startsWith(selectedLetter));
+    const filterMembers = members.filter((member) => selectedLetter === '' || member.name.startsWith(selectedLetter));
     // Update the state with the filtered members
-    setFilteredMembers(filteredMembers);
+    setFilteredMembers(filterMembers);
   };
 
   return (
     <div>
       <div className="bg-primary space-x-1 w-full flex flex-wrap justify-center items-center pt-1">
         <button
-        type='button'
+          type="button"
           responsive="true"
           className={`btn btn-primary border-1 border-secondary ${selectedLetter === '' ? 'btn-secondary' : ''}`}
           value=""
@@ -54,7 +54,7 @@ export default function MembersTable() {
         </button>
         {letters.split('').map((letter) => (
           <button
-          type='button'
+            type="button"
             responsive="true"
             className={`btn btn-primary border-1 border-secondary ${selectedLetter === letter ? 'btn-secondary' : ''}`}
             key={letter}
