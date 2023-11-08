@@ -48,10 +48,13 @@ const NavBarUser = ({ navItems }) => {
         </button>
         <div className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box z-50 bg-primary right-2 text-black">
           {navItems?.map((item) => (
-            <Link key={item?.id} href={item?.link} className="w-[190px] text-[14px] my-3">
+            <Link key={item?.id} href={item?.link} className="w-[190px] text-[14px] my-3 ml-2">
               {item?.name}
             </Link>
           ))}
+          <Link href="/membersection" className="w-[190px] text-[14px] my-3 ml-2">
+            Memeber Section
+          </Link>
         </div>
       </div>
     </div>
