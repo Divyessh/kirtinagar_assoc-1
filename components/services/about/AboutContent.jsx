@@ -11,8 +11,6 @@ import SkeletonCard from '../../blogs/skeletonCard';
 const AboutContent = ({ id }) => {
   const { data, isLoading } = useGetProvidersByIdQuery(id);
   const providerData = data?.data;
-  // const { data: session } = useSession();
-  // console.log(session?.user);
 
   return isLoading ? (
     <SkeletonCard />

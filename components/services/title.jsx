@@ -1,14 +1,17 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
 import shareIcon from '../../assets/png/shareIcon.png';
+import { useGetProvidersByIdQuery } from '../../redux/api/apiSlice';
 
-const Title = () => {
+const Title = ({ id }) => {
+  const { data } = useGetProvidersByIdQuery(id);
+  const providerData = data?.data;
   return (
     <div className="text-center">
-      <h1 className="font-[700] text-[18px] text-black leading-[20px] md:text-[50px] md:leading-[75px]">
-        WOODMAN FURNITURE INDIA PVT. LTD.
-      </h1>
+      <h1 className="font-[700] text-[18px] text-black leading-[20px] md:text-[50px] md:leading-[75px]">{providerData?.nameOftheFirm}</h1>
       <p className="font-[300] text-[15px] md:text-[23px] text-[#302f2f]">New Delhi, India</p>
       <Link href="/services" className="text-center flex justify-center items-center mt-[15px] mb-[20px]">
         <div

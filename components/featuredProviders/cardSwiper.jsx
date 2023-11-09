@@ -7,11 +7,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
-import heroBanner from '../../assets/png/heroBanner.png';
-import heroBanner2 from '../../assets/jpeg/heroBanner2.jpeg';
-import heroBanner3 from '../../assets/jpeg/heroBanner3.jpeg';
-import heroBanner4 from '../../assets/jpeg/heroBanner4.jpeg';
-import heroBanner5 from '../../assets/jpeg/heroBanner5.jpeg';
+import placeholder from '../../assets/avif/placeholder.webp';
 
 const BgCarousel = ({ gallery, feature }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -32,52 +28,58 @@ const BgCarousel = ({ gallery, feature }) => {
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
-  const imageArray = gallery || [
+  const imageArray = [
     {
-      src: heroBanner,
+      src: placeholder,
       id: 1,
-    },
-    {
-      src: heroBanner2,
-      id: 2,
-    },
-    {
-      src: heroBanner3,
-      id: 3,
-    },
-    {
-      src: heroBanner4,
-      id: 4,
-    },
-    {
-      src: heroBanner5,
-      id: 5,
     },
   ];
   return (
     <div className=" embla" ref={emblaRef}>
       <div className="relative h-[80%] embla__container">
-        {imageArray.map((image) => (
-          <Image
-            key={image.id}
-            src={gallery ? image : image.src}
-            alt="image"
-            placeholder="blur"
-            blurDataURL="L6E.FODh00_403tS%0r;00?Hb_D$"
-            loading="lazy"
-            width={419}
-            height={392}
-            style={{
-              borderRadius: '10px',
-              zIndex: 20,
-              objectFit: 'cover',
-              width: '419px',
-              height: feature ? '280px' : '392px',
-              position: 'relative',
-            }}
-            className="embla__slide h-[500px] md:h-[600px]"
-          />
-        ))}
+        {gallery?.length > 0
+          ? gallery.map((image) => (
+              <Image
+                key={image.id}
+                src={image}
+                alt="image"
+                placeholder="blur"
+                blurDataURL="L6E.FODh00_403tS%0r;00?Hb_D$"
+                loading="lazy"
+                width={419}
+                height={392}
+                style={{
+                  borderRadius: '10px',
+                  zIndex: 20,
+                  objectFit: 'cover',
+                  width: '419px',
+                  height: feature ? '280px' : '392px',
+                  position: 'relative',
+                }}
+                className="embla__slide h-[500px] md:h-[600px]"
+              />
+            ))
+          : imageArray.map((image) => (
+              <Image
+                key={image.id}
+                src={image?.src}
+                alt="image"
+                placeholder="blur"
+                blurDataURL="L6E.FODh00_403tS%0r;00?Hb_D$"
+                loading="lazy"
+                width={419}
+                height={392}
+                style={{
+                  borderRadius: '10px',
+                  zIndex: 20,
+                  objectFit: 'cover',
+                  width: '419px',
+                  height: feature ? '280px' : '392px',
+                  position: 'relative',
+                }}
+                className="embla__slide h-[500px] md:h-[600px]"
+              />
+            ))}
       </div>
       <div className="absolute flex justify-between top-[180px] w-full px-2">
         <button className="embla__prev" onClick={scrollPrev} type="button" aria-label="Prev Image">

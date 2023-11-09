@@ -8,6 +8,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { useGetProvidersByIdQuery } from '../../../redux/api/apiSlice';
 import SkeletonCard from '../../blogs/skeletonCard';
+import placeholder from '../../../assets/avif/placeholder.webp';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 const ImageCarousel = ({ id }) => {
@@ -36,26 +37,47 @@ const ImageCarousel = ({ id }) => {
     <div className="col-span-7 md:rounded-[2px] embla">
       <div className="embla__viewport relative" ref={emblaRef}>
         <div className="relative embla__container">
-          {imageArray?.map((image, i) => (
-            <Image
-              // eslint-disable-next-line react/no-array-index-key
-              key={i}
-              src={image}
-              alt="image"
-              width={1000}
-              height={1000}
-              placeholder="empty"
-              loading="lazy"
-              style={{
-                borderRadius: '2px',
-                zIndex: 20,
-                objectFit: 'cover',
-                width: '100%',
-                // height: '500px',
-              }}
-              className="embla__slide h-auto md:h-[500px]"
-            />
-          ))}
+          {imageArray?.length === 0
+            ? [1, 2]?.map((image, i) => (
+                <Image
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={i}
+                  src={placeholder}
+                  alt="image"
+                  width={1000}
+                  height={1000}
+                  placeholder="empty"
+                  loading="lazy"
+                  style={{
+                    borderRadius: '2px',
+                    zIndex: 20,
+                    objectFit: 'cover',
+                    width: '100%',
+                    // height: '500px',
+                  }}
+                  className="embla__slide h-auto md:h-[500px]"
+                />
+              ))
+            : imageArray?.map((image, i) => (
+                <Image
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={i}
+                  src={image}
+                  alt="image"
+                  width={1000}
+                  height={1000}
+                  placeholder="empty"
+                  loading="lazy"
+                  style={{
+                    borderRadius: '2px',
+                    zIndex: 20,
+                    objectFit: 'cover',
+                    width: '100%',
+                    // height: '500px',
+                  }}
+                  className="embla__slide h-auto md:h-[500px]"
+                />
+              ))}
         </div>
         <button
           type="button"

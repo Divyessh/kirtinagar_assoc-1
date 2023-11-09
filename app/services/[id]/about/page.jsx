@@ -13,7 +13,7 @@ const AboutServices = ({ params }) => {
   const { id } = params;
   return (
     <ServiceWrapper>
-      <Title />
+      <Title id={id} />
       <Nav pageName="About" id={id} />
       <AboutContent id={id} />
       <GalleryContent id={id} />
