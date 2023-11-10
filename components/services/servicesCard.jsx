@@ -3,12 +3,15 @@
 'use client';
 
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import Card from '../featuredProviders/card';
 import { useGetProvidersQuery } from '../../redux/api/apiSlice';
 import SkeletonCard from '../blogs/skeletonCard';
 import SearchedProvider from './SearchedProvider';
 
 const ServicesCard = () => {
+  const queryParams = useSearchParams();
+  const searchEle = queryParams.get('keyword');
   const { data, isLoading } = useGetProvidersQuery('getProviders');
   const providerData = data?.data;
 
@@ -27,7 +30,7 @@ const ServicesCard = () => {
           ))
         )}
       </div>
-      <SearchedProvider />
+      {searchEle && <SearchedProvider searchEle={searchEle} />}
     </div>
   );
 };

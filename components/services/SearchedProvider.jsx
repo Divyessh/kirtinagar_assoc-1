@@ -4,14 +4,11 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { useGetProvidersQuery } from '../../redux/api/apiSlice';
 import SkeletonCard from '../blogs/skeletonCard';
 import Card from '../featuredProviders/card';
 
-const SearchedProvider = () => {
-  const queryParams = useSearchParams();
-  const searchEle = queryParams.get('keyword');
+const SearchedProvider = ({ searchEle }) => {
   const { data, isLoading } = useGetProvidersQuery('getProviders');
   const providerData = data?.data;
   const newArr = providerData?.map((item) => {
