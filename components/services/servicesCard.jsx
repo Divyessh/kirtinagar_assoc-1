@@ -6,11 +6,10 @@ import Link from 'next/link';
 import Card from '../featuredProviders/card';
 import { useGetProvidersQuery } from '../../redux/api/apiSlice';
 import SkeletonCard from '../blogs/skeletonCard';
+import SearchedProvider from './SearchedProvider';
 
 const ServicesCard = () => {
   const { data, isLoading } = useGetProvidersQuery('getProviders');
-  // eslint-disable-next-line no-console
-  console.log(data);
   const providerData = data?.data;
 
   return (
@@ -28,6 +27,7 @@ const ServicesCard = () => {
           ))
         )}
       </div>
+      <SearchedProvider />
     </div>
   );
 };

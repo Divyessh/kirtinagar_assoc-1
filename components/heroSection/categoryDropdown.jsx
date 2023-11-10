@@ -1,16 +1,19 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useForm } from 'react-hook-form';
 import { BiSearchAlt } from 'react-icons/bi';
 
 const CategoryDropdown = () => {
+  const router = useRouter();
   const keyword = ['Sofa', 'Plywood', 'Wardrobe', 'Table', 'Diwaan', 'Dinning tables'];
   const { register, handleSubmit, reset, watch, setValue } = useForm();
   const onSubmit = (data) => {
     // eslint-disable-next-line no-console
-    console.log(data);
+    console.log(data?.keyword);
+    router.push(`/services?keyword=${data?.keyword}`);
     reset();
   };
   const keywordValue = watch('keyword', '');
