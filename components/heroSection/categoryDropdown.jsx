@@ -35,13 +35,13 @@ const CategoryDropdown = () => {
           />
           <div>
             {keywordValue.length > 0 && (
-              <div className="absolute top-full left-0 w-full h-[150px] md:h-[200px] overflow-y-scroll bg-white rounded-[10px] rounded-tl-none rounded-tr-none py-[10px] shadow-md text-black">
+              <div className="absolute top-full flex flex-col justify-left items-start left-0 w-full h-[150px] md:h-[200px] overflow-y-scroll bg-white rounded-[10px] rounded-tl-none rounded-tr-none py-[10px] shadow-md text-black">
                 {keyword.map((item) => (
                   <button
                     type="button"
                     aria-label="keyboard"
                     key={item}
-                    className="py-[5px] text-[10px] md:text-[16px] px-[18px] cursor-pointer hover:bg-[#413833] hover:text-white"
+                    className="py-[5px] w-full text-left text-[10px] md:text-[16px] px-[18px] cursor-pointer hover:bg-[#413833] hover:text-white"
                     onClick={() => setValue('keyword', item)}
                   >
                     {item}
