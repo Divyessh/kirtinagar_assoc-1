@@ -12,9 +12,11 @@ const ContactSection = () => {
         </div>
 
         <Image
-          className="object-cover w-full h-64 mt-10 rounded-lg lg:h-96"
           src="https://images.unsplash.com/photo-1568992688065-536aad8a12f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=100"
           alt=""
+          width={800}
+          height={800}
+          className="object-cover w-full h-64 mt-10 rounded-lg lg:h-96"
         />
 
         <div className="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-3 sm:grid-cols-2">

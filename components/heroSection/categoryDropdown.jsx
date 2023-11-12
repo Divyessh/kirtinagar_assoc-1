@@ -1,5 +1,7 @@
 'use client';
 
+/* eslint-disable react/jsx-props-no-spreading */
+
 // Using the correct import for `BiSearchAlt` icon
 import { BiSearchAlt } from 'react-icons/bi';
 // Importing necessary Next.js modules
@@ -35,13 +37,15 @@ const CategoryDropdown = () => {
             {keywordValue.length > 0 && (
               <div className="absolute top-full left-0 w-full h-[150px] md:h-[200px] overflow-y-scroll bg-white rounded-[10px] rounded-tl-none rounded-tr-none py-[10px] shadow-md text-black">
                 {keyword.map((item) => (
-                  <p
+                  <button
+                    type="button"
+                    aria-label="keyboard"
                     key={item}
                     className="py-[5px] text-[10px] md:text-[16px] px-[18px] cursor-pointer hover:bg-[#413833] hover:text-white"
                     onClick={() => setValue('keyword', item)}
                   >
                     {item}
-                  </p>
+                  </button>
                 ))}
               </div>
             )}
