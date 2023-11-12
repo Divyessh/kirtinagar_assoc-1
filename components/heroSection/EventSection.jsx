@@ -7,7 +7,7 @@ const EventSection = () => {
   return (
     <div className="col-span-6 md:col-span-2 w-full bg-[#E5DFCF] h-[600px] md:h-[658px] rounded-[10px] py-[23px] px-[26px] relative">
       <h1 className="text-[21px] font-bold text-[#413833] underline">Events and Blogs</h1>
-      <div className="flex flex-col justify-between items-stretch gap-5 mt-4 overflow-hidden overflow-y-clip h-[50vh]">
+      <div className="flex flex-col justify-between items-stretch gap-5 mt-4 overflow-hidden overflow-y-clip">
         {dummyData?.slice(0, 6).map((item) => (
           <div className="mt-2 flex gap-3 items-center" key={item}>
             <Image src={heroBanner5} alt="galleryItem" width={110} height={110} className="rounded-lg" />
