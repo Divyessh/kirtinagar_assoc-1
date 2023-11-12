@@ -6,11 +6,9 @@ import useEmblaCarousel from 'embla-carousel-react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
-import heroBanner from '../../assets/png/heroBanner.png';
-import heroBanner2 from '../../assets/jpeg/heroBanner2.jpeg';
-import heroBanner3 from '../../assets/jpeg/heroBanner3.jpeg';
-import heroBanner4 from '../../assets/jpeg/heroBanner4.jpeg';
-import heroBanner5 from '../../assets/jpeg/heroBanner5.jpeg';
+import heroBanner from '../../assets/png/Frame 1 (1).png';
+import heroBanner2 from '../../assets/png/Banner 2 (1).png';
+import heroBanner3 from '../../assets/png/Frame 3 (1).png';
 
 const BgCarousel = () => {
   const [emblaRef] = useEmblaCarousel(
@@ -37,14 +35,6 @@ const BgCarousel = () => {
       src: heroBanner3,
       id: 3,
     },
-    {
-      src: heroBanner4,
-      id: 4,
-    },
-    {
-      src: heroBanner5,
-      id: 5,
-    },
   ];
   return (
     <div className="absolute rounded-[10px] top-0 left-0 z-12 w-[100%] h-[500px] md:h-[600px] embla" ref={emblaRef}>
@@ -60,7 +50,7 @@ const BgCarousel = () => {
             style={{
               borderRadius: '10px 10px 0 0',
               zIndex: 20,
-              objectFit: 'cover',
+              objectFit: 'fill',
               width: '100%',
             }}
             className="embla__slide h-[500px] md:h-[550px]"

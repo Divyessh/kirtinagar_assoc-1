@@ -10,7 +10,7 @@ const AboutUsSection = () => {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       <PagesHeader title="About Us" bannerImage={aboutBanner} />
-      <div className="text-black md:text-xl text-md bg-primary px-12 py-6 flex  justify-items-center">
+      <main className="text-black md:text-xl text-md bg-primary px-12 py-6 flex  justify-items-center">
         <span className="md:flex flex-cols space-x-5">
           <span className="w-[40%] ">
             <Image src={aboutImage} width={527} height={378} alt="aboutImage" />
@@ -28,8 +28,8 @@ const AboutUsSection = () => {
             </p>
           </span>
         </span>
-      </div>
-      <div className="text-black md:text-xl text-md bg-primary px-12 py-6 ">
+      </main>
+      <main className="text-black md:text-xl text-md bg-primary px-12 py-6 ">
         <span className="md:flex flex-cols space-x-5">
           <span className="w-[56%]">
             <h1 className="md:text-2xl text-lg font-bold mb-2">Our Legacy</h1>
@@ -51,7 +51,7 @@ const AboutUsSection = () => {
             <Image src={aboutImage} width={527} height={378} alt="aboutImage" />
           </span>
         </span>
-      </div>
+      </main>
       <section className={`${styles.section3} w-full md:flex flex-cols md:block hidden justify-center items-center md:space-x-10 `}>
         <div className="card rounded-br-full rounded-tl-full bg-white w-[574px] h-[181px] ">
           <text className="px-20 py-8">

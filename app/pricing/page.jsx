@@ -42,7 +42,7 @@ const PricingComponent = () => {
   };
 
   return (
-    <div className="bg-primary">
+    <main className="bg-primary">
       {/* Render the header component */}
       <PagesHeader title="Membership" bannerImage={galleryBanner} />
       <div className="flex flex-col sm:flex-col lg:flex-row xl:flex-row md:flex-row justify-evenly space-y-4 md:space-y-0 py-8">
@@ -50,7 +50,7 @@ const PricingComponent = () => {
           <PricingCard key={generateUniqueKey(plan)} title={data[plan].title} price={data[plan].price} features={data[plan].features} />
         ))}
       </div>
-    </div>
+    </main>
   );
 };
 
