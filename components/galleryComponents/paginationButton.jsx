@@ -2,7 +2,7 @@ import React from 'react';
 
 const PaginationButton = () => {
   return (
-    <div className="bg-white flex justify-center items-center p-4 space-x-4 shadow-xl">
+    <div className="bg-primary flex justify-center items-center p-4 space-x-4 shadow-xl">
       <button type="button" className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border rounded shadow-lg">
         {'<'}
       </button>

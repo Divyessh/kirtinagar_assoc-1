@@ -5,11 +5,11 @@ import PagitnationButton from '../../components/galleryComponents/paginationButt
 
 const GallerySection = () => {
   return (
-    <div className="bg-white">
+    <main className="bg-primary">
       <PagesHeader title="Gallery" bannerImage={galleryBanner} />
       <CardsSection />
       <PagitnationButton />
-    </div>
+    </main>
   );
 };
 export default GallerySection;
