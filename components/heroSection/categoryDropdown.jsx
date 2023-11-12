@@ -1,4 +1,5 @@
-"use client";
+'use client';
+
 // Using the correct import for `BiSearchAlt` icon
 import { BiSearchAlt } from 'react-icons/bi';
 // Importing necessary Next.js modules
@@ -11,7 +12,6 @@ const CategoryDropdown = () => {
   const { register, handleSubmit, reset, watch, setValue } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data?.keyword);
     router.push(`/services?keyword=${encodeURIComponent(data?.keyword)}`);
     reset();
   };
@@ -20,7 +20,10 @@ const CategoryDropdown = () => {
 
   return (
     <form className="w-full z-10" onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-3 place-items-center md:place-items-stretch md:gap-6 w-full bg-[#E5DFCF] py-[15px] md:py-[30px] px-[15px] md:px-[24px]" style={{ boxShadow: '6px 9px 12px 0px #00000040' }}>
+      <div
+        className="grid grid-cols-2 md:grid-cols-5 gap-3 place-items-center md:place-items-stretch md:gap-6 w-full bg-[#E5DFCF] py-[15px] md:py-[30px] px-[15px] md:px-[24px]"
+        style={{ boxShadow: '6px 9px 12px 0px #00000040' }}
+      >
         <div className="bg-white py-[8px] md:py-[12px] px-[18px] col-span-2 w-[97%] md:w-full md:col-span-4 rounded-[10px] flex items-center relative text-black">
           <input
             className="outline-none w-full text-black"
