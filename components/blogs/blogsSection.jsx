@@ -43,8 +43,6 @@ export const ButtonGroup = ({ next, previous }) => {
 
 const CarouselComponent = () => {
   const { data, isLoading } = useGetBlogsQuery('getBlogs');
-  // eslint-disable-next-line no-console
-  console.log(data);
   const blogData = data?.data;
   return isLoading ? (
     <SkeletonCard />
