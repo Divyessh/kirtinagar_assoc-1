@@ -66,7 +66,7 @@ export default function MembersTable() {
         ))}
       </div>
       <div className="overflow-x-auto bg-primary flex w-full items-center justify-center px-12 py-4 ">
-        <table className="table bg-primary">
+        <table className="table bg-primary text-black">
           {/* head */}
           <thead aria-label="members-table" className="text-lg text-black">
             <tr>
