@@ -40,6 +40,7 @@ const authOptions = {
             throw new Error('Wrong Password');
           }
           if (user?.isVerified === false) {
+            console.log('Not verified');
             // eslint-disable-next-line no-underscore-dangle
             await sendEmail({ email: user.email, emailType: 'VERIFY', userId: user._id });
             throw new Error('Please verify your email');
