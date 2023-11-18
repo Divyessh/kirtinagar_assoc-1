@@ -20,8 +20,8 @@ const Title = ({ id }) => {
   const [update] = useUpdateProviderByIdMutation();
 
   // eslint-disable-next-line consistent-return
-  const MAX_RETRIES = 3;
-  const RETRY_DELAY = 500; // 200 milliseconds
+  const MAX_RETRIES = 10;
+  const RETRY_DELAY = 300; // 200 milliseconds
 
   // eslint-disable-next-line consistent-return
   const handleSave = async () => {
