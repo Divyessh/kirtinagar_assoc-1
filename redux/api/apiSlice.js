@@ -20,7 +20,12 @@ export const apiSlice = createApi({
       query: (id) => `/provider/${id}`,
       providesTags: (result, error, arg) => [{ type: 'PROVIDER', id: arg }],
     }),
+    updateProviderById: builder.mutation({
+      // eslint-disable-next-line no-underscore-dangle
+      query: (data) => ({ url: `/provider/${data?._id}`, method: 'PUT', body: data }),
+      invalidatesTags: (result, error, arg) => [{ type: 'PROVIDER', id: arg }],
+    }),
   }),
 });
 
-export const { useGetBlogsQuery, useGetProvidersQuery, useGetProvidersByIdQuery } = apiSlice;
+export const { useGetBlogsQuery, useGetProvidersQuery, useGetProvidersByIdQuery, useUpdateProviderByIdMutation } = apiSlice;

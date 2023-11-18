@@ -13,3 +13,16 @@ export async function GET(req, context) {
     disconnectMongoDB();
   }
 }
+
+export async function PUT(req, context) {
+  try {
+    connectMongoDB();
+    const updatedData = await req.json();
+    const user = await User.findByIdAndUpdate(context.params.id, updatedData, { new: true });
+    return NextResponse.json({ message: 'User Updated successfully', data: user }, { status: 200 });
+  } catch {
+    return NextResponse.json({ message: 'Something went completely wrong' }, { status: 500 });
+  } finally {
+    disconnectMongoDB();
+  }
+}
