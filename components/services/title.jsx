@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import shareIcon from '../../assets/png/shareIcon.png';
 import { useGetProvidersByIdQuery, useUpdateProviderByIdMutation } from '../../redux/api/apiSlice';
+import retryOperation from '../../lib/retryOperation';
 
 const Title = ({ id }) => {
   const { data } = useGetProvidersByIdQuery(id);
@@ -21,41 +22,12 @@ const Title = ({ id }) => {
 
   // eslint-disable-next-line consistent-return
   const MAX_RETRIES = 10;
-  const RETRY_DELAY = 300; // 200 milliseconds
+  const RETRY_DELAY = 300; // 300 milliseconds
 
-  // eslint-disable-next-line consistent-return
   const handleSave = async () => {
-    let retryCount = 0;
-
-    while (retryCount < MAX_RETRIES) {
-      try {
-        // eslint-disable-next-line no-await-in-loop
-        const res = await update({ ...providerData, nameOftheFirm: name });
-
-        // Check if the response has an error with status 500
-        if (res.error && res.error.status === 500) {
-          retryCount += 1;
-          // eslint-disable-next-line no-await-in-loop
-          await new Promise((resolve) => {
-            setTimeout(resolve, RETRY_DELAY);
-          });
-          // eslint-disable-next-line no-continue
-          continue;
-        }
-        break;
-      } catch (err) {
-        // Increment the retry count
-        retryCount += 1;
-
-        if (retryCount === MAX_RETRIES) {
-          return err;
-        }
-        // eslint-disable-next-line no-await-in-loop
-        await new Promise((resolve) => {
-          setTimeout(resolve, RETRY_DELAY);
-        });
-      }
-    }
+    const result = await retryOperation(() => update({ ...providerData, nameOftheFirm: name }), MAX_RETRIES, RETRY_DELAY);
+    return result;
+    // Handle the result as needed
   };
 
   return (
