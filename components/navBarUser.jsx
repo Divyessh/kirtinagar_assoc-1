@@ -22,19 +22,24 @@ const NavBarUser = ({ navItems }) => {
           <CiUser className="text-4xl text-center m-2 ml-2 md:block hidden text-black" />
           {openDropDown ? (
             <div
-              className="bg-white absolute flex flex-col items-center justify-center top-full translate-y-3 -translate-x-1 w-[150px] -left-[100px] rounded-[4px] px-[8px] py-[4px]"
+              className="bg-white absolute flex flex-col gap-3 justify-center top-full translate-y-3 -translate-x-1 w-[150px] -left-[100px] rounded-[4px] px-[8px] py-[4px]"
               style={{ border: '1px solid black' }}
             >
-              <div className="flex items-center gap-[10px] cursor-pointer">
+              <div className="flex items-center gap-[10px] cursor-pointer border-b pb-2 border-black">
                 {/* eslint-disable-next-line no-underscore-dangle */}
                 <Link href={`/services/${session?.user?._id}/about`}>
-                  <h1 className="text-[18px]">My Profile</h1>
+                  <h1 className="text-[18px] text-black flex gap-2 items-center">
+                    <span>
+                      <CiUser className="text-[18px] text-center text-black" />
+                    </span>
+                    My Profile
+                  </h1>
                 </Link>
               </div>
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
               <div className="flex items-center gap-[10px] cursor-pointer" onClick={signOut}>
                 <FiLogOut className="text-[red] text-[18px]" />
-                <h1>Sign Out</h1>
+                <h1 className="text-black">Sign Out</h1>
               </div>
             </div>
           ) : null}

@@ -65,7 +65,7 @@ const Title = ({ id }) => {
             defaultValue={name || providerData?.nameOftheFirm}
             onChange={(e) => setName(e.target.value)}
           />
-          <button type="button" onClick={handleSave} className="bg-[#FF9800] text-black p-2 rounded-lg w-fit">
+          <button type="button" aria-label="Save Info" onClick={handleSave} className="bg-[#FF9800] text-black p-2 rounded-lg w-fit">
             Save
           </button>
         </div>
