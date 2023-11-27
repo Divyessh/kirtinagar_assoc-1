@@ -13,7 +13,7 @@ import SkeletonCard from '../../blogs/skeletonCard';
 const GalleryContent = ({ id }) => {
   const { data, isLoading } = useGetProvidersByIdQuery(id);
   const providerData = data?.data;
-  const imageArray = data?.data?.shopgallery;
+  const [imageArray, setImageArray] = React.useState(data?.data?.shopgallery);
   console.log(providerData);
   const [newImage, setNewImage] = React.useState(null);
   const [preview, setPreview] = React.useState(null);
@@ -40,9 +40,22 @@ const GalleryContent = ({ id }) => {
   const RETRY_DELAY = 300; // 300 milliseconds
 
   const handleSave = async (imageUrl) => {
-    // console.log({ ...providerData, shopgallery: [...imageArray, imageUrl] });
     const result = await retryOperation(
       () => update({ ...providerData, shopgallery: [...imageArray, imageUrl] }),
+      MAX_RETRIES,
+      RETRY_DELAY,
+    );
+    return result;
+    // Handle the result as needed
+  };
+
+  const handleDelete = async (i) => {
+    const newArr = [...imageArray];
+    newArr.splice(i, 1);
+    setImageArray(newArr);
+    console.log(newArr);
+    const result = await retryOperation(
+      () => update({ ...providerData, shopgallery: imageArray?.length === 1 ? [] : [...imageArray] }),
       MAX_RETRIES,
       RETRY_DELAY,
     );
@@ -67,7 +80,8 @@ const GalleryContent = ({ id }) => {
       setPreview(null);
       setNewImage(null);
       console.log(imageUrl);
-      handleSave(imageUrl);
+      await handleSave(imageUrl);
+      useUpdateProviderByIdMutation.invalidateTags(['PROVIDER', id]);
     } catch (error) {
       console.log(error, 'Error while image upload');
     }
@@ -88,18 +102,27 @@ const GalleryContent = ({ id }) => {
             </h1>
           </div>
         ) : (
-          imageArray?.map((image) => (
-            <Image
-              key={image?.id}
-              alt="gallery"
-              placeholder="empty"
-              width={300}
-              height={300}
-              loading="lazy"
-              className="w-[100%] md:w-[48%] rounded-[8px]"
-              style={{ objectFit: 'cover', height: '300px' }}
-              src={image}
-            />
+          imageArray?.map((image, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <div key={i} className="relative w-[100%] md:w-[48%] rounded-[8px]">
+              <button
+                type="button"
+                onClick={() => handleDelete(i)}
+                className="bg-[orange] px-[10px] py-[5px] text-[16px] tracking-[5px] font-bold uppercase rounded-md text-[black] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              >
+                Delete
+              </button>
+              <Image
+                alt="gallery"
+                placeholder="empty"
+                width={300}
+                height={300}
+                loading="lazy"
+                className="w-full"
+                style={{ objectFit: 'cover', height: '300px' }}
+                src={image}
+              />
+            </div>
           ))
         )}
         {preview && (
