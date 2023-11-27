@@ -31,7 +31,7 @@ const ServiceContent = ({ id }) => {
 
   const handleAdd = (i) => {
     setProviderData([...providerData, i]);
-    newProvider('');
+    setNewProvider('');
   };
 
   const handleRemove = (i) => {
