@@ -51,6 +51,15 @@ const userSchema = new Schema({
   contactNumber: {
     type: Number,
   },
+  contacts: [
+    {
+      name: String,
+      contactNumber: Number,
+    },
+  ],
+  landlineNumber: {
+    type: Number,
+  },
   services: [
     {
       type: String,
@@ -62,9 +71,18 @@ const userSchema = new Schema({
   additionalLinks: {
     type: String,
   },
+  location: {
+    type: String,
+  },
   isVerified: {
     type: Boolean,
     default: false,
+  },
+  shopTimingStart: {
+    type: Date,
+  },
+  shopTimingEnd: {
+    type: Date,
   },
   shopgallery: [{ type: String }],
   forgotPasswordToken: { type: String },

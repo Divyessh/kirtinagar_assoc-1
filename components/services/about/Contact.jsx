@@ -16,6 +16,7 @@ const Contact = ({ id }) => {
   // Not mapping cuz contact will not be in array format
   const { data, isLoading } = useGetProvidersByIdQuery(id);
   const providerData = data?.data;
+  console.log(providerData);
   const [contactInfo, setContactInfo] = React.useState({
     address: providerData?.address,
     contactNumber: providerData?.contactNumber,
@@ -58,7 +59,7 @@ const Contact = ({ id }) => {
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] text-black text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
-                  {contactInfo?.address || providerData?.address}
+                  {providerData?.address || contactInfo?.address}
                 </h1>
                 <h1 className="w-[80%] text-[13px] text-black md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
                   GST No. 1234567890ABCD
@@ -71,7 +72,7 @@ const Contact = ({ id }) => {
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">
-                  {contactInfo?.contactNumber || providerData?.contactNumber}
+                  {providerData?.contactNumber || contactInfo?.contactNumber}
                 </h1>
               </div>
             </div>
@@ -81,7 +82,7 @@ const Contact = ({ id }) => {
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">
-                  {contactInfo?.websiteLink || providerData?.websiteLink}
+                  {providerData?.websiteLink || contactInfo?.websiteLink}
                 </h1>
               </div>
             </div>

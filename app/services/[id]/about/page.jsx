@@ -16,7 +16,7 @@ const AboutServices = ({ params }) => {
       <Title id={id} />
       <Nav pageName="About" id={id} />
       <AboutContent id={id} />
-      <GalleryContent id={id} />
+      {/* <GalleryContent id={id} /> */}
       <Contact id={id} />
       <ServiceContent id={id} title />
       <ReqQuoteForm id={id} />
