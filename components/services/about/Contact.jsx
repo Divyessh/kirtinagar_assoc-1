@@ -16,7 +16,6 @@ const Contact = ({ id }) => {
   // Not mapping cuz contact will not be in array format
   const { data, isLoading } = useGetProvidersByIdQuery(id);
   const providerData = data?.data;
-  console.log(providerData);
   const [contactInfo, setContactInfo] = React.useState({
     address: providerData?.address,
     contactNumber: providerData?.contactNumber,
