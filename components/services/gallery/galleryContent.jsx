@@ -6,14 +6,22 @@ import React from 'react';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { BiError } from 'react-icons/bi';
-import retryOperation from '../../../lib/retryOperation';
-import { useGetProvidersByIdQuery, useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+// import { useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
+// import retryOperation from '../../../lib/retryOperation';
 import SkeletonCard from '../../blogs/skeletonCard';
 
 const GalleryContent = ({ id }) => {
-  const { data, isLoading } = useGetProvidersByIdQuery(id);
-  const providerData = data?.data;
-  const [imageArray, setImageArray] = React.useState(data?.data?.shopgallery);
+  const { data, isLoading } = useQuery({
+    queryKey: ['Provider', id],
+    queryFn: async () => {
+      const res = await axios.get(`/api/provider/${id}`);
+      return res?.data?.data;
+    },
+  });
+  const providerData = data;
+  const [imageArray, setImageArray] = React.useState(data?.shopgallery);
   console.log(providerData);
   const [newImage, setNewImage] = React.useState(null);
   const [preview, setPreview] = React.useState(null);
@@ -33,19 +41,20 @@ const GalleryContent = ({ id }) => {
     };
   };
 
-  const [update] = useUpdateProviderByIdMutation();
+  // const [update] = useUpdateProviderByIdMutation();
 
   // eslint-disable-next-line consistent-return
-  const MAX_RETRIES = 10;
-  const RETRY_DELAY = 300; // 300 milliseconds
+  // const MAX_RETRIES = 10;
+  // const RETRY_DELAY = 300; // 300 milliseconds
 
   const handleSave = async (imageUrl) => {
-    const result = await retryOperation(
-      () => update({ ...providerData, shopgallery: [...imageArray, imageUrl] }),
-      MAX_RETRIES,
-      RETRY_DELAY,
-    );
-    return result;
+    // const result = await retryOperation(
+    //   () => update({ ...providerData, shopgallery: [...imageArray, imageUrl] }),
+    //   MAX_RETRIES,
+    //   RETRY_DELAY,
+    // );
+    // return result;
+    console.log('Clicked', imageUrl);
     // Handle the result as needed
   };
 
@@ -53,13 +62,14 @@ const GalleryContent = ({ id }) => {
     const newArr = [...imageArray];
     newArr.splice(i, 1);
     setImageArray(newArr);
-    console.log(newArr);
-    const result = await retryOperation(
-      () => update({ ...providerData, shopgallery: imageArray?.length === 1 ? [] : [...imageArray] }),
-      MAX_RETRIES,
-      RETRY_DELAY,
-    );
-    return result;
+    // console.log(newArr);
+    // const result = await retryOperation(
+    //   () => update({ ...providerData, shopgallery: imageArray?.length === 1 ? [] : [...imageArray] }),
+    //   MAX_RETRIES,
+    //   RETRY_DELAY,
+    // );
+    // return result;
+    console.log('Clicked');
     // Handle the result as needed
   };
 
@@ -81,7 +91,7 @@ const GalleryContent = ({ id }) => {
       setNewImage(null);
       console.log(imageUrl);
       await handleSave(imageUrl);
-      useUpdateProviderByIdMutation.invalidateTags(['PROVIDER', id]);
+      // useUpdateProviderByIdMutation.invalidateTags(['PROVIDER', id]);
     } catch (error) {
       console.log(error, 'Error while image upload');
     }
@@ -90,6 +100,11 @@ const GalleryContent = ({ id }) => {
     setPreview(null);
     setNewImage(null);
   };
+  React.useEffect(() => {
+    setImageArray(data?.shopgallery);
+    // console.log(data?.data?.shopgallery?.length);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
 
   if (isLoading) return <SkeletonCard />;
   return (

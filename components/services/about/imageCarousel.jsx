@@ -6,13 +6,20 @@ import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import useEmblaCarousel from 'embla-carousel-react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Autoplay from 'embla-carousel-autoplay';
-import { useGetProvidersByIdQuery } from '../../../redux/api/apiSlice';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import SkeletonCard from '../../blogs/skeletonCard';
 import placeholder from '../../../assets/avif/placeholder.webp';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 const ImageCarousel = ({ id }) => {
-  const { data, isLoading } = useGetProvidersByIdQuery(id);
+  const { data, isLoading } = useQuery({
+    queryKey: ['Provider', id],
+    queryFn: async () => {
+      const res = await axios.get(`/api/provider/${id}`);
+      return res?.data?.data;
+    },
+  });
   const [imageArray, setImageArray] = React.useState([placeholder, placeholder]);
   // console.log(imageArray, data?.data?.shopgallery);
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -34,7 +41,7 @@ const ImageCarousel = ({ id }) => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
   React.useEffect(() => {
-    setImageArray(data?.data?.shopgallery);
+    setImageArray(data?.shopgallery);
     // console.log(data?.data?.shopgallery?.length);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
