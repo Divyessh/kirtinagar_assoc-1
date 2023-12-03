@@ -3,13 +3,21 @@
 import { useSession } from 'next-auth/react';
 import { FaRegEdit, FaTrash } from 'react-icons/fa';
 import React from 'react';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 import { IoSettings } from 'react-icons/io5';
-import { useGetProvidersByIdQuery, useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
-import retryOperation from '../../../lib/retryOperation';
+// import { useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
+// import retryOperation from '../../../lib/retryOperation';
 import Heading from './heading';
 
 const ServiceContent = ({ id }) => {
-  const { data, isLoading } = useGetProvidersByIdQuery(id);
+  const { data, isLoading } = useQuery({
+    queryKey: ['Provider', id],
+    queryFn: async () => {
+      const res = await axios.get(`/api/provider/${id}`);
+      return res?.data?.data;
+    },
+  });
   const ellipsisStyle = {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
@@ -18,11 +26,11 @@ const ServiceContent = ({ id }) => {
   const { data: session } = useSession();
   const [providerData, setProviderData] = React.useState([]);
   const [newProvider, setNewProvider] = React.useState('');
-  const [update] = useUpdateProviderByIdMutation();
+  // const [update] = useUpdateProviderByIdMutation();
   // const providerData = data?.data;
   React.useEffect(() => {
     if (!isLoading) {
-      setProviderData(data?.data?.services || []);
+      setProviderData(data?.services || []);
     }
   }, [data, isLoading]);
   // eslint-disable-next-line no-underscore-dangle
@@ -41,13 +49,14 @@ const ServiceContent = ({ id }) => {
   };
 
   // eslint-disable-next-line consistent-return
-  const MAX_RETRIES = 10;
-  const RETRY_DELAY = 300; // 300 milliseconds
+  // const MAX_RETRIES = 10;
+  // const RETRY_DELAY = 300; // 300 milliseconds
 
   const handleSave = async () => {
-    const result = await retryOperation(() => update({ ...data?.data, services: providerData }), MAX_RETRIES, RETRY_DELAY);
-    return result;
+    // const result = await retryOperation(() => update({ ...data?.data, services: providerData }), MAX_RETRIES, RETRY_DELAY);
+    // return result;
     // Handle the result as needed
+    console.log('Clicked');
   };
 
   return (

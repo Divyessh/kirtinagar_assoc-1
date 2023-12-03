@@ -7,7 +7,8 @@ import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
-import { useGetBlogsQuery } from '../../redux/api/apiSlice';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import Card from './blogsCards';
 import SkeletonCard from './skeletonCard';
 
@@ -42,8 +43,14 @@ export const ButtonGroup = ({ next, previous }) => {
 };
 
 const CarouselComponent = () => {
-  const { data, isLoading } = useGetBlogsQuery('getBlogs');
-  const blogData = data?.data;
+  const { data, isLoading } = useQuery({
+    queryKey: ['blogData'],
+    queryFn: async () => {
+      const res = await axios.get(`/api/blog`);
+      return res;
+    },
+  });
+  const blogData = data?.data?.data;
   return isLoading ? (
     <SkeletonCard />
   ) : (

@@ -1,19 +1,28 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/order */
 /* eslint-disable no-underscore-dangle */
 
 'use client';
 
 import Link from 'next/link';
+import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
 import Card from '../featuredProviders/card';
-import { useGetProvidersQuery } from '../../redux/api/apiSlice';
 import SkeletonCard from '../blogs/skeletonCard';
 import SearchedProvider from './SearchedProvider';
+import axios from 'axios';
 
 const ServicesCard = () => {
   const queryParams = useSearchParams();
   const searchEle = queryParams.get('keyword');
-  const { data, isLoading } = useGetProvidersQuery('getProviders');
-  const providerData = data?.data;
+  const { data, isLoading } = useQuery({
+    queryKey: ['providers'],
+    queryFn: async () => {
+      const res = await axios.get(`/api/provider`);
+      return res;
+    },
+  });
+  const providerData = data?.data?.data;
 
   return (
     <div className="bg-white text-black flex-col w-full justify-center items-center text-center pt-[50px]">

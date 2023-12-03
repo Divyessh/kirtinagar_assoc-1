@@ -5,15 +5,23 @@ import { AiFillSetting, AiFillFile } from 'react-icons/ai';
 // import { useSession } from 'next-auth/react';
 import { FaRegEdit } from 'react-icons/fa';
 import { useSession } from 'next-auth/react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import ImageCarousel from './imageCarousel';
-import retryOperation from '../../../lib/retryOperation';
+// import retryOperation from '../../../lib/retryOperation';
 // import aboutService from '../../../assets/png/aboutService.png';
-import { useGetProvidersByIdQuery, useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
+// import { useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
 import SkeletonCard from '../../blogs/skeletonCard';
 
 const AboutContent = ({ id }) => {
-  const { data, isLoading } = useGetProvidersByIdQuery(id);
-  const providerData = data?.data;
+  const { data, isLoading } = useQuery({
+    queryKey: ['Provider', id],
+    queryFn: async () => {
+      const res = await axios.get(`/api/provider/${id}`);
+      return res?.data?.data;
+    },
+  });
+  const providerData = data;
   // eslint-disable-next-line no-console
   console.log(providerData);
   const { data: session } = useSession();
@@ -23,19 +31,20 @@ const AboutContent = ({ id }) => {
     name: providerData?.ownerName,
     location: providerData?.address,
   });
-  const [update] = useUpdateProviderByIdMutation();
+  // const [update] = useUpdateProviderByIdMutation();
 
   // eslint-disable-next-line consistent-return
-  const MAX_RETRIES = 10;
-  const RETRY_DELAY = 300; // 300 milliseconds
+  // const MAX_RETRIES = 10;
+  // const RETRY_DELAY = 300; // 300 milliseconds
 
   const handleSave = async () => {
-    const result = await retryOperation(
-      () => update({ ...providerData, ownerName: info?.name, address: info?.location }),
-      MAX_RETRIES,
-      RETRY_DELAY,
-    );
-    return result;
+    // const result = await retryOperation(
+    //   () => update({ ...providerData, ownerName: info?.name, address: info?.location }),
+    //   MAX_RETRIES,
+    //   RETRY_DELAY,
+    // );
+    // return result;
+    console.log('Clicked');
     // Handle the result as needed
   };
   return isLoading && providerData !== undefined ? (
