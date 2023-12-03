@@ -26,6 +26,16 @@ const TeamSection = () => {
           {'View All >'}
         </button>
       </div>
+      <div className="flex items-center justify-center pb-4">
+        <button
+          type="button"
+          onClick={() => setMembers(5)}
+          className="bg-[#413833] text-white p-2 rounded-lg"
+          style={{ display: members !== dummy.length - 1 ? 'none' : 'block' }}
+        >
+          {'Show Less >'}
+        </button>
+      </div>
     </div>
   );
 };

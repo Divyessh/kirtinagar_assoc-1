@@ -14,6 +14,8 @@ import SkeletonCard from '../../blogs/skeletonCard';
 const AboutContent = ({ id }) => {
   const { data, isLoading } = useGetProvidersByIdQuery(id);
   const providerData = data?.data;
+  // eslint-disable-next-line no-console
+  console.log(providerData);
   const { data: session } = useSession();
   // eslint-disable-next-line no-underscore-dangle
   const isUser = session?.user?._id;
@@ -36,7 +38,7 @@ const AboutContent = ({ id }) => {
     return result;
     // Handle the result as needed
   };
-  return isLoading ? (
+  return isLoading && providerData !== undefined ? (
     <SkeletonCard />
   ) : (
     <>

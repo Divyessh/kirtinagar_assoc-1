@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const apiSlice = createApi({
   reducerPath: 'blogApi',
   baseQuery: fetchBaseQuery({ baseUrl: `/api` }),
-  tagTypes: ['Blog'],
+  tagTypes: ['Blog', 'PROVIDER'],
   // eslint-disable-next-line no-unused-vars
   endpoints: (builder) => ({
     getBlogs: builder.query({
@@ -14,7 +14,7 @@ export const apiSlice = createApi({
     }),
     getProviders: builder.query({
       query: () => '/provider',
-      providesTags: (result, error, arg) => [{ type: 'PROVIDER', id: 'LIST' }],
+      providesTags: (result, error, arg) => [{ type: 'PROVIDERS', id: 'LIST' }],
     }),
     getProvidersById: builder.query({
       query: (id) => `/provider/${id}`,

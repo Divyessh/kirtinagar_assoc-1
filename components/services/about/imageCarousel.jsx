@@ -13,7 +13,8 @@ import placeholder from '../../../assets/avif/placeholder.webp';
 
 const ImageCarousel = ({ id }) => {
   const { data, isLoading } = useGetProvidersByIdQuery(id);
-  const imageArray = data?.data?.shopgallery;
+  const [imageArray, setImageArray] = React.useState([placeholder, placeholder]);
+  // console.log(imageArray, data?.data?.shopgallery);
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -32,17 +33,22 @@ const ImageCarousel = ({ id }) => {
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
+  React.useEffect(() => {
+    setImageArray(data?.data?.shopgallery);
+    // console.log(data?.data?.shopgallery?.length);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
   if (isLoading) return <SkeletonCard />;
   return (
     <div className="col-span-7 md:rounded-[2px] embla">
       <div className="embla__viewport relative" ref={emblaRef}>
         <div className="relative embla__container">
-          {imageArray?.length === 0
-            ? [1, 2]?.map((image, i) => (
+          {imageArray?.length > 0
+            ? imageArray.map((image, i) => (
                 <Image
                   // eslint-disable-next-line react/no-array-index-key
                   key={i}
-                  src={placeholder}
+                  src={image}
                   alt="image"
                   width={1000}
                   height={1000}
@@ -58,11 +64,11 @@ const ImageCarousel = ({ id }) => {
                   className="embla__slide h-auto md:h-[500px]"
                 />
               ))
-            : imageArray?.map((image, i) => (
+            : [1, 2].map((i) => (
                 <Image
                   // eslint-disable-next-line react/no-array-index-key
                   key={i}
-                  src={image}
+                  src={placeholder}
                   alt="image"
                   width={1000}
                   height={1000}

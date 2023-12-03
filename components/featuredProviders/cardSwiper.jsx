@@ -37,10 +37,11 @@ const BgCarousel = ({ gallery, feature }) => {
   return (
     <div className=" embla" ref={emblaRef}>
       <div className="relative h-[80%] embla__container">
-        {gallery?.length > 0
-          ? gallery.map((image) => (
+        {gallery?.length > 0 && gallery[0] !== null
+          ? gallery.map((image, i) => (
               <Image
-                key={image.id}
+                // eslint-disable-next-line react/no-array-index-key
+                key={i}
                 src={image}
                 alt="image"
                 placeholder="blur"
