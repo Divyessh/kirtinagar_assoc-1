@@ -15,7 +15,7 @@ import retryOperation from '../../../lib/retryOperation';
 import SkeletonCard from '../../blogs/skeletonCard';
 
 const Contact = ({ id }) => {
-  const [data, setData] = React.useState();
+  const [data, setData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   // Not mapping cuz contact will not be in array format
   React.useEffect(() => {
@@ -54,7 +54,7 @@ const Contact = ({ id }) => {
     return result;
     // Handle the result as needed
   };
-  return isLoading ? (
+  return isLoading || data?.length === 0 ? (
     <SkeletonCard />
   ) : (
     <>
