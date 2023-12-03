@@ -1,16 +1,21 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-unused-vars */
+
 'use client';
 
 import { SessionProvider } from 'next-auth/react';
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies, import/no-unresolved
-import { Provider } from 'react-redux';
-
-import { store } from '../redux/store';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const NextSessionProvider = ({ children }) => {
+  const queryClient = new QueryClient();
   return (
     <SessionProvider>
-      <Provider store={store}>{children}</Provider>
+      <QueryClientProvider client={queryClient}>
+        {children}
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </SessionProvider>
   );
 };

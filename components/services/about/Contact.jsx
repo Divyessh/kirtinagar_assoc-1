@@ -10,7 +10,6 @@ import { GiEarthAfricaEurope } from 'react-icons/gi';
 import { AiFillFile, AiFillClockCircle } from 'react-icons/ai';
 import Heading from './heading';
 import { useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
-// import SkeletonCard from '../../blogs/skeletonCard';
 import retryOperation from '../../../lib/retryOperation';
 import SkeletonCard from '../../blogs/skeletonCard';
 
