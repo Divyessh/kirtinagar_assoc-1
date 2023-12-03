@@ -8,32 +8,20 @@ import { FaEnvelope, FaRegEdit } from 'react-icons/fa';
 import { useSession } from 'next-auth/react';
 import { GiEarthAfricaEurope } from 'react-icons/gi';
 import { AiFillFile, AiFillClockCircle } from 'react-icons/ai';
+import { useQuery } from '@tanstack/react-query';
 import Heading from './heading';
-import { useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
-// import SkeletonCard from '../../blogs/skeletonCard';
-import retryOperation from '../../../lib/retryOperation';
+// import { useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
+// import retryOperation from '../../../lib/retryOperation';
 import SkeletonCard from '../../blogs/skeletonCard';
 
 const Contact = ({ id }) => {
-  const [data, setData] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
-  // Not mapping cuz contact will not be in array format
-  React.useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`/api/provider/${id}`);
-        setData(res?.data?.data);
-        setIsLoading(false);
-        return res?.data?.data;
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error('Error fetching data:', error);
-        setIsLoading(false);
-        return error;
-      }
-    };
-    fetchData();
-  }, [id]);
+  const { data, isLoading } = useQuery({
+    queryKey: ['Provider', id],
+    queryFn: async () => {
+      const res = await axios.get(`/api/provider/${id}`);
+      return res?.data?.data;
+    },
+  });
   const [contactInfo, setContactInfo] = React.useState({
     address: data?.address,
     contactNumber: data?.contactNumber,
@@ -43,16 +31,17 @@ const Contact = ({ id }) => {
   const { data: session } = useSession();
   // eslint-disable-next-line no-underscore-dangle
   const isUser = session?.user?._id;
-  const [update] = useUpdateProviderByIdMutation();
+  // const [update] = useUpdateProviderByIdMutation();
 
   // eslint-disable-next-line consistent-return
-  const MAX_RETRIES = 10;
-  const RETRY_DELAY = 300; // 300 milliseconds
+  // const MAX_RETRIES = 10;
+  // const RETRY_DELAY = 300; // 300 milliseconds
 
   const handleSave = async () => {
-    const result = await retryOperation(() => update({ ...data, ...contactInfo }), MAX_RETRIES, RETRY_DELAY);
-    return result;
+    // const result = await retryOperation(() => update({ ...data, ...contactInfo }), MAX_RETRIES, RETRY_DELAY);
+    // return result;
     // Handle the result as needed
+    console.log('Clicked');
   };
   return isLoading || data?.length === 0 ? (
     <SkeletonCard />

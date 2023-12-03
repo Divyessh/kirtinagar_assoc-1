@@ -3,14 +3,22 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import Link from 'next/link';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 import Heading from './about/heading';
-import Card from '../featuredProviders/card';
-import { useGetProvidersQuery } from '../../redux/api/apiSlice';
 import SkeletonCard from '../blogs/skeletonCard';
+import Card from '../featuredProviders/card';
 
 const RelatedProviders = () => {
-  const { data, isLoading } = useGetProvidersQuery('getProviders');
-  const providerData = data?.data;
+  const { data, isLoading } = useQuery({
+    queryKey: ['Provider'],
+    queryFn: async () => {
+      const res = await axios.get(`/api/provider`);
+      return res;
+    },
+  });
+  const providerData = data?.data?.data;
+  console.log(providerData);
   const slices = providerData?.length >= 3 ? 3 : providerData?.length;
   return (
     <div>
