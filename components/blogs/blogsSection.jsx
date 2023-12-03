@@ -51,7 +51,6 @@ const CarouselComponent = () => {
     },
   });
   const blogData = data?.data?.data;
-  console.log(blogData);
   return isLoading ? (
     <SkeletonCard />
   ) : (

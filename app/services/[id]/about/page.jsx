@@ -5,9 +5,9 @@ import Nav from '../../../../components/services/nav';
 // import AboutContent from '../../../../components/services/about/AboutContent';
 // import GalleryContent from '../../../../components/services/about/GalleryContent';
 import Contact from '../../../../components/services/about/Contact';
-// import ServiceContent from '../../../../components/services/about/ServiceContent';
+import ServiceContent from '../../../../components/services/about/ServiceContent';
 import ReqQuoteForm from '../../../../components/services/about/ReqQuoteForm';
-// import RelatedProviders from '../../../../components/services/relatedProviders';
+import RelatedProviders from '../../../../components/services/relatedProviders';
 
 const AboutServices = ({ params }) => {
   const { id } = params;
@@ -18,9 +18,9 @@ const AboutServices = ({ params }) => {
       {/* <AboutContent id={id} /> */}
       {/* <GalleryContent id={id} /> */}
       <Contact id={id} />
-      {/* <ServiceContent id={id} title /> */}
+      <ServiceContent id={id} title />
       <ReqQuoteForm id={id} />
-      {/* <RelatedProviders /> */}
+      <RelatedProviders />
     </ServiceWrapper>
   );
 };

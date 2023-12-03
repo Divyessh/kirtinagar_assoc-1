@@ -6,28 +6,37 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import { FaRegEdit } from 'react-icons/fa';
 import shareIcon from '../../assets/png/shareIcon.png';
-import { useGetProvidersByIdQuery, useUpdateProviderByIdMutation } from '../../redux/api/apiSlice';
-import retryOperation from '../../lib/retryOperation';
+// import { useUpdateProviderByIdMutation } from '../../redux/api/apiSlice';
+// import retryOperation from '../../lib/retryOperation';
 
 const Title = ({ id }) => {
-  const { data } = useGetProvidersByIdQuery(id);
+  const { data } = useQuery({
+    queryKey: ['Provider', id],
+    queryFn: async () => {
+      const res = await axios.get(`/api/provider/${id}`);
+      return res?.data?.data;
+    },
+  });
   const { data: session } = useSession();
   const isUser = session?.user?._id;
-  const providerData = data?.data;
+  const providerData = data;
 
   const [name, setName] = useState(providerData?.nameOftheFirm);
-  const [update] = useUpdateProviderByIdMutation();
+  // const [update] = useUpdateProviderByIdMutation();
 
   // eslint-disable-next-line consistent-return
-  const MAX_RETRIES = 10;
-  const RETRY_DELAY = 300; // 300 milliseconds
+  // const MAX_RETRIES = 10;
+  // const RETRY_DELAY = 300; // 300 milliseconds
 
   const handleSave = async () => {
-    const result = await retryOperation(() => update({ ...providerData, nameOftheFirm: name }), MAX_RETRIES, RETRY_DELAY);
-    return result;
+    // const result = await retryOperation(() => update({ ...providerData, nameOftheFirm: name }), MAX_RETRIES, RETRY_DELAY);
+    // return result;
     // Handle the result as needed
+    console.log('Clicked');
   };
 
   return (
