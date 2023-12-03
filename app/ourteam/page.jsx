@@ -9,9 +9,9 @@ const OurTeam = () => {
   return (
     <div>
       <PagesHeader title="OUR TEAM" bannerImage={galleryBanner} />
-{/*       <TeamSection /> */}
+      {/*       <TeamSection /> */}
       <ExecMemebers />
-{/*       <WebCommitte /> */}
+      {/*       <WebCommitte /> */}
     </div>
   );
 };
