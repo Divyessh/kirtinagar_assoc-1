@@ -14,16 +14,16 @@ export const apiSlice = createApi({
     }),
     getProviders: builder.query({
       query: () => '/provider',
-      providesTags: (result, error, arg) => [{ type: 'PROVIDER', id: 'LIST' }],
+      providesTags: (result, error, arg) => [{ type: 'PROVIDERS', id: 'LIST' }],
     }),
     getProvidersById: builder.query({
       query: (id) => `/provider/${id}`,
-      providesTags: (result, error, arg) => [{ type: 'PROVIDER', id: 'LIST' }],
+      providesTags: (result, error, arg) => [{ type: 'PROVIDER', id: arg }],
     }),
     updateProviderById: builder.mutation({
       // eslint-disable-next-line no-underscore-dangle
       query: (data) => ({ url: `/provider/${data?._id}`, method: 'PUT', body: data }),
-      invalidatesTags: (result, error, arg) => [{ type: 'PROVIDER', id: 'LIST' }],
+      invalidatesTags: (result, error, arg) => [{ type: 'PROVIDER', id: arg }],
     }),
   }),
 });

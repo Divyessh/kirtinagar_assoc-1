@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import axios from 'axios';
 import { MdLocationOn } from 'react-icons/md';
 import { BsFillTelephoneFill, BsChevronDown } from 'react-icons/bs';
 import { FaEnvelope, FaRegEdit } from 'react-icons/fa';
@@ -8,19 +9,36 @@ import { useSession } from 'next-auth/react';
 import { GiEarthAfricaEurope } from 'react-icons/gi';
 import { AiFillFile, AiFillClockCircle } from 'react-icons/ai';
 import Heading from './heading';
-import { useGetProvidersByIdQuery, useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
-import SkeletonCard from '../../blogs/skeletonCard';
+import { useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
+// import SkeletonCard from '../../blogs/skeletonCard';
 import retryOperation from '../../../lib/retryOperation';
+import SkeletonCard from '../../blogs/skeletonCard';
 
 const Contact = ({ id }) => {
+  const [data, setData] = React.useState();
+  const [isLoading, setIsLoading] = React.useState(true);
   // Not mapping cuz contact will not be in array format
-  const { data, isLoading } = useGetProvidersByIdQuery(id);
-  const providerData = data?.data;
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/api/provider/${id}`);
+        setData(res?.data?.data);
+        setIsLoading(false);
+        return res?.data?.data;
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Error fetching data:', error);
+        setIsLoading(false);
+        return error;
+      }
+    };
+    fetchData();
+  }, [id]);
   const [contactInfo, setContactInfo] = React.useState({
-    address: providerData?.address,
-    contactNumber: providerData?.contactNumber,
-    websiteLink: providerData?.websiteLink,
-    email: providerData?.email,
+    address: data?.address,
+    contactNumber: data?.contactNumber,
+    websiteLink: data?.websiteLink,
+    email: data?.email,
   });
   const { data: session } = useSession();
   // eslint-disable-next-line no-underscore-dangle
@@ -32,7 +50,7 @@ const Contact = ({ id }) => {
   const RETRY_DELAY = 300; // 300 milliseconds
 
   const handleSave = async () => {
-    const result = await retryOperation(() => update({ ...providerData, ...contactInfo }), MAX_RETRIES, RETRY_DELAY);
+    const result = await retryOperation(() => update({ ...data, ...contactInfo }), MAX_RETRIES, RETRY_DELAY);
     return result;
     // Handle the result as needed
   };
@@ -58,7 +76,7 @@ const Contact = ({ id }) => {
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] text-black text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
-                  {providerData?.address || contactInfo?.address}
+                  {data?.address || contactInfo?.address}
                 </h1>
                 <h1 className="w-[80%] text-[13px] text-black md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
                   GST No. 1234567890ABCD
@@ -71,7 +89,7 @@ const Contact = ({ id }) => {
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">
-                  {providerData?.contactNumber || contactInfo?.contactNumber}
+                  {data?.contactNumber || contactInfo?.contactNumber}
                 </h1>
               </div>
             </div>
@@ -81,7 +99,7 @@ const Contact = ({ id }) => {
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">
-                  {providerData?.websiteLink || contactInfo?.websiteLink}
+                  {data?.websiteLink || contactInfo?.websiteLink}
                 </h1>
               </div>
             </div>
@@ -101,7 +119,7 @@ const Contact = ({ id }) => {
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] text-[13px] text-black md:text-[28px] font-[700] leading-[15px] md:leading-[40px]">
-                  {providerData?.email}
+                  {data?.email}
                 </h1>
               </div>
             </div>
@@ -133,28 +151,28 @@ const Contact = ({ id }) => {
             type="text"
             placeholder="Enter Address"
             className="border p-2 rounded-md outline-black"
-            defaultValue={contactInfo?.address || providerData?.address}
+            defaultValue={contactInfo?.address || data?.address}
             onChange={(e) => setContactInfo({ ...contactInfo, address: e.target.value })}
           />
           <input
             type="text"
             placeholder="Enter Contact Number"
             className="border p-2 rounded-md outline-black"
-            defaultValue={contactInfo?.contactNumber || providerData?.contactNumber}
+            defaultValue={contactInfo?.contactNumber || data?.contactNumber}
             onChange={(e) => setContactInfo({ ...contactInfo, contactNumber: e.target.value })}
           />
           <input
             type="text"
             placeholder="Enter WebSite Link"
             className="border p-2 rounded-md outline-black"
-            defaultValue={contactInfo?.websiteLink || providerData?.websiteLink}
+            defaultValue={contactInfo?.websiteLink || data?.websiteLink}
             onChange={(e) => setContactInfo({ ...contactInfo, websiteLink: e.target.value })}
           />
           <input
             type="text"
             placeholder="Enter Email"
             className="border p-2 rounded-md outline-black"
-            defaultValue={contactInfo?.email || providerData?.email}
+            defaultValue={contactInfo?.email || data?.email}
             onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
           />
           <button type="button" aria-label="Save Info" onClick={handleSave} className="bg-[#FF9800] text-black p-2 rounded-lg w-fit">
