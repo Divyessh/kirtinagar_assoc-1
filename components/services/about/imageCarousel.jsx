@@ -28,7 +28,6 @@ const ImageCarousel = ({ id }) => {
       startIndex: 0,
       autoplay: {
         delay: 800, // Set the autoplay speed to 2 seconds (2000 milliseconds)
-        // stopOnInteraction: true, // Stop autoplay on user interaction (optional)
       },
     },
     [Autoplay()],
