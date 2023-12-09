@@ -23,13 +23,11 @@ const AboutServices = ({ params }) => {
       return res?.data?.data;
     },
   });
-  // Generate a unique key based on the ID and a timestamp
-  const key = `${id}_${Date.now()}`;
 
   return isLoading ? (
     <SkeletonCard />
   ) : (
-    <ServiceWrapper key={key}>
+    <ServiceWrapper>
       <Title id={id} />
       <Nav pageName="About" id={id} />
       {/* <AboutContent id={id} /> */}
