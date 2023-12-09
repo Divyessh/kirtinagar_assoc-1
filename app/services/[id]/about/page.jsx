@@ -6,12 +6,12 @@ import axios from 'axios';
 import Title from '../../../../components/services/title';
 import ServiceWrapper from '../../../../components/services/serviceWrapper';
 import Nav from '../../../../components/services/nav';
-import AboutContent from '../../../../components/services/about/AboutContent';
-import GalleryContent from '../../../../components/services/about/GalleryContent';
+// import AboutContent from '../../../../components/services/about/AboutContent';
+// import GalleryContent from '../../../../components/services/about/GalleryContent';
 import Contact from '../../../../components/services/about/Contact';
 import ServiceContent from '../../../../components/services/about/ServiceContent';
 import ReqQuoteForm from '../../../../components/services/about/ReqQuoteForm';
-import RelatedProviders from '../../../../components/services/relatedProviders';
+// import RelatedProviders from '../../../../components/services/relatedProviders';
 import SkeletonCard from '../../../../components/blogs/skeletonCard';
 
 const AboutServices = ({ params }) => {
@@ -32,12 +32,12 @@ const AboutServices = ({ params }) => {
     <ServiceWrapper key={key}>
       <Title id={id} />
       <Nav pageName="About" id={id} />
-      <AboutContent id={id} />
-      <GalleryContent id={id} />
+      {/* <AboutContent id={id} /> */}
+      {/* <GalleryContent id={id} /> */}
       <Contact id={id} />
       <ServiceContent id={id} title />
       <ReqQuoteForm id={id} />
-      <RelatedProviders />
+      {/* <RelatedProviders /> */}
     </ServiceWrapper>
   );
 };
