@@ -4,7 +4,8 @@ import Featured from '../../assets/svg/featured.svg';
 import services from '../../assets/svg/services.svg';
 import quote from '../../assets/svg/quote.svg';
 import line from '../../assets/svg/line.svg';
-import CardslideShow from './cardSwiper';
+// import placeholder from '../../assets/avif/placeholder.webp';
+import ImageCarousel from '../services/about/imageCarousel';
 
 const Card = ({ item }) => {
   return (
@@ -12,7 +13,9 @@ const Card = ({ item }) => {
       className="card  w-[330px] md:w-[300px]  bg-[#E5DFCF] shadow-2xl rounded-xl flex md:justify-center md:items-center"
       style={{ border: 'none', padding: 0 }}
     >
-      <CardslideShow gallery={item?.shopgallery || []} feature />
+      {/* <Image src={item?.shopgallery[0] || placeholder} alt="image" width={300} height={300} className="w-[350px] h-[350px]" /> */}
+      {/* eslint-disable-next-line no-underscore-dangle */}
+      <ImageCarousel id={item?._id} fixheight />
       <Image src={Featured} alt="image" className="absolute md:top-6 left-0 top-[80px] w-[80px] md:w-1/4 md:h-1/4" />
       <span className="absolute top-0 flex justify-between border-b-2 border-[#D9D9D9] w-full md:px-16 px-6  items-center">
         <div className="hover:cursor-pointer tooltip " data-tip="Services">

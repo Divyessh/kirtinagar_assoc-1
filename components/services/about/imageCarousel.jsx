@@ -12,7 +12,7 @@ import SkeletonCard from '../../blogs/skeletonCard';
 import placeholder from '../../../assets/avif/placeholder.webp';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
-const ImageCarousel = ({ id }) => {
+const ImageCarousel = ({ id, fixheight }) => {
   const { data, isLoading } = useQuery({
     queryKey: ['Provider', id],
     queryFn: async () => {
@@ -65,9 +65,9 @@ const ImageCarousel = ({ id }) => {
                     zIndex: 20,
                     objectFit: 'cover',
                     width: '100%',
-                    // height: '500px',
+                    height: fixheight && '300px',
                   }}
-                  className="embla__slide h-auto md:h-[500px]"
+                  className={`embla__slide ${fixheight ? '' : 'h-auto md:h-[500px]'}`}
                 />
               ))
             : [1, 2].map((i) => (
@@ -85,7 +85,7 @@ const ImageCarousel = ({ id }) => {
                     zIndex: 20,
                     objectFit: 'cover',
                     width: '100%',
-                    // height: '500px',
+                    height: fixheight && '300px',
                   }}
                   className="embla__slide h-auto md:h-[500px]"
                 />
