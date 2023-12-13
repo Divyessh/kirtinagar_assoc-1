@@ -4,10 +4,8 @@ import { useSession } from 'next-auth/react';
 import { FaRegEdit, FaTrash } from 'react-icons/fa';
 import React from 'react';
 import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { IoSettings } from 'react-icons/io5';
-// import { useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
-// import retryOperation from '../../../lib/retryOperation';
 import Heading from './heading';
 
 const ServiceContent = ({ id }) => {
@@ -26,8 +24,26 @@ const ServiceContent = ({ id }) => {
   const { data: session } = useSession();
   const [providerData, setProviderData] = React.useState([]);
   const [newProvider, setNewProvider] = React.useState('');
-  // const [update] = useUpdateProviderByIdMutation();
-  // const providerData = data?.data;
+  const queryClient = useQueryClient();
+  const { mutate: handleUpdate } = useMutation({
+    mutationFn: async (update) => {
+      try {
+        const response = await axios.put(`/api/provider/${id}`, update);
+        return response.data;
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Something went wrong!', error);
+        throw new Error('Failed to add new student');
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['Provider', id] });
+    },
+    onError: (error) => {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    },
+  });
   React.useEffect(() => {
     if (!isLoading) {
       setProviderData(data?.services || []);
@@ -48,15 +64,8 @@ const ServiceContent = ({ id }) => {
     setProviderData(updatedProviderData);
   };
 
-  // eslint-disable-next-line consistent-return
-  // const MAX_RETRIES = 10;
-  // const RETRY_DELAY = 300; // 300 milliseconds
-
   const handleSave = async () => {
-    // const result = await retryOperation(() => update({ ...data?.data, services: providerData }), MAX_RETRIES, RETRY_DELAY);
-    // return result;
-    // Handle the result as needed
-    console.log('Clicked');
+    handleUpdate({ ...data?.data, services: providerData });
   };
 
   return (
