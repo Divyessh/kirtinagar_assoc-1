@@ -3,14 +3,21 @@
 /* eslint-disable no-underscore-dangle */
 
 import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import Link from 'next/link';
-import { useGetProvidersQuery } from '../../redux/api/apiSlice';
 import SkeletonCard from '../blogs/skeletonCard';
 import Card from '../featuredProviders/card';
 
 const SearchedProvider = ({ searchEle }) => {
-  const { data, isLoading } = useGetProvidersQuery('getProviders');
-  const providerData = data?.data;
+  const { data, isLoading } = useQuery({
+    queryKey: ['providers'],
+    queryFn: async () => {
+      const res = await axios.get(`/api/provider`);
+      return res;
+    },
+  });
+  const providerData = data?.data?.data;
   const newArr = providerData?.map((item) => {
     return item?.services.some((service) => service.toLowerCase().includes(searchEle.toLowerCase())) ? item : null;
   });
