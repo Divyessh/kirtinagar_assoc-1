@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { FaRegEdit } from 'react-icons/fa';
 import shareIcon from '../../assets/png/shareIcon.png';
@@ -21,21 +21,35 @@ const Title = ({ id }) => {
       return res?.data?.data;
     },
   });
+  const queryClient = useQueryClient();
+  const { mutate: handleUpdate } = useMutation({
+    mutationFn: async (update) => {
+      try {
+        const response = await axios.put(`/api/provider/${id}`, update);
+        return response.data;
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Something went wrong!', error);
+        throw new Error('Failed to add new student');
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['Provider', id] });
+    },
+    onError: (error) => {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    },
+  });
   const { data: session } = useSession();
   const isUser = session?.user?._id;
   const providerData = data;
 
   const [name, setName] = useState(providerData?.nameOftheFirm);
-  // const [update] = useUpdateProviderByIdMutation();
-
-  // eslint-disable-next-line consistent-return
-  // const MAX_RETRIES = 10;
-  // const RETRY_DELAY = 300; // 300 milliseconds
 
   const handleSave = async () => {
-    // const result = await retryOperation(() => update({ ...providerData, nameOftheFirm: name }), MAX_RETRIES, RETRY_DELAY);
-    // return result;
-    // Handle the result as needed
+    handleUpdate({ ...providerData, nameOftheFirm: name });
+    // eslint-disable-next-line no-console
     console.log('Clicked');
   };
 
