@@ -5,7 +5,7 @@ import { AiFillSetting, AiFillFile } from 'react-icons/ai';
 // import { useSession } from 'next-auth/react';
 import { FaRegEdit } from 'react-icons/fa';
 import { useSession } from 'next-auth/react';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import ImageCarousel from './imageCarousel';
 // import retryOperation from '../../../lib/retryOperation';
@@ -31,21 +31,30 @@ const AboutContent = ({ id }) => {
     name: providerData?.ownerName,
     location: providerData?.address,
   });
-  // const [update] = useUpdateProviderByIdMutation();
 
-  // eslint-disable-next-line consistent-return
-  // const MAX_RETRIES = 10;
-  // const RETRY_DELAY = 300; // 300 milliseconds
+  const queryClient = useQueryClient();
+  const { mutate: handleUpdate } = useMutation({
+    mutationFn: async (update) => {
+      try {
+        const response = await axios.put(`/api/provider/${id}`, update);
+        return response.data;
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Something went wrong!', error);
+        throw new Error('Failed to add new student');
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['Provider', id] });
+    },
+    onError: (error) => {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    },
+  });
 
   const handleSave = async () => {
-    // const result = await retryOperation(
-    //   () => update({ ...providerData, ownerName: info?.name, address: info?.location }),
-    //   MAX_RETRIES,
-    //   RETRY_DELAY,
-    // );
-    // return result;
-    console.log('Clicked');
-    // Handle the result as needed
+    handleUpdate({ ...providerData, ownerName: info?.name, address: info?.location });
   };
   return isLoading && providerData !== undefined ? (
     <SkeletonCard />

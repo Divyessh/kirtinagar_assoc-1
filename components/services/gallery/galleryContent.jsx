@@ -6,13 +6,12 @@ import React from 'react';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { BiError } from 'react-icons/bi';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
-// import { useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
-// import retryOperation from '../../../lib/retryOperation';
 import SkeletonCard from '../../blogs/skeletonCard';
 
 const GalleryContent = ({ id }) => {
+  // eslint-disable-next-line no-template-curly-in-string
   const { data, isLoading } = useQuery({
     queryKey: ['Provider', id],
     queryFn: async () => {
@@ -22,7 +21,6 @@ const GalleryContent = ({ id }) => {
   });
   const providerData = data;
   const [imageArray, setImageArray] = React.useState(data?.shopgallery);
-  console.log(providerData);
   const [newImage, setNewImage] = React.useState(null);
   const [preview, setPreview] = React.useState(null);
 
@@ -40,37 +38,41 @@ const GalleryContent = ({ id }) => {
       setPreview(reader.result);
     };
   };
-
-  // const [update] = useUpdateProviderByIdMutation();
-
-  // eslint-disable-next-line consistent-return
-  // const MAX_RETRIES = 10;
-  // const RETRY_DELAY = 300; // 300 milliseconds
+  const queryClient = useQueryClient();
+  const { mutate: handleUpdate } = useMutation({
+    mutationFn: async (update) => {
+      try {
+        const response = await axios.put(`/api/provider/${id}`, update);
+        return response.data;
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Something went wrong!', error);
+        throw new Error('Failed to add new student');
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['Provider', id] });
+    },
+    onError: (error) => {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    },
+  });
 
   const handleSave = async (imageUrl) => {
-    // const result = await retryOperation(
-    //   () => update({ ...providerData, shopgallery: [...imageArray, imageUrl] }),
-    //   MAX_RETRIES,
-    //   RETRY_DELAY,
-    // );
-    // return result;
+    handleUpdate({ ...providerData, shopgallery: [...imageArray, imageUrl] });
     console.log('Clicked', imageUrl);
-    // Handle the result as needed
   };
 
   const handleDelete = async (i) => {
     const newArr = [...imageArray];
+    const urlArray = imageArray[i]?.split('/');
+    const imgName = urlArray[urlArray.length - 1]?.split('.')[0];
+    console.log(imgName);
     newArr.splice(i, 1);
     setImageArray(newArr);
-    // console.log(newArr);
-    // const result = await retryOperation(
-    //   () => update({ ...providerData, shopgallery: imageArray?.length === 1 ? [] : [...imageArray] }),
-    //   MAX_RETRIES,
-    //   RETRY_DELAY,
-    // );
-    // return result;
+    handleUpdate({ ...providerData, shopgallery: [...newArr] });
     console.log('Clicked');
-    // Handle the result as needed
   };
 
   const uploadImage = async () => {
@@ -89,6 +91,7 @@ const GalleryContent = ({ id }) => {
       const imageUrl = uploadedImageData.secure_url;
       setPreview(null);
       setNewImage(null);
+      setImageArray((prev) => [...prev, imageUrl]);
       console.log(imageUrl);
       await handleSave(imageUrl);
       // useUpdateProviderByIdMutation.invalidateTags(['PROVIDER', id]);
@@ -101,8 +104,9 @@ const GalleryContent = ({ id }) => {
     setNewImage(null);
   };
   React.useEffect(() => {
-    setImageArray(data?.shopgallery);
-    // console.log(data?.data?.shopgallery?.length);
+    if (!isLoading) {
+      setImageArray(data?.shopgallery);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 

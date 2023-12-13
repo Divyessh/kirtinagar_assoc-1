@@ -8,10 +8,8 @@ import { FaEnvelope, FaRegEdit } from 'react-icons/fa';
 import { useSession } from 'next-auth/react';
 import { GiEarthAfricaEurope } from 'react-icons/gi';
 import { AiFillFile, AiFillClockCircle } from 'react-icons/ai';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Heading from './heading';
-// import { useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
-// import retryOperation from '../../../lib/retryOperation';
 import SkeletonCard from '../../blogs/skeletonCard';
 
 const Contact = ({ id }) => {
@@ -31,17 +29,29 @@ const Contact = ({ id }) => {
   const { data: session } = useSession();
   // eslint-disable-next-line no-underscore-dangle
   const isUser = session?.user?._id;
-  // const [update] = useUpdateProviderByIdMutation();
-
-  // eslint-disable-next-line consistent-return
-  // const MAX_RETRIES = 10;
-  // const RETRY_DELAY = 300; // 300 milliseconds
+  const queryClient = useQueryClient();
+  const { mutate: handleUpdate } = useMutation({
+    mutationFn: async (update) => {
+      try {
+        const response = await axios.put(`/api/provider/${id}`, update);
+        return response.data;
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Something went wrong!', error);
+        throw new Error('Failed to add new student');
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['Provider', id] });
+    },
+    onError: (error) => {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    },
+  });
 
   const handleSave = async () => {
-    // const result = await retryOperation(() => update({ ...data, ...contactInfo }), MAX_RETRIES, RETRY_DELAY);
-    // return result;
-    // Handle the result as needed
-    console.log('Clicked');
+    handleUpdate({ ...data, ...contactInfo });
   };
   return isLoading || data?.length === 0 ? (
     <SkeletonCard />
