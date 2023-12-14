@@ -30,7 +30,7 @@ const ServicesCard = () => {
         {isLoading ? (
           <SkeletonCard />
         ) : (
-          providerData?.map((item) => (
+          providerData?.slice(0, 4).map((item) => (
             <div key={item?._id} className="bg-white px-8 col-span-4 md:col-span-1 flex items-center justify-center">
               <Link href={`/services/${item?._id}/about`}>
                 <Card item={item} />

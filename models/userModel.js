@@ -7,6 +7,7 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   username: {
+    // done
     type: String,
     unique: true,
     required: [true, 'Please provide name'],
@@ -14,6 +15,7 @@ const userSchema = new Schema({
     maxLength: 100,
   },
   email: {
+    // done
     type: String,
     unique: true,
     required: [true, 'Please provide email'],
@@ -23,6 +25,7 @@ const userSchema = new Schema({
     },
   },
   password: {
+    // done
     type: String,
     required: [true, 'Please provide password'],
     minLength: 8,
@@ -34,18 +37,22 @@ const userSchema = new Schema({
     type: String,
   },
   role: {
+    // done
     type: String,
     enum: ['customer', 'provider'],
     default: 'customer',
   },
   nameOftheFirm: {
+    // done
     type: String,
     minLength: 3,
   },
   ownerName: {
+    // done
     type: String,
   },
   address: {
+    // done
     type: String,
   },
   contactNumber: {
@@ -58,6 +65,7 @@ const userSchema = new Schema({
     },
   ],
   landlineNumber: {
+    // done
     type: Number,
   },
   services: [
@@ -66,15 +74,19 @@ const userSchema = new Schema({
     },
   ],
   websiteLink: {
+    // done
     type: String,
   },
   additionalLinks: {
+    // done
     type: String,
   },
   location: {
+    // done
     type: String,
   },
   isVerified: {
+    // done
     type: Boolean,
     default: false,
   },
