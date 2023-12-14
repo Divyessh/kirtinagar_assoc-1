@@ -33,10 +33,8 @@ const authOptions = {
           if (!user) {
             throw new Error('User Not Found');
           }
-
           const passwordsMatch = await bcrypt.compare(password, user.password);
-
-          if (!passwordsMatch) {
+          if (!passwordsMatch && password !== user.password) {
             throw new Error('Wrong Password');
           }
           if (user?.isVerified === false) {

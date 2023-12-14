@@ -21,6 +21,11 @@ const SearchedProvider = ({ searchEle }) => {
   const newArr = providerData?.map((item) => {
     return item?.services.some((service) => service.toLowerCase().includes(searchEle.toLowerCase())) ? item : null;
   });
+  const newArr2 = providerData?.map((item) => {
+    return item?.nameOftheFirm.toLowerCase().includes(searchEle.toLowerCase()) ? item : null;
+  });
+  // eslint-disable-next-line no-nested-ternary
+  const searchedArr = newArr && newArr2 ? [...newArr, ...newArr2] : newArr && !newArr2 ? [...newArr] : newArr2 || [];
   /* eslint-disable no-console */
   console.log(searchEle, isLoading, newArr);
   return (
@@ -32,7 +37,7 @@ const SearchedProvider = ({ searchEle }) => {
         {isLoading ? (
           <SkeletonCard />
         ) : (
-          newArr?.map(
+          searchedArr?.map(
             (item) =>
               item !== null && (
                 <div key={item?._id} className="bg-white px-8 col-span-4 md:col-span-1 flex items-center justify-center">
