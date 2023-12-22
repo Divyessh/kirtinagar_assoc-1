@@ -1,6 +1,7 @@
 import React from 'react';
 import './globals.css';
 import { Poppins } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 import NextSessionProvider from '../components/Provider';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en" data-theme="mytheme">
       <body className={poppins.className}>
         <NextSessionProvider>
+          <NextTopLoader />
           <Navbar />
           {children}
           <Footer />
