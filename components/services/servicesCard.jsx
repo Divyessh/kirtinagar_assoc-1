@@ -24,13 +24,19 @@ const ServicesCard = () => {
   });
   const providerData = data?.data?.data;
 
+  function getRandomElements() {
+    const shuffledArray = providerData.slice().sort(() => Math.random() - 0.5);
+    return shuffledArray.slice(0, 4);
+  }
+  const randomEle = getRandomElements();
+
   return (
     <div className="bg-white text-black flex-col w-full justify-center items-center text-center pt-[50px]">
       <div className="grid grid-cols-4 gap-[20px] pt-4 pb-12">
         {isLoading ? (
           <SkeletonCard />
         ) : (
-          providerData?.slice(0, 4).map((item) => (
+          randomEle?.map((item) => (
             <div key={item?._id} className="bg-white px-8 col-span-4 md:col-span-1 flex items-center justify-center">
               <Link href={`/services/${item?._id}/about`}>
                 <Card item={item} />
