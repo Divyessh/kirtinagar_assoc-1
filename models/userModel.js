@@ -96,6 +96,10 @@ const userSchema = new Schema({
   shopTimingEnd: {
     type: Date,
   },
+  isFeatured: {
+    type: Boolean,
+    default: false,
+  },
   shopgallery: [{ type: String }],
   forgotPasswordToken: { type: String },
   forgotPasswordTokenExpiry: { type: Date },

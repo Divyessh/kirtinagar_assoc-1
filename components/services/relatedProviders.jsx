@@ -18,7 +18,7 @@ const RelatedProviders = () => {
     },
   });
   const providerData = data?.data?.data;
-  console.log(providerData);
+  // console.log(providerData);
   const slices = providerData?.length >= 3 ? 3 : providerData?.length;
   return (
     <div>
