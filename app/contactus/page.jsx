@@ -38,9 +38,11 @@ const ContactSection = () => {
               </svg>
             </span>
 
-            <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">Chat to sales</h2>
-            <p className="mt-2 text-sm text-white">Speak to our friendly team.</p>
-            <p className="mt-2 text-sm text-white">hello@merakiui.com</p>
+            <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">Mail us</h2>
+            <p className="mt-2 text-sm text-white">Merchant Legal entity name: NEW TIMBER MARKET DEALERS ASSOCIATION</p>
+            <a className="mt-2 text-sm text-white" href="mailto:kirtinagarwood@gmail.com">
+              kirtinagarwood@gmail.com
+            </a>
           </div>
 
           <div className="p-4 rounded-lg bg-secondary md:p-6 ">
@@ -64,7 +66,7 @@ const ContactSection = () => {
 
             <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">Visit us</h2>
             <p className="mt-2 text-sm text-white">Visit our office HQ..</p>
-            <p className="mt-2 text-sm text-white">100 Smith Street Collingwood VIC 3066 AU</p>
+            <p className="mt-2 text-sm text-white">Kirti Nagar West Delhi DELHI 110015</p>
           </div>
 
           <div className="p-4 rounded-lg bg-secondary md:p-6 ">
@@ -87,7 +89,7 @@ const ContactSection = () => {
 
             <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">Call us</h2>
             <p className="mt-2 text-sm ">Mon-Fri from 8am to 5pm.</p>
-            <p className="mt-2 text-sm text-white ">+1 (555) 000-0000</p>
+            <p className="mt-2 text-sm text-white ">9810829271</p>
           </div>
         </div>
       </div>
