@@ -1,15 +1,8 @@
 import React from 'react';
 
-const TermsAndConditionsModal = ({ isOpen, onClose }) => {
+const TermsAndConditionsModal = () => {
   return (
-    <div
-      className={`modal-box  ${
-        isOpen ? 'absolute' : 'hidden pointer-events-none'
-      } bg-primary transition-opacity duration-300 ease-in-out z-100 right-[26rem] top-[20rem] max-w-[60rem] max-h-[40rem]`}
-    >
-      <button type="button" className="close absolute top-2 right-2 text-black cursor-pointer text-4xl" onClick={onClose}>
-        &times;
-      </button>
+    <div className={`flex-cols justify-center items-center w-full text-center px-8 p-4 `}>
       <h2 className="text-2xl font-bold mb-4 text-black">Terms and Conditions</h2>
       <p className="mb-4 text-gray-800">{` Last updated on Jan 10th, 2024. The Website Owner, including subsidiaries and affiliates (“Website” or “Website Owner” or “we” or
         “us” or “our”), provides information on the website subject to the terms and conditions set out in these website terms and
@@ -37,13 +30,6 @@ const TermsAndConditionsModal = ({ isOpen, onClose }) => {
         of authorization for any Transaction, on Account of the Cardholder having exceeded the preset limit mutually agreed by us with our
         acquiring bank from time to time.
       `}</p>
-      <button
-        type="button"
-        className="bg-secondary hover:bg-primary hover:text-black text-white font-bold py-2 px-6 rounded w-full "
-        onClick={onClose}
-      >
-        I Agree
-      </button>
     </div>
   );
 };

@@ -1,12 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import Link from 'next/link';
 import galleryBanner from '../../assets/png/services.png';
 import PricingCard from '../../components/pricing/pricingCard';
 import PagesHeader from '../../components/galleryComponents/pagesheader';
 import generateUniqueKey from '../../constants/generateUid';
-import TermsAndConditionsModal from '../../components/additional/termsandcondition';
-import CancellationModal from '../../components/additional/cancellation';
 
 const PricingComponent = () => {
   const data = {
@@ -45,34 +44,23 @@ const PricingComponent = () => {
     },
   };
 
-  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
-  const [isCancellationModalOpen, setIsCancellationModalOpen] = useState(false);
-
-  // Define handleAcceptTerms function
-  const handleAcceptTerms = () => {
-    // Add logic to handle the acceptance of terms (if needed)
-    setIsTermsModalOpen(false);
-  };
-
   return (
-    <main className="bg-primary z-10">
+    <main className="bg-primary z-0">
       {/* Render the header component */}
       <PagesHeader title="Membership" bannerImage={galleryBanner} />
-      <div className="flex flex-col sm:flex-col lg:flex-row xl:flex-row md:flex-row justify-evenly space-y-4 md:space-y-0 py-8 z-0">
+      <div className="flex flex-col sm:flex-col lg:flex-row xl:flex-row md:flex-row justify-evenly space-y-4 md:space-y-0 py-8 ">
         {Object.keys(data).map((plan) => (
           <PricingCard key={generateUniqueKey(plan)} title={data[plan].title} price={data[plan].price} features={data[plan].features} />
         ))}
       </div>
       <span className="text-md flex w-full justify-center items-center text-black ">
-        <button type="button" onClick={() => setIsTermsModalOpen(true)} className="btn btn-primary hover:bg-secondary">
-          Terms
+        <button type="button" className="btn btn-primary hover:bg-secondary">
+          <Link href="/terms">Terms</Link>
         </button>
-        <button type="button" onClick={() => setIsCancellationModalOpen(true)} className="btn btn-primary hover:bg-secondary">
-          Our Cancellation Policy
+        <button type="button" className="btn btn-primary hover:bg-secondary">
+          <Link href="/cancellation">Our Cancellation Policy</Link>
         </button>
       </span>
-      <TermsAndConditionsModal isOpen={isTermsModalOpen} onClose={() => setIsTermsModalOpen(false)} onAccept={handleAcceptTerms} />
-      <CancellationModal isOpen={isCancellationModalOpen} onClose={() => setIsCancellationModalOpen(false)} onAccept={handleAcceptTerms} />
     </main>
   );
 };

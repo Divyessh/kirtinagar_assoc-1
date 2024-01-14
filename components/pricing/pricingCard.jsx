@@ -7,7 +7,7 @@ import generateUniqueKey from '../../constants/generateUid';
 const pricingCard = ({ title, price, features }) => {
   return (
     <div className="  flex flex-wrap items-center justify-center">
-      <div className="sm:py-12 md:py-6 lg:py-6 xl:py-6 px-[40px]  md:max-w-[400px] md:h-[435px] sm:w-full bg-white rounded-md border-secondary  border-2  hover:text-white text-black hover:bg-secondary transform sm:scale-1  lg:scale-105 xl:scale-105 z-40  shadow-none sm:shadow-none md:shadow-xl lg:shadow-xl xl:shadow-xl">
+      <div className="sm:py-12 md:py-6 lg:py-6 xl:py-6 px-[40px]  md:max-w-[400px] md:h-[435px] sm:w-full bg-white rounded-md border-secondary  border-2  hover:text-white text-black hover:bg-secondary transform sm:scale-1  lg:scale-105 xl:scale-105 z-40  shadow-none sm:shadow-none md:shadow-xl lg:shadow-xl xl:shadow-xl z-0">
         <h1 className="font-semibold text-xl pt-2">{title}</h1>
         <div className="py-4 px-1">
           <h1 className="text-4xl font-black">

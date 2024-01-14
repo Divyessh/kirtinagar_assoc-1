@@ -1,16 +1,9 @@
 import React from 'react';
 
-const TermsAndConditionsModal = ({ isOpen, onClose }) => {
+const TermsAndConditionsModal = () => {
   return (
-    <div
-      className={`modal-box  ${
-        isOpen ? 'absolute' : 'hidden pointer-events-none'
-      } bg-primary transition-opacity duration-300 ease-in-out z-100 right-[26rem] top-[20rem] max-w-[60rem] max-h-[40rem]`}
-    >
-      <button type="button" className="close absolute top-2 right-2 text-black cursor-pointer text-4xl" onClick={onClose}>
-        &times;
-      </button>
-      <div className="text-black">
+    <div className={`flex-cols justify-center items-center w-full text-start px-8 p-4 `}>
+      <div className="text-black px-8 ">
         <h1 className="text-2xl font-bold mb-2">Cancellation & Refund Policy</h1>
         <p className="mb-2">
           <em>Last updated on Jan 13th, 2024</em>
@@ -21,7 +14,7 @@ const TermsAndConditionsModal = ({ isOpen, onClose }) => {
           liberal cancellation policy. Under this policy:
         </p>
 
-        <ul className="list-disc pl-5 mb-4">
+        <ul className="list-none pl-5 mb-4">
           <li>
             Cancellations will be considered only if the request is made within 24hr of placing the order. However, the cancellation request
             may not be entertained if the orders have been communicated to the vendors/merchants and they have initiated the process of
@@ -49,13 +42,13 @@ const TermsAndConditionsModal = ({ isOpen, onClose }) => {
           </li>
         </ul>
 
-        <button
+        {/* <button
           type="button"
           className="bg-secondary hover:bg-primary hover:text-black text-white font-bold py-2 px-6 rounded w-full "
           onClick={onClose}
         >
           I Agree
-        </button>
+        </button> */}
       </div>
     </div>
   );
