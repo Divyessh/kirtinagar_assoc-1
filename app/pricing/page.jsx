@@ -5,7 +5,7 @@ import galleryBanner from '../../assets/png/services.png';
 import PricingCard from '../../components/pricing/pricingCard';
 import PagesHeader from '../../components/galleryComponents/pagesheader';
 import generateUniqueKey from '../../constants/generateUid';
-import TermsAndConditionsModal from '../../components/additional/termsandcontion';
+import TermsAndConditionsModal from '../../components/additional/termsandcondition';
 import CancellationModal from '../../components/additional/cancellation';
 
 const PricingComponent = () => {

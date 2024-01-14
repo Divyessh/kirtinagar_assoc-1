@@ -11,8 +11,7 @@ const TermsAndConditionsModal = ({ isOpen, onClose }) => {
         &times;
       </button>
       <h2 className="text-2xl font-bold mb-4 text-black">Terms and Conditions</h2>
-      <p className="mb-4 text-gray-800">
-        Last updated on Jan 10th, 2024. The Website Owner, including subsidiaries and affiliates (“Website” or “Website Owner” or “we” or
+      <p className="mb-4 text-gray-800">{` Last updated on Jan 10th, 2024. The Website Owner, including subsidiaries and affiliates (“Website” or “Website Owner” or “we” or
         “us” or “our”), provides information on the website subject to the terms and conditions set out in these website terms and
         conditions, the privacy policy and any other relevant terms and conditions, policies and notices which may be applicable to a
         specific section or module of the website. Welcome to our website. If you continue to browse and use this website you are agreeing
@@ -37,7 +36,7 @@ const TermsAndConditionsModal = ({ isOpen, onClose }) => {
         a merchant shall be under no liability whatsoever in respect of any loss or damage arising directly or indirectly out of the decline
         of authorization for any Transaction, on Account of the Cardholder having exceeded the preset limit mutually agreed by us with our
         acquiring bank from time to time.
-      </p>
+      `}</p>
       <button
         type="button"
         className="bg-secondary hover:bg-primary hover:text-black text-white font-bold py-2 px-6 rounded w-full "
