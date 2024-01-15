@@ -50,7 +50,7 @@ const PricingComponent = () => {
       <PagesHeader title="Membership" bannerImage={galleryBanner} />
       <div className="flex flex-col sm:flex-col lg:flex-row xl:flex-row md:flex-row justify-evenly space-y-4 md:space-y-0 py-8 ">
         {Object.keys(data).map((plan) => (
-          <PricingCard key={generateUniqueKey(plan)} title={data[plan].title} price={data[plan].price} features={data[plan].features} />
+          <PricingCard key={generateUniqueKey(plan)} title={data[plan].title} price={data[plan].price} features={data[plan].features}/>
         ))}
       </div>
       <span className="text-md flex w-full justify-center items-center text-black ">

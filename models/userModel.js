@@ -81,6 +81,7 @@ const userSchema = new Schema({
     // done
     type: String,
   },
+  
   location: {
     // done
     type: String,

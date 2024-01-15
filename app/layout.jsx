@@ -5,6 +5,7 @@ import NextTopLoader from 'nextjs-toploader';
 import NextSessionProvider from '../components/Provider';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import Script from 'next/script';
 
 const poppins = Poppins({
   weight: '400',
@@ -19,6 +20,7 @@ export const metadata = {
 // eslint-disable-next-line react/prop-types
 export default function RootLayout({ children }) {
   return (
+    <>
     <html lang="en" data-theme="mytheme">
       <body className={poppins.className}>
         <NextSessionProvider>
@@ -29,5 +31,8 @@ export default function RootLayout({ children }) {
         </NextSessionProvider>
       </body>
     </html>
+    <Script src="https://checkout.razorpay.com/v1/checkout.js"
+    />
+    </>
   );
 }
