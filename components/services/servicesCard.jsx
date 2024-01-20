@@ -11,6 +11,7 @@ import Card from '../featuredProviders/card';
 import SkeletonCard from '../blogs/skeletonCard';
 import SearchedProvider from './SearchedProvider';
 import axios from 'axios';
+import { useMemo } from 'react';
 
 const ServicesCard = () => {
   const queryParams = useSearchParams();
@@ -24,11 +25,16 @@ const ServicesCard = () => {
   });
   const providerData = data?.data?.data;
 
-  function getRandomElements() {
-    const shuffledArray = providerData.slice().sort(() => Math.random() - 0.5);
-    return shuffledArray.slice(0, 4);
-  }
-  const randomEle = getRandomElements();
+  const randomEle = useMemo(() => {
+    function getRandomElements() {
+      if (!providerData) return [];
+      const shuffledArray = providerData.sort(() => Math.random() - 0.5);
+      if (shuffledArray.length < 4) return shuffledArray;
+      return shuffledArray.slice(0, 4);
+    }
+
+    return getRandomElements();
+  }, [providerData]);
 
   return (
     <div className="bg-white text-black flex-col w-full justify-center items-center text-center pt-[50px]">
