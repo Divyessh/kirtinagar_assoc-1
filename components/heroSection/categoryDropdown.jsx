@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation'; // Correct import statement
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
-import { TbSofaOff } from "react-icons/tb";
+import { TbSofaOff } from 'react-icons/tb';
 
 const CategoryDropdown = () => {
   const router = useRouter();
@@ -27,6 +27,7 @@ const CategoryDropdown = () => {
       const data = await res.json();
       setProviders(data?.data);
     } catch (error) {
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -41,7 +42,7 @@ const CategoryDropdown = () => {
       const filteredResults = providers.filter((provider) => provider?.nameOftheFirm.toLowerCase().includes(keywordValue.toLowerCase()));
       setFilteredProviders(filteredResults);
     } else {
-      setFilteredProviders(["No Result Found"]); // Reset the filtered results when the keyword is empty
+      setFilteredProviders(['No Result Found']); // Reset the filtered results when the keyword is empty
     }
   }, [keywordValue, providers]);
 
@@ -86,8 +87,9 @@ const CategoryDropdown = () => {
               />
             )}
             {filteredProviders?.length > 0 && (
-              <div className="absolute left-0 top-full w-full bg-white rounded-[10px] shadow-md text-black mt-1 z-100 overflow-y-scroll max-h-[20vh] scrollbar"
-              style={{"zIndex":"5"}}
+              <div
+                className="absolute left-0 top-full w-full bg-white rounded-[10px] shadow-md text-black mt-1 z-100 overflow-y-scroll max-h-[20vh] scrollbar"
+                style={{ zIndex: '5' }}
               >
                 {filteredProviders.map((provider) => (
                   <button
@@ -102,9 +104,7 @@ const CategoryDropdown = () => {
                 ))}
               </div>
             )}
-            {!loading && filteredProviders.length === 0 && keywordValue.length > 0 && (
-              <TbSofaOff className='text-sm text-secondary' />
-            )}
+            {!loading && filteredProviders.length === 0 && keywordValue.length > 0 && <TbSofaOff className="text-sm text-secondary" />}
           </div>
         </div>
 
