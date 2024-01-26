@@ -27,7 +27,7 @@ const CategoryDropdown = () => {
       const data = await res.json();
       setProviders(data?.data);
     } catch (error) {
-      console.log(error);
+      alert(error);
     } finally {
       setLoading(false);
     }
@@ -59,6 +59,13 @@ const CategoryDropdown = () => {
     setFilteredProviders([]);
     reset();
   };
+  const onKeyDownHandler = (e) => {
+    // Handle Enter key press
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Prevent form submission
+      onSubmit({ keyword: keywordValue });
+    }
+  };
 
   return (
     <form className="w-full z-10" onSubmit={handleSubmit(onSubmit)}>
@@ -72,6 +79,7 @@ const CategoryDropdown = () => {
             placeholder="Search for services"
             type="text"
             {...register('keyword', { required: true, maxLength: 40 })}
+            onKeyDown={onKeyDownHandler}
           />
           <div>
             {loading && (
@@ -86,7 +94,7 @@ const CategoryDropdown = () => {
                 visible
               />
             )}
-            {filteredProviders?.length > 0 && (
+            {filteredProviders?.length >= 0 && (
               <div
                 className="absolute left-0 top-full w-full bg-white rounded-[10px] shadow-md text-black mt-1 z-100 overflow-y-scroll max-h-[20vh] scrollbar"
                 style={{ zIndex: '5' }}
@@ -98,6 +106,7 @@ const CategoryDropdown = () => {
                     key={provider.id}
                     className="py-[8px] text-[14px] px-[18px] w-full text-left cursor-pointer hover:bg-[#413833] hover:text-white"
                     onClick={onClickHandler}
+                    onKeyDown={onKeyDownHandler}
                   >
                     {provider.nameOftheFirm}
                   </button>
@@ -107,10 +116,9 @@ const CategoryDropdown = () => {
             {!loading && filteredProviders.length === 0 && keywordValue.length > 0 && <TbSofaOff className="text-sm text-secondary" />}
           </div>
         </div>
-
         <button
           type="submit"
-          className="btn col-span-2 md:col-span-1 text-white p-[8px] md:p-[11px] bg-[#413833] rounded-[10px] flex items-center justify-center gap-1 2xl:gap-3 w-fit md:w-full"
+          className="btn col-span-2 md:col-span-1 text-white p-[8px] md:p-[11px] bg-[#413833] rounded-[10px] flex items-center justify-center gap-1 2xl:gap-3 w-fit md:w-full hover:bg-secondary"
         >
           <BiSearchAlt className="text-xl" /> Submit Now
         </button>

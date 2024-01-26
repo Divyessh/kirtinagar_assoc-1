@@ -66,8 +66,8 @@ const CarouselComponent = () => {
 const MyCarousel = () => {
   return (
     <>
-      <span className="flex justify-center items-center">
-        <h1 className="md:text-4xl text-xl text-black text-center border-b-2 border-b-black mb-3 mt-6">Latest From Blogs</h1>
+      <span className="flex justify-center items-center md:mt-[200px] mt-4">
+        <h1 className="md:text-4xl text-xl text-black text-center border-b-2 border-b-black  ">Latest From Blogs</h1>
       </span>
       <CarouselComponent />
     </>
