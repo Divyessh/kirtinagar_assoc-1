@@ -5,7 +5,7 @@ import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import kirti from '../assets/svg/kirti.svg';
 import NavBarUser from './navBarUser';
 
-const Navbar = async () => {
+const Navbar = () => {
   const data = [
     {
       id: 1,

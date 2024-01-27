@@ -94,7 +94,7 @@ const CategoryDropdown = () => {
                 visible
               />
             )}
-            {filteredProviders?.length >= 0 && (
+            {filteredProviders?.length > 0 && (
               <div
                 className="absolute left-0 top-full w-full bg-white rounded-[10px] shadow-md text-black mt-1 z-100 overflow-y-scroll max-h-[20vh] scrollbar"
                 style={{ zIndex: '5' }}
