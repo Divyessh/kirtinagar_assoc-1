@@ -14,7 +14,7 @@ const AppLayout = ({ children }) => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 3500);
+    }, 3000);
   }, []);
   return (
     <NextSessionProvider>
