@@ -25,11 +25,11 @@ const Navbar = () => {
       name: 'About Us',
       link: '/aboutus',
     },
-    {
-      id: 4,
-      name: 'Gallery',
-      link: '/gallery',
-    },
+    // {
+    //   id: 4,
+    //   name: 'Gallery',
+    //   link: '/gallery',
+    // },
     {
       id: 5,
       name: 'Members Section',
