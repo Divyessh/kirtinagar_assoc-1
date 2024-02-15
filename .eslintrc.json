@@ -27,6 +27,7 @@
                 "endOfLine": "auto",
                 "printWidth": 140
             }
-        ]
+        ],
+        "camelcase": "off"
     }
 }
