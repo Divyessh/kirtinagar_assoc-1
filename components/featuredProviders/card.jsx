@@ -10,13 +10,16 @@ import ImageCarousel from '../services/about/imageCarousel';
 const Card = ({ item }) => {
   return (
     <div
-      className="card  w-[330px] md:w-[300px]  bg-[#E5DFCF] shadow-2xl rounded-xl flex md:justify-center md:items-center"
+      className="card  w-[330px] md:w-[300px]  bg-[#E5DFCF] shadow-2xl rounded-xl flex md:justify-center md:items-center hover:shadow-primary transition-all duration-300 ease-in-out relative"
       style={{ border: 'none', padding: 0 }}
     >
       {/* <Image src={item?.shopgallery[0] || placeholder} alt="image" width={300} height={300} className="w-[350px] h-[350px]" /> */}
       {/* eslint-disable-next-line no-underscore-dangle */}
       <ImageCarousel id={item?._id} fixheight />
-      <Image src={Featured} alt="image" className="absolute md:top-6 left-0 top-[80px] w-[80px] md:w-1/4 md:h-1/4" />
+      {item?.isFeatured === true ? (
+        <Image src={Featured} alt="image" className="absolute md:top-6 left-0 top-[80px] w-[80px] md:w-1/4 md:h-1/4" />
+      ) : null}
+
       <span className="absolute top-0 flex justify-between border-b-2 border-[#D9D9D9] w-full md:px-16 px-6  items-center">
         <div className="hover:cursor-pointer tooltip " data-tip="Services">
           <Image src={services} alt="image" className="pt-1 " />

@@ -22,14 +22,12 @@ const ServicesCard = () => {
       return res;
     },
   });
-  const providerData = data?.data?.data;
-
+  const providerData = data?.data?.data?.filter((item) => item?.isFeatured === true);
   function getRandomElements() {
-    const shuffledArray = providerData.slice().sort(() => Math.random() - 0.5);
-    return shuffledArray.slice(0, 4);
+    const shuffledArray = providerData?.slice().sort(() => Math.random() - 0.5);
+    return shuffledArray?.slice(0, 4);
   }
   const randomEle = getRandomElements();
-
   return (
     <div className="bg-white text-black flex-col w-full justify-center items-center text-center pt-[50px]">
       <div className="grid grid-cols-4 gap-[20px] pt-4 pb-12">
