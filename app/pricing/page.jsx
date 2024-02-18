@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
+import Link from 'next/link';
 import galleryBanner from '../../assets/png/services.png';
-import PricingCard from '../../components/pricing/pricingCard'; // Make sure to import the correct component
+import PricingCard from '../../components/pricing/pricingCard';
 import PagesHeader from '../../components/galleryComponents/pagesheader';
 import generateUniqueKey from '../../constants/generateUid';
 
@@ -42,14 +45,22 @@ const PricingComponent = () => {
   };
 
   return (
-    <main className="bg-primary">
+    <main className="bg-primary z-0">
       {/* Render the header component */}
       <PagesHeader title="Membership" bannerImage={galleryBanner} />
-      <div className="flex flex-col sm:flex-col lg:flex-row xl:flex-row md:flex-row justify-evenly space-y-4 md:space-y-0 py-8">
+      <div className="flex flex-col sm:flex-col lg:flex-row xl:flex-row md:flex-row justify-evenly space-y-4 md:space-y-0 py-8 ">
         {Object.keys(data).map((plan) => (
           <PricingCard key={generateUniqueKey(plan)} title={data[plan].title} price={data[plan].price} features={data[plan].features} />
         ))}
       </div>
+      <span className="text-md flex w-full justify-center items-center text-black ">
+        <button type="button" className="btn btn-primary hover:bg-secondary">
+          <Link href="/terms">Terms</Link>
+        </button>
+        <button type="button" className="btn btn-primary hover:bg-secondary">
+          <Link href="/cancellation">Our Cancellation Policy</Link>
+        </button>
+      </span>
     </main>
   );
 };

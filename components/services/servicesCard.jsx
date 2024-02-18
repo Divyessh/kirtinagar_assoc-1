@@ -11,6 +11,7 @@ import Card from '../featuredProviders/card';
 import SkeletonCard from '../blogs/skeletonCard';
 import SearchedProvider from './SearchedProvider';
 import axios from 'axios';
+import { useMemo } from 'react';
 
 const ServicesCard = () => {
   const queryParams = useSearchParams();
@@ -28,6 +29,7 @@ const ServicesCard = () => {
     return shuffledArray?.slice(0, 4);
   }
   const randomEle = getRandomElements();
+
   return (
     <div className="bg-white text-black flex-col w-full justify-center items-center text-center pt-[50px]">
       <div className="grid grid-cols-4 gap-[20px] pt-4 pb-12">

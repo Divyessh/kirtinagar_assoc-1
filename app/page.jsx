@@ -4,7 +4,7 @@ import BlogsSection from '../components/blogs/blogsSection';
 
 export default function Home() {
   return (
-    <main className="bg-primary h-full">
+    <main className="bg-primary h-full ">
       <HeroSection />
       <BlogsSection />
     </main>

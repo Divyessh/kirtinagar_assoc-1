@@ -12,19 +12,22 @@ const Footer = () => {
     {
       id: 1,
       title: 'Members Directory',
-      subtitle: 'This helps us determine which Taskers are best for your job',
+      subtitle:
+        'This section provides information about individuals or entities in our directory. Find the right Taskers for your job based on their skills and expertise.',
       icon: members,
     },
     {
       id: 2,
       title: 'Members Welfare',
-      subtitle: 'This helps us determine which Taskers are best for your job',
+      subtitle:
+        'Explore the well-being of our members. Learn about programs and initiatives designed to support the welfare of our community.',
       icon: welfare,
     },
     {
       id: 3,
       title: 'Members Business',
-      subtitle: 'This helps us determine which Taskers are best for your job',
+      subtitle:
+        'Discover businesses associated with our members. Find the right services or products offered by businesses within our community.',
       icon: business,
     },
   ];
