@@ -23,18 +23,12 @@ const ServicesCard = () => {
       return res;
     },
   });
-  const providerData = data?.data?.data;
-
-  const randomEle = useMemo(() => {
-    function getRandomElements() {
-      if (!providerData) return [];
-      const shuffledArray = providerData.sort(() => Math.random() - 0.5);
-      if (shuffledArray.length < 4) return shuffledArray;
-      return shuffledArray.slice(0, 4);
-    }
-
-    return getRandomElements();
-  }, [providerData]);
+  const providerData = data?.data?.data?.filter((item) => item?.isFeatured === true);
+  function getRandomElements() {
+    const shuffledArray = providerData?.slice().sort(() => Math.random() - 0.5);
+    return shuffledArray?.slice(0, 4);
+  }
+  const randomEle = getRandomElements();
 
   return (
     <div className="bg-white text-black flex-col w-full justify-center items-center text-center pt-[50px]">
