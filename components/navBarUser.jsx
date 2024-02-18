@@ -7,7 +7,7 @@ import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { CiUser } from 'react-icons/ci';
 import { FiLogOut } from 'react-icons/fi';
-import SearchComponent from './searchcomp';
+// import SearchComponent from './searchcomp';
 import LoginModal from './auth/loginModal';
 
 const NavBarUser = ({ navItems }) => {
@@ -15,11 +15,11 @@ const NavBarUser = ({ navItems }) => {
   const [openDropDown, setOpenDropDown] = React.useState(false);
   return (
     <div className="navbar-end">
-      <SearchComponent />
+      {/* <SearchComponent /> */}
       {session ? (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <div onClick={() => setOpenDropDown((prev) => !prev)} className="relative">
-          <CiUser className="text-4xl text-center m-2 ml-2 md:block hidden text-black" />
+          <CiUser className="text-secondary text-4xl text-center m-2 ml-2 md:block hidden " />
           {openDropDown ? (
             <div
               className="bg-white absolute flex flex-col gap-3 justify-center top-full translate-y-3 -translate-x-1 w-[150px] -left-[100px] rounded-[4px] px-[8px] py-[4px]"

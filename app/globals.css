@@ -44,6 +44,14 @@ body::-webkit-scrollbar-thumb {
   flex: 0 0 100%;
   min-width: 0;
 }
+.hero-bg {
+  background-image: url("../assets/png/doodleBg.png");
+  background-size: fill;
+  background-repeat: repeat;
+  background-position: center;
+  height: 100%;
+
+}
 
 /* Flip card_flip  */
 

@@ -9,7 +9,6 @@ import Preloader from '../components/preloader';
 
 const AppLayout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
-  console.log(isLoading);
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {

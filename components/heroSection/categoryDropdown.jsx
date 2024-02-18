@@ -39,7 +39,7 @@ const CategoryDropdown = () => {
 
   useEffect(() => {
     if (keywordValue.length > 0) {
-      const filteredResults = providers.filter((provider) => provider?.nameOftheFirm.toLowerCase().includes(keywordValue.toLowerCase()));
+      const filteredResults = providers?.filter((provider) => provider?.nameOftheFirm.toLowerCase().includes(keywordValue.toLowerCase()));
       setFilteredProviders(filteredResults);
     } else {
       setFilteredProviders(['No Result Found']); // Reset the filtered results when the keyword is empty
@@ -87,7 +87,7 @@ const CategoryDropdown = () => {
                 height={50}
                 width={50}
                 radius={5}
-                color="#F9F8F2"
+                color="green"
                 ariaLabel="ball-triangle-loading"
                 wrapperStyle={{}}
                 wrapperClass=""
@@ -113,12 +113,12 @@ const CategoryDropdown = () => {
                 ))}
               </div>
             )}
-            {!loading && filteredProviders.length === 0 && keywordValue.length > 0 && <TbSofaOff className="text-sm text-secondary" />}
+            {!loading && filteredProviders?.length === 0 && keywordValue.length > 0 && <TbSofaOff className="text-sm text-secondary" />}
           </div>
         </div>
         <button
           type="submit"
-          className="btn col-span-2 md:col-span-1 text-white p-[8px] md:p-[11px] bg-[#413833] rounded-[10px] flex items-center justify-center gap-1 2xl:gap-3 w-fit md:w-full hover:bg-secondary"
+          className="btn col-span-2 md:col-span-1 text-white hover:border-none p-[8px] md:p-[11px] bg-[#413833] rounded-[10px] flex items-center justify-center gap-1 2xl:gap-3 w-fit md:w-full hover:bg-secondary"
         >
           <BiSearchAlt className="text-xl" /> Submit Now
         </button>
