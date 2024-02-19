@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -5,7 +7,7 @@ import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import kirti from '../assets/svg/kirti.svg';
 import NavBarUser from './navBarUser';
 
-const Navbar = async () => {
+const Navbar = () => {
   const data = [
     {
       id: 1,
@@ -23,11 +25,11 @@ const Navbar = async () => {
       name: 'About Us',
       link: '/aboutus',
     },
-    {
-      id: 4,
-      name: 'Gallery',
-      link: '/gallery',
-    },
+    // {
+    //   id: 4,
+    //   name: 'Gallery',
+    //   link: '/gallery',
+    // },
     {
       id: 5,
       name: 'Members Section',

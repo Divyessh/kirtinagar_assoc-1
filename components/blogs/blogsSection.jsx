@@ -54,7 +54,7 @@ const CarouselComponent = () => {
   return isLoading ? (
     <SkeletonCard />
   ) : (
-    <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14 md:pl-14 pl-2 py-6">
+    <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14 md:pl-[160px] pl-2 py-6 z-0">
       {blogData?.map((item) => (
         // eslint-disable-next-line no-underscore-dangle
         <Card key={item?._id} blogImage={item?.image} blogTitle={item?.title} blogAuthor={item?.postedBy} />
@@ -66,8 +66,8 @@ const CarouselComponent = () => {
 const MyCarousel = () => {
   return (
     <>
-      <span className="flex justify-center items-center">
-        <h1 className="md:text-4xl text-xl text-black text-center border-b-2 border-b-black mb-3 mt-6">Latest From Blogs</h1>
+      <span className="flex justify-center items-center md:mt-[56px] mt-4">
+        <h1 className="md:text-4xl text-xl text-black text-center border-b-2 border-b-black  ">Latest From Blogs</h1>
       </span>
       <CarouselComponent />
     </>

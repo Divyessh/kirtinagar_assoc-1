@@ -11,6 +11,7 @@ import Card from '../featuredProviders/card';
 import SkeletonCard from '../blogs/skeletonCard';
 import SearchedProvider from './SearchedProvider';
 import axios from 'axios';
+// import { useMemo } from 'react';
 
 const ServicesCard = () => {
   const queryParams = useSearchParams();
@@ -22,22 +23,21 @@ const ServicesCard = () => {
       return res;
     },
   });
-  const providerData = data?.data?.data;
-
+  const providerData = data?.data?.data?.filter((item) => item?.isFeatured === true);
   function getRandomElements() {
-    const shuffledArray = providerData.slice().sort(() => Math.random() - 0.5);
-    return shuffledArray.slice(0, 4);
+    const shuffledArray = providerData?.slice().sort(() => Math.random() - 0.5);
+    return shuffledArray?.slice(0, 4);
   }
   const randomEle = getRandomElements();
 
   return (
-    <div className="bg-white text-black flex-col w-full justify-center items-center text-center pt-[50px]">
+    <div className="bg-primary text-black flex-col w-full justify-center items-center text-center pt-[20px] hero-bg">
       <div className="grid grid-cols-4 gap-[20px] pt-4 pb-12">
         {isLoading ? (
           <SkeletonCard />
         ) : (
           randomEle?.map((item) => (
-            <div key={item?._id} className="bg-white px-8 col-span-4 md:col-span-1 flex items-center justify-center">
+            <div key={item?._id} className="bg-transparent px-8 md:px-0 col-span-4 md:col-span-1 flex items-center justify-center">
               <Link href={`/services/${item?._id}/about`}>
                 <Card item={item} />
               </Link>

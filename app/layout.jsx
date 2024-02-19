@@ -1,11 +1,8 @@
 import React from 'react';
 import './globals.css';
 import { Poppins } from 'next/font/google';
-import NextTopLoader from 'nextjs-toploader';
-import NextSessionProvider from '../components/Provider';
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
-import Script from 'next/script';
+import AppLayout from './app-layout';
+
 
 const poppins = Poppins({
   weight: '400',
@@ -23,12 +20,7 @@ export default function RootLayout({ children }) {
     <>
     <html lang="en" data-theme="mytheme">
       <body className={poppins.className}>
-        <NextSessionProvider>
-          <NextTopLoader />
-          <Navbar />
-          {children}
-          <Footer />
-        </NextSessionProvider>
+        <AppLayout>{children}</AppLayout>
       </body>
     </html>
     <Script src="https://checkout.razorpay.com/v1/checkout.js"
