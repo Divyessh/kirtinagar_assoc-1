@@ -43,7 +43,7 @@ const LoginForm = () => {
         <BiLogInCircle className="text-[#FBBC05] text-[60px]" />
         <h1 className="font-extrabold text-[21px]">Log In</h1>
       </div>
-      <div className="flex gap-[15px] flex-col">
+      <div className="flex gap-[15px] flex-col text-black">
         <div
           className="flex items-center gap-[10px] bg-[#f1f0f1] w-[205px] md:w-fit px-[6px] py-[11px] rounded-[7px]  border-[#8B8484]"
           style={{
@@ -54,7 +54,7 @@ const LoginForm = () => {
           <input
             type="text"
             placeholder="Username"
-            className="outline-none bg-[#f1f0f1] w-full md:w-[200px]"
+            className="outline-none bg-[#f1f0f1] w-full md:w-[200px] text-black"
             // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
             {...register('username', {
               required: true,

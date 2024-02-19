@@ -105,6 +105,7 @@ const userSchema = new Schema({
   forgotPasswordTokenExpiry: { type: Date },
   verifyToken: { type: String },
   verifyTokenExpiry: { type: Date },
+  verifiedPaymentId: { type: String },
 });
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);
