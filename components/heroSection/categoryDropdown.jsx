@@ -27,7 +27,7 @@ const CategoryDropdown = () => {
       const data = await res.json();
       setProviders(data?.data);
     } catch (error) {
-      alert(error);
+      Error(error);
     } finally {
       setLoading(false);
     }

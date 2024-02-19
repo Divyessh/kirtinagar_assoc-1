@@ -30,6 +30,7 @@ export async function POST(req) {
   // save payment to db
   try {
     await connectMongoDB();
+    // eslint-disable-next-line
     const data = await User.findOneAndUpdate(
       { _id: userId },
       {
@@ -44,9 +45,9 @@ export async function POST(req) {
         // { new: true },
       },
     );
-    console.log('payment added: ', data);
+    // console.log('payment added: ', data);
   } catch (error) {
-    console.log('Error: ', error);
+    // console.log('Error: ', error);
     throw new Error(error);
   } finally {
     await disconnectMongoDB();
