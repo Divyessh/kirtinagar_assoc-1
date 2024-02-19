@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import tick from '../../assets/svg/tick.svg';
 import generateUniqueKey from '../../constants/generateUid';
-import { makePayment } from '@/lib/razorpayorder/payment';
 
 const pricingCard = ({ title, price, features }) => {
   return (
@@ -28,9 +27,6 @@ const pricingCard = ({ title, price, features }) => {
           <button
             type="button"
             className="px-3 py-2 mt-6 mb-3 font-semibold duration-200 rounded-md bg-secondary hover:shadow-xl hover:bg-primary hover:text-black "
-            onClick={() => {
-              makePayment({ productId: 'example_ebook', price });
-            }}
           >
             Choose Plan
           </button>
