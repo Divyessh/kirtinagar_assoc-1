@@ -6,22 +6,11 @@ import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import useEmblaCarousel from 'embla-carousel-react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Autoplay from 'embla-carousel-autoplay';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import SkeletonCard from '../../blogs/skeletonCard';
 import placeholder from '../../../assets/avif/placeholder.webp';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
-const ImageCarousel = ({ id, fixheight }) => {
-  const { data, isLoading } = useQuery({
-    queryKey: ['Provider', id],
-    queryFn: async () => {
-      const res = await axios.get(`/api/provider/${id}`);
-      return res?.data?.data;
-    },
-  });
-  const [imageArray, setImageArray] = React.useState([placeholder, placeholder]);
-  // console.log(imageArray, data?.data?.shopgallery);
+const ImageCarousel = ({ imageArray, fixheight }) => {
+  const filteredImages = imageArray.filter((image) => image !== null);
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -39,18 +28,12 @@ const ImageCarousel = ({ id, fixheight }) => {
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
-  React.useEffect(() => {
-    setImageArray(data?.shopgallery);
-    // console.log(data?.data?.shopgallery?.length);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  if (isLoading) return <SkeletonCard />;
   return (
     <div className="col-span-7 md:rounded-[2px] embla">
       <div className="embla__viewport relative" ref={emblaRef}>
         <div className="relative embla__container">
-          {imageArray?.length > 0
-            ? imageArray.map((image, i) => (
+          {filteredImages?.length > 0
+            ? filteredImages.map((image, i) => (
                 <Image
                   // eslint-disable-next-line react/no-array-index-key
                   key={i}

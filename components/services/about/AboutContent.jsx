@@ -59,7 +59,7 @@ const AboutContent = ({ id }) => {
     <>
       <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
         <div className="grid grid-cols-8 gap-2 md:gap-6 h-[auto]">
-          <ImageCarousel id={id} />
+          <ImageCarousel imageArray={providerData?.shopgallery} />
           <div className="col-span-1 flex flex-col">
             <div
               className="h-[50%] flex items-center justify-center rounded-t-[3px] bg-[#F9F8F2] border-[#FF9800]"

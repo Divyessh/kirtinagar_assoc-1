@@ -29,7 +29,8 @@ const SearchedProvider = ({ searchEle }) => {
     });
   }
   // eslint-disable-next-line no-nested-ternary
-  const searchedArr = newArr && newArr2 ? [...newArr, ...newArr2] : newArr && !newArr2 ? [...newArr] : newArr2 || [];
+  let searchedArr = newArr && newArr2 ? [...new Set([...newArr, ...newArr2])] : newArr && !newArr2 ? [...newArr] : newArr2 || [];
+  searchedArr = searchedArr.filter((item) => item !== null);
   /* eslint-disable no-console */
   console.log(searchedArr);
   return isLoading ? (
