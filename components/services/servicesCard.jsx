@@ -33,7 +33,7 @@ const ServicesCard = () => {
   return (
     <div className="bg-primary text-black flex-col w-full justify-center items-center text-center pt-[20px] hero-bg">
       <div className="grid grid-cols-4 gap-[20px] pt-4 pb-12">
-        {isLoading ? (
+        {isLoading && !Array.isArray(randomEle) ? (
           <SkeletonCard />
         ) : (
           randomEle?.map((item) => (

@@ -8,14 +8,18 @@ import line from '../../assets/svg/line.svg';
 import ImageCarousel from '../services/about/imageCarousel';
 
 const Card = ({ item }) => {
+  console.log(item?.shopgallery, 'item');
   return (
     <div
       className="card  w-[330px] md:w-[300px]  bg-[#E5DFCF] shadow-2xl rounded-xl flex md:justify-center md:items-center hover:shadow-primary transition-all duration-300 ease-in-out relative"
       style={{ border: 'none', padding: 0 }}
     >
-      {/* <Image src={item?.shopgallery[0] || placeholder} alt="image" width={300} height={300} className="w-[350px] h-[350px]" /> */}
       {/* eslint-disable-next-line no-underscore-dangle */}
-      <ImageCarousel id={item?._id} fixheight />
+      {item?.shopgallery === null || item?.shopgallery?.length === 0 || item?.shopgallery[0] === null ? (
+        <ImageCarousel imageArray={[]} fixheight />
+      ) : (
+        <ImageCarousel imageArray={item?.shopgallery} fixheight />
+      )}
       {item?.isFeatured === true ? (
         <Image src={Featured} alt="image" className="absolute md:top-6 left-0 top-[80px] w-[80px] md:w-1/4 md:h-1/4" />
       ) : null}
