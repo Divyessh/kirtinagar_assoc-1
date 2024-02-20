@@ -8,9 +8,6 @@ import { useSession } from 'next-auth/react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import ImageCarousel from './imageCarousel';
-// import retryOperation from '../../../lib/retryOperation';
-// import aboutService from '../../../assets/png/aboutService.png';
-// import { useUpdateProviderByIdMutation } from '../../../redux/api/apiSlice';
 import SkeletonCard from '../../blogs/skeletonCard';
 
 const AboutContent = ({ id }) => {

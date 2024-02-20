@@ -43,7 +43,7 @@ const ImageCarousel = ({ id, fixheight }) => {
     setImageArray(data?.shopgallery);
     // console.log(data?.data?.shopgallery?.length);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  }, []);
   if (isLoading) return <SkeletonCard />;
   return (
     <div className="col-span-7 md:rounded-[2px] embla">
