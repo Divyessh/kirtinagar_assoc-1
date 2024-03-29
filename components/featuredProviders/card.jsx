@@ -8,7 +8,7 @@ import line from '../../assets/svg/line.svg';
 import ImageCarousel from '../services/about/imageCarousel';
 
 const Card = ({ item }) => {
-  console.log(item?.shopgallery, 'item');
+  // console.log(item?.shopgallery, 'item');
   return (
     <div
       className="card  w-[330px] md:w-[300px]  bg-[#E5DFCF] shadow-2xl rounded-xl flex md:justify-center md:items-center hover:shadow-primary transition-all duration-300 ease-in-out relative"

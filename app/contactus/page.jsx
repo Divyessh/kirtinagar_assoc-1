@@ -3,8 +3,8 @@ import React from 'react';
 
 const ContactSection = () => {
   return (
-    <main className="bg-primary">
-      <div className="container px-6 py-12 mx-auto">
+    <main className="bg-white">
+      <div className=" bg-white  md:px-[120px] px-4 py-12 mx-auto">
         <div className="text-center">
           <p className="font-medium text-secondary ">Contact us</p>
 
@@ -16,10 +16,10 @@ const ContactSection = () => {
           alt=""
           width={800}
           height={800}
-          className="object-cover w-full h-64 mt-10 rounded-lg lg:h-96"
+          className="object-cover w-full h-64 mt-10 rounded-lg lg:h-96 "
         />
 
-        <div className="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-3 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-3 sm:grid-cols-2 ">
           <div className="p-4 rounded-lg bg-secondary md:p-6 ">
             <span className="inline-block p-3 text-white rounded-lg bg-blue-100/80 dark:bg-gray-700">
               <svg

@@ -54,14 +54,14 @@ const AboutUsSection = () => {
       </main>
       <section className={`${styles.section3} w-full md:flex flex-cols md:block hidden justify-center items-center md:space-x-10 `}>
         <div className="card rounded-br-full rounded-tl-full bg-white w-[574px] h-[181px] ">
-          <text className="px-20 py-8">
+          <text className="px-20 py-8 text-black">
             Our Vision is that this market is developed as an ideal/popular market not only of India but of Asia for Timber and allied trade
             while serving the nation with all humility.
           </text>
         </div>
         <div />
         <div className="card rounded-tr-full rounded-bl-full bg-white w-[574px] h-[181px]">
-          <text className="px-16 py-8">
+          <text className="px-16 py-8 text-black">
             Our Vision is that this market is developed as an ideal/popular market not only of India but of Asia for Timber and allied trade
             while serving the nation with all humility.
           </text>

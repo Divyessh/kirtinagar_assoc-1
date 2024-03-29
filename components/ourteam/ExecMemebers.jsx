@@ -6,7 +6,7 @@ import styles from '../page.module.css';
 import MemberCard from './MemberCard';
 
 const ExecMembers = () => {
-  const [members, setMembers] = React.useState(5);
+  const [members] = React.useState();
   const membersData = [
     {
       'S.NO.': 1,
@@ -77,6 +77,7 @@ const ExecMembers = () => {
       'POST OF THE CANDIDATE': 'Addl. Vice-President',
       ADDRESS: 'B-2',
       'MOBILE NO.': 9350137699,
+      img: '/members/arvind.jpg',
     },
     {
       'S.NO.': 11,
@@ -126,6 +127,7 @@ const ExecMembers = () => {
       'POST OF THE CANDIDATE': 'Executive',
       ADDRESS: 'A-198 S.No.1',
       'MOBILE NO.': 9811129616,
+      img: '/members/pankaj.JPG',
     },
     {
       'S.NO.': 18,
@@ -189,30 +191,17 @@ const ExecMembers = () => {
     <div className={styles.bg_office}>
       <TeamHeader title="MANAGING COMMITTEE" />
       <div className="grid grid-cols-4 md:grid-cols-5 gap-[10px] md:gap-[60px] md:px-6 py-8">
-        {membersData.slice(0, members)?.map((member, index) => (
+        {membersData.slice(0, members)?.map((member) => (
           // eslint-disable-next-line react/no-array-index-key
-          <MemberCard key={index + 1} name={member['NAME OF THE CANDIDATE']} phone={member['MOBILE NO.']} address={member.ADDRESS} />
+          <MemberCard
+            key={member['S.NO.']}
+            name={member['NAME OF THE CANDIDATE']}
+            phone={member['MOBILE NO.']}
+            address={member.ADDRESS}
+            position={member['POST OF THE CANDIDATE']}
+            img={member.img}
+          />
         ))}
-      </div>
-      <div className="flex items-center justify-center pb-4">
-        <button
-          type="button"
-          onClick={() => setMembers(membersData.length - 1)}
-          className="bg-[#413833] text-white p-2 rounded-lg"
-          style={{ display: members === membersData.length - 1 ? 'none' : 'block' }}
-        >
-          {'View All >'}
-        </button>
-      </div>
-      <div className="flex items-center justify-center pb-4">
-        <button
-          type="button"
-          onClick={() => setMembers(5)}
-          className="bg-[#413833] text-white p-2 rounded-lg"
-          style={{ display: members !== membersData.length - 1 ? 'none' : 'block' }}
-        >
-          {'Show Less >'}
-        </button>
       </div>
     </div>
   );
