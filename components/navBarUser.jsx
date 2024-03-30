@@ -19,7 +19,7 @@ const NavBarUser = ({ navItems }) => {
       {session ? (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <div onClick={() => setOpenDropDown((prev) => !prev)} className="relative">
-          <CiUser className="text-secondary text-4xl text-center m-2 ml-2 md:block hidden " />
+          <CiUser className="text-white bg-secondary font-extrabold text-4xl text-center m-4 ml-2 md:block hidden shadow-sm rounded-full  border-2 border-white p-1 hover:p-0 hover:cursor-pointer hover:shadow-secondary transform ease-in-out" />
           {openDropDown ? (
             <div
               className="bg-white absolute flex flex-col gap-3 justify-center top-full translate-y-3 -translate-x-1 w-[150px] -left-[100px] rounded-[4px] px-[8px] py-[4px]"
@@ -51,14 +51,14 @@ const NavBarUser = ({ navItems }) => {
         <button type="button" className="btn btn-ghost lg:hidden " aria-label="Open Menu">
           <GiHamburgerMenu className="text-black object-cover text-4xl" />
         </button>
-        <div className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box z-50 bg-primary right-2 text-black">
+        <div className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box z-50 bg-primary right-2 text-black border-secondary">
           {navItems?.map((item) => (
             <Link key={item?.id} href={item?.link} className="w-[190px] text-[14px] my-3 ml-2">
               {item?.name}
             </Link>
           ))}
           <Link href="/membersection" className="w-[190px] text-[14px] my-3 ml-2">
-            Memeber Section
+            Member Section
           </Link>
         </div>
       </div>
