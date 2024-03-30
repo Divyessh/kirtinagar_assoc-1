@@ -43,14 +43,14 @@ const SearchedProvider = ({ searchEle }) => {
       <div className="grid grid-cols-4 gap-[20px] pt-4 pb-12">
         {searchedArr?.map(
           (item) =>
-            item !== null || " " &&
-            item?._id && (
+            item !== null ||
+            (' ' && item?._id && (
               <div key={item?._id} className="  px-8 col-span-4 md:col-span-1 flex items-center justify-center">
                 <Link href={`/services/${item?._id}/about`}>
                   <Card item={item} />
                 </Link>
               </div>
-            ),
+            )),
         )}
 
         {providerData?.map((item) => (
