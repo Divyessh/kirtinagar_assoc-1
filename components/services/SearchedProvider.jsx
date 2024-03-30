@@ -22,7 +22,7 @@ const SearchedProvider = ({ searchEle }) => {
   let newArr2 = [];
   if (providerData) {
     newArr = providerData?.map((item) => {
-      return item?.services.some((service) => service.toLowerCase().includes(searchEle.toLowerCase())) ? item : null;
+      return item?.services?.some((service) => service.toLowerCase().includes(searchEle.toLowerCase())) ? item : null;
     });
     newArr2 = providerData?.map((item) => {
       return item?.nameOftheFirm.toLowerCase().includes(searchEle.toLowerCase()) ? item : null;
@@ -43,7 +43,7 @@ const SearchedProvider = ({ searchEle }) => {
       <div className="grid grid-cols-4 gap-[20px] pt-4 pb-12">
         {searchedArr?.map(
           (item) =>
-            item !== null &&
+            item !== null || " " &&
             item?._id && (
               <div key={item?._id} className="  px-8 col-span-4 md:col-span-1 flex items-center justify-center">
                 <Link href={`/services/${item?._id}/about`}>
@@ -53,13 +53,13 @@ const SearchedProvider = ({ searchEle }) => {
             ),
         )}
 
-        {/* {providerData?.map((item) => (
+        {providerData?.map((item) => (
           <div key={item?._id} className="bg-transparent px-8 col-span-4 md:col-span-1  flex items-center justify-center">
             <Link href={`/services/${item?._id}/about`}>
               <Card item={item} />
             </Link>
           </div>
-        ))} */}
+        ))}
       </div>
     </div>
   );
