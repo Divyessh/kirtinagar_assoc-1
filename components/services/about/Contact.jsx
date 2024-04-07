@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import React from 'react';
-import axios from 'axios';
-import { MdLocationOn } from 'react-icons/md';
-import { BsFillTelephoneFill, BsChevronDown } from 'react-icons/bs';
-import { FaEnvelope, FaRegEdit } from 'react-icons/fa';
-import { useSession } from 'next-auth/react';
-import { GiEarthAfricaEurope } from 'react-icons/gi';
-import { AiFillFile, AiFillClockCircle } from 'react-icons/ai';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import Heading from './heading';
-import SkeletonCard from '../../blogs/skeletonCard';
+import React from "react";
+import axios from "axios";
+import { MdLocationOn } from "react-icons/md";
+import { BsFillTelephoneFill, BsChevronDown } from "react-icons/bs";
+import { FaEnvelope, FaRegEdit } from "react-icons/fa";
+import { useSession } from "next-auth/react";
+import { GiEarthAfricaEurope } from "react-icons/gi";
+import { AiFillFile, AiFillClockCircle } from "react-icons/ai";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import Heading from "./heading";
+import SkeletonCard from "../../blogs/skeletonCard";
 
 const Contact = ({ id }) => {
   const { data, isLoading } = useQuery({
-    queryKey: ['Provider', id],
+    queryKey: ["Provider", id],
     queryFn: async () => {
       const res = await axios.get(`/api/provider/${id}`);
       return res?.data?.data;
@@ -25,6 +25,7 @@ const Contact = ({ id }) => {
     contactNumber: data?.contactNumber,
     websiteLink: data?.websiteLink,
     email: data?.email,
+    location: data?.location,
   });
   const { data: session } = useSession();
   // eslint-disable-next-line no-underscore-dangle
@@ -37,12 +38,12 @@ const Contact = ({ id }) => {
         return response.data;
       } catch (error) {
         // eslint-disable-next-line no-console
-        console.error('Something went wrong!', error);
-        throw new Error('Failed to add new student');
+        console.error("Something went wrong!", error);
+        throw new Error("Failed to add new student");
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['Provider', id] });
+      queryClient.invalidateQueries({ queryKey: ["Provider", id] });
     },
     onError: (error) => {
       // eslint-disable-next-line no-console
@@ -57,7 +58,7 @@ const Contact = ({ id }) => {
     <SkeletonCard />
   ) : (
     <>
-      <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
+      <div style={{ borderBottom: "1px solid #2B1607", paddingBottom: "16px" }}>
         <div className="w-full flex justify-center items-center gap-2">
           {isUser === id && (
             // eslint-disable-next-line jsx-a11y/label-has-associated-control
@@ -127,17 +128,31 @@ const Contact = ({ id }) => {
                 <AiFillClockCircle className="text-black" />
               </div>
               <div className="w-[95%]">
-                <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">Timings</h1>
+                <h1 className="w-[100%] text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-black">
+                  Timings
+                </h1>
               </div>
             </div>
           </div>
           <div className="col-span-2 md:col-span-4 text-[13px] md:text-[28px] font-[700] leading-[15px] md:leading-[40px] text-center">
             <h1 className="text-black">LOCATION</h1>
+            <iframe
+              src={data?.location}
+              className="h-full w-full"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
         <div className="text-center flex items-center justify-center gap-2">
-          <h1 className="font-[600] text-[15px] md:text-[23px] text-black">9 AM - 9 PM</h1>
-          <button type="button" className=" w-fit rounded-full p-[3px] bg-[#382F2A]" aria-label="Time">
+          <h1 className="font-[600] text-[15px] md:text-[23px] text-black">
+            9 AM - 9 PM
+          </h1>
+          <button
+            type="button"
+            className=" w-fit rounded-full p-[3px] bg-[#382F2A]"
+            aria-label="Time"
+          >
             <BsChevronDown className="font-[600] text-[8px] text-white md:text-[16px]" />
           </button>
         </div>
@@ -151,34 +166,60 @@ const Contact = ({ id }) => {
             placeholder="Enter Address"
             className="border p-2 rounded-md outline-black"
             defaultValue={contactInfo?.address || data?.address}
-            onChange={(e) => setContactInfo({ ...contactInfo, address: e.target.value })}
+            onChange={(e) =>
+              setContactInfo({ ...contactInfo, address: e.target.value })
+            }
           />
           <input
             type="text"
             placeholder="Enter Contact Number"
             className="border p-2 rounded-md outline-black"
             defaultValue={contactInfo?.contactNumber || data?.contactNumber}
-            onChange={(e) => setContactInfo({ ...contactInfo, contactNumber: e.target.value })}
+            onChange={(e) =>
+              setContactInfo({ ...contactInfo, contactNumber: e.target.value })
+            }
           />
           <input
             type="text"
             placeholder="Enter WebSite Link"
             className="border p-2 rounded-md outline-black"
             defaultValue={contactInfo?.websiteLink || data?.websiteLink}
-            onChange={(e) => setContactInfo({ ...contactInfo, websiteLink: e.target.value })}
+            onChange={(e) =>
+              setContactInfo({ ...contactInfo, websiteLink: e.target.value })
+            }
           />
           <input
             type="text"
             placeholder="Enter Email"
             className="border p-2 rounded-md outline-black"
             defaultValue={contactInfo?.email || data?.email}
-            onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
+            onChange={(e) =>
+              setContactInfo({ ...contactInfo, email: e.target.value })
+            }
           />
-          <button type="button" aria-label="Save Info" onClick={handleSave} className="bg-[#FF9800] text-black p-2 rounded-lg w-fit">
+          <input
+            type="text"
+            placeholder="Enter Google Maps Location"
+            className="border p-2 rounded-md outline-black"
+            defaultValue={contactInfo?.location || data?.location}
+            onChange={(e) =>
+              setContactInfo({ ...contactInfo, location: e.target.value })
+            }
+          />
+          <button
+            type="button"
+            aria-label="Save Info"
+            onClick={handleSave}
+            className="bg-[#FF9800] text-black p-2 rounded-lg w-fit"
+          >
             Save
           </button>
         </div>
-        <label className="modal-backdrop" htmlFor="my_modal_9" aria-label="modalClose">
+        <label
+          className="modal-backdrop"
+          htmlFor="my_modal_9"
+          aria-label="modalClose"
+        >
           <input type="checkbox" id="my_modal_7" className="modal-toggle" />
           Close
         </label>
