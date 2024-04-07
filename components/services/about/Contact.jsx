@@ -11,6 +11,7 @@ import { AiFillFile, AiFillClockCircle } from "react-icons/ai";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Heading from "./heading";
 import SkeletonCard from "../../blogs/skeletonCard";
+import { toast } from "react-toastify";
 
 const Contact = ({ id }) => {
   const { data, isLoading } = useQuery({
@@ -44,6 +45,7 @@ const Contact = ({ id }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["Provider", id] });
+      toast.success("Details updated!");
     },
     onError: (error) => {
       // eslint-disable-next-line no-console
