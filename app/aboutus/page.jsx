@@ -19,8 +19,7 @@ const AboutUsSection = () => {
           <span className="w-[56%]">
             <h1 className="md:text-2xl text-lg font-black mb-2">About Us</h1>
             <p className="text-start text-md">
-              <b>KIRTI NAGAR, NEW DELHI, INDIA</b> <br />
-              (Hindi: कीर्ति नगर, Punjabi: ਕੀਰਤੀਨਗਰ, Urdu : کیرتی نگر) <br /> is an affluent area of West Delhi, India Postal code 110015.
+              <b>KIRTI NAGAR, NEW DELHI, INDIA</b> <br /> is an affluent area of West Delhi, India Postal code 110015.
               <br /> Part of the Punjabi Bagh subzone of West Delhi, it primarily a residential colony. Kirti Nagar is home to Asias largest
               Timber and furniture market SatGuru Ram Singh Marg commonly known as RAMA ROAD housing showrooms of multi-national home
               remodelling and fittings companies, the most reputed interior design boutiques, imported kitchen and bath brands as well as

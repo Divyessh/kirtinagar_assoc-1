@@ -15,7 +15,7 @@ const Card = ({ item }) => {
       style={{ border: 'none', padding: 0 }}
     >
       {/* eslint-disable-next-line no-underscore-dangle */}
-      {item?.shopgallery === null || item?.shopgallery?.length === 0 || item?.shopgallery[0] === null ? (
+      {item?.shopgallery === null || item?.shopgallery?.length === 0 || item?.shopgallery[0] === null || item?.shopgallery[0] === '' ? (
         <ImageCarousel imageArray={[]} fixheight />
       ) : (
         <ImageCarousel imageArray={item?.shopgallery} fixheight />
