@@ -1,10 +1,9 @@
 import React from 'react';
 import Image from 'next/image'; // Use Image from next/image
 import Link from 'next/link';
-// import Link from 'next/link';
 
 const Card = ({ blogImage, blogTitle, blogAuthor }) => (
-  <Link href={`/blogs/${blogTitle}`}>
+  <Link href="/blogs">
     <div
       className="card w-[300px] mx-auto md:mx-[0px] md:w-[350px] bg-[#E5DFCF] shadow-2xl rounded-xl"
       style={{ padding: 0, border: 'none', maxHeight: '400px', overflow: 'hidden' }}

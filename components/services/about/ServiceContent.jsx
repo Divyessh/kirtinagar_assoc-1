@@ -9,9 +9,11 @@ import { IoSettings } from 'react-icons/io5';
 import Heading from './heading';
 
 const ServiceContent = ({ id }) => {
+  const queryClient = useQueryClient();
   const { data, isLoading } = useQuery({
     queryKey: ['Provider', id],
     queryFn: async () => {
+      if (!id) return; // Prevent API call if id is empty or null
       const res = await axios.get(`/api/provider/${id}`);
       return res?.data?.data;
     },
@@ -24,9 +26,9 @@ const ServiceContent = ({ id }) => {
   const { data: session } = useSession();
   const [providerData, setProviderData] = React.useState([]);
   const [newProvider, setNewProvider] = React.useState('');
-  const queryClient = useQueryClient();
   const { mutate: handleUpdate } = useMutation({
     mutationFn: async (update) => {
+      if (!id) return; // Prevent API call if id is empty or null
       try {
         const response = await axios.put(`/api/provider/${id}`, update);
         return response.data;
@@ -45,15 +47,16 @@ const ServiceContent = ({ id }) => {
     },
   });
   React.useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && data) {
       setProviderData(data?.services || []);
     }
   }, [data, isLoading]);
   // eslint-disable-next-line no-underscore-dangle
   const isUser = session?.user?._id;
-  if (isLoading) return <div className="flex items-center">Loading....</div>;
+  if (isLoading || !id) return <div className="flex items-center">Loading....</div>;
 
   const handleAdd = (i) => {
+    if (!i) return; // Prevent adding if input is empty or null
     setProviderData([...providerData, i]);
     setNewProvider('');
   };
@@ -65,6 +68,7 @@ const ServiceContent = ({ id }) => {
   };
 
   const handleSave = async () => {
+    if (!providerData.length) return; // Prevent API call if providerData is empty
     handleUpdate({ ...data?.data, services: providerData });
   };
 
@@ -116,6 +120,7 @@ const ServiceContent = ({ id }) => {
             placeholder="Enter Service Name"
             className="border p-2 rounded-md outline-black"
             value={newProvider}
+            maxLength={20}
             onChange={(e) => setNewProvider(e.target.value)}
           />
           <div className="flex gap-2">

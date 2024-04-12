@@ -4,7 +4,6 @@
 
 'use client';
 
-import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
 import Card from '../featuredProviders/card';
@@ -38,9 +37,7 @@ const ServicesCard = () => {
         ) : (
           randomEle?.map((item) => (
             <div key={item?._id} className="bg-transparent px-8 md:px-0 col-span-4 md:col-span-1 flex items-center justify-center">
-              <Link href={`/services/${item?._id}/about`}>
-                <Card item={item} />
-              </Link>
+              <Card item={item} />
             </div>
           ))
         )}

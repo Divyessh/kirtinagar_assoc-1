@@ -97,7 +97,7 @@ const Footer = () => {
               listed?
             </h1>
             <button type="button" className="btn btn-primary rounded-full ">
-              See Pricing
+              <Link href="/pricing">See Pricing</Link>
               <IoIosArrowForward />
             </button>
           </div>

@@ -17,7 +17,7 @@ const RelatedProviders = () => {
       return res;
     },
   });
-  const providerData = data?.data?.data;
+  const providerData = data?.data?.data.filter((d) => d.isFeatured === true);
   // console.log(providerData);
   const slices = providerData?.length >= 3 ? 3 : providerData?.length;
   return (

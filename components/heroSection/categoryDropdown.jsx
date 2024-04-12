@@ -67,9 +67,9 @@ const CategoryDropdown = () => {
           <div>
             {loading ? (
               <BallTriangle height={50} width={50} color="green" ariaLabel="loading" visible />
-            ) : filteredProviders.length > 0 ? (
+            ) : filteredProviders?.length > 0 ? (
               <div className="absolute left-0 top-full w-full bg-white rounded-[10px] shadow-md text-black mt-1 z-100 overflow-y-scroll max-h-[20vh]">
-                {filteredProviders.map((provider) => (
+                {filteredProviders?.map((provider) => (
                   <button
                     type="button"
                     key={provider.id}

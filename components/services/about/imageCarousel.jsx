@@ -18,6 +18,7 @@ const ImageCarousel = ({ imageArray, fixheight }) => {
       autoplay: {
         delay: 800, // Set the autoplay speed to 2 seconds (2000 milliseconds)
       },
+      dots: true, // Show dots at the bottom
     },
     [Autoplay()],
   );
