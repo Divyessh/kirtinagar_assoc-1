@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+
 'use client';
 
 import { useSession } from 'next-auth/react';
@@ -75,26 +77,26 @@ const ServiceContent = ({ id }) => {
   return (
     <>
       <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
-        <div className="w-full flex justify-center items-center gap-2">
+        <div className="flex justify-center items-center gap-2 w-full">
           {isUser === id && (
             // eslint-disable-next-line jsx-a11y/label-has-associated-control
             <label htmlFor="my_modal_10" aria-label="open modal">
-              <FaRegEdit className="text-[20px] md:text-[38px] text-black md:mt-2" />
+              <FaRegEdit className="md:mt-2 text-[20px] text-black md:text-[38px]" />
             </label>
           )}
           <Heading title="Services" />
         </div>
         <div className="flex items-start w-full">
           <div className="w-[10%]">
-            <IoSettings className="text-[20px] md:text-[40px] text-black" />
+            <IoSettings className="text-[20px] text-black md:text-[40px]" />
           </div>
-          <div className="flex flex-wrap w-[90%] gap-[5px] md:gap-[20px]">
+          <div className="flex flex-wrap gap-[5px] md:gap-[20px] w-[90%]">
             {providerData?.map((service) => (
               <div
-                className="w-[45%] md:w-[30%] rounded-[20px] md:rounded-[50px] md:h-full overflow-hidden px-[6px] py-[5px] text-center bg-[#FBA832]"
+                className="bg-[#FBA832] px-[6px] py-[5px] rounded-[20px] md:rounded-[50px] w-[45%] md:w-[30%] md:h-full text-center overflow-hidden"
                 key={service}
               >
-                <h1 className="text-[10px] text-black md:text-[24px] font-[600]" style={ellipsisStyle}>
+                <h1 className="font-[600] text-[10px] text-black md:text-[24px]" style={ellipsisStyle}>
                   {service}
                 </h1>
               </div>
@@ -104,12 +106,12 @@ const ServiceContent = ({ id }) => {
       </div>
       <input type="checkbox" id="my_modal_10" className="modal-toggle" />
       <div className="modal" role="dialog">
-        <div className="modal-box bg-white text-black flex flex-col gap-4">
-          <h3 className="text-lg font-bold">Edit Services!</h3>
+        <div className="flex flex-col gap-4 bg-white text-black modal-box">
+          <h3 className="font-bold text-lg">Edit Services!</h3>
           {providerData?.map((service, i) => (
             // eslint-disable-next-line react/no-array-index-key
-            <div key={i} className="flex items-center justify-between">
-              <div className="bg-[orange] w-fit p-2 rounded-lg">
+            <div key={i} className="flex justify-between items-center">
+              <div className="bg-[orange] p-2 rounded-lg w-fit">
                 <h1 className="text-black">{service}</h1>
               </div>
               <FaTrash className="text-[black]" onClick={() => handleRemove(i)} />
@@ -118,7 +120,7 @@ const ServiceContent = ({ id }) => {
           <input
             type="text"
             placeholder="Enter Service Name"
-            className="border p-2 rounded-md outline-black"
+            className="p-2 border rounded-md outline-black"
             value={newProvider}
             maxLength={20}
             onChange={(e) => setNewProvider(e.target.value)}
@@ -128,11 +130,11 @@ const ServiceContent = ({ id }) => {
               type="button"
               onClick={() => handleAdd(newProvider)}
               aria-label="Save Info"
-              className="bg-[#FF9800] text-black p-2 rounded-lg w-fit"
+              className="bg-[#FF9800] p-2 rounded-lg w-fit text-black"
             >
               Add
             </button>
-            <button type="button" onClick={handleSave} aria-label="Save Info" className="bg-[#FF9800] text-black p-2 rounded-lg w-fit">
+            <button type="button" onClick={handleSave} aria-label="Save Info" className="bg-[#FF9800] p-2 rounded-lg w-fit text-black">
               Save
             </button>
           </div>
