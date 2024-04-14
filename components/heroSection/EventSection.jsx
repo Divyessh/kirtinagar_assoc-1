@@ -10,6 +10,12 @@ const EventSection = () => {
           Tweets by kirtinagarwhs
         </Link>{' '}
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" />
+        <button type="button" className="btn btn-primary">
+          {' '}
+          <Link href="https://twitter.com/" target="_blank">
+            Login to Twitter
+          </Link>
+        </button>
       </div>
     </div>
   );

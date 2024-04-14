@@ -5,7 +5,6 @@ import { IoIosArrowForward } from 'react-icons/io';
 import members from '../assets/svg/Group 41members.svg';
 import welfare from '../assets/svg/Group 42.svg';
 import business from '../assets/svg/Group 43.svg';
-import location from '../assets/svg/location.svg';
 
 const Footer = () => {
   const data = [
@@ -58,53 +57,37 @@ const Footer = () => {
         </div>
         <div className="md:flex flex-2 justify-evenly text-center items-center border-b-2 border-white space-y-2">
           <div>
-            <span className="text-xl uppercase text-white text-center">Service Provider</span>
-            <ul className="text-[#DDC5C5] text-center text-lg ">
-              <li>
-                <Link className="hover:border-b-2 hover:text-white " href="/">
-                  Branding
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:border-b-2 hover:text-white" href="/">
-                  Design
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:border-b-2 hover:text-white" href="/">
-                  Marketing
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:border-b-2 hover:text-white" href="/">
-                  Advertisement
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
             <span className="text-xl text-white">USEFUL LINKS</span>
             <ul className="text-[#DDC5C5] text-lg  text-center">
               <li>
-                <Link className="hover:border-b-2 hover:text-white" href="/">
+                <Link className="hover:border-b-2 hover:text-white" href="/aboutus">
                   About us
                 </Link>
               </li>
               <li>
-                <Link className="hover:border-b-2 hover:text-white" href="/">
+                <Link className="hover:border-b-2 hover:text-white" href="/pricing">
                   Member Section
                 </Link>
               </li>
               <li>
-                <Link className="hover:border-b-2 hover:text-white" href="/">
+                <Link className="hover:border-b-2 hover:text-white" href="/contactus">
                   Contact Us
                 </Link>
               </li>
             </ul>
           </div>
-          <div className="">
+          <div className="flex flex-col items-center justify-center">
             <h1 className="text-xl text-center uppercase text-white ">Location</h1>
-            <Image src={location} alt="members" className="object-cover p-3 w-full flex justify-center items-center" />
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14005.909523688018!2d77.14124300000002!3d28.64542155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0304934fb67d%3A0x232534e44837b1bf!2sKirti%20Nagar%2C%20Delhi!5e0!3m2!1sen!2sin!4v1712821987844!5m2!1sen!2sin"
+              width="400"
+              height="230"
+              allowfullscreen=""
+              loading="lazy"
+              title="footermaps"
+              className="p-4"
+              referrerpolicy="no-referrer-when-downgrade"
+            />
           </div>
           <div className="space-y-3 text-white">
             <span className="text-xl text-center uppercase">SHOP LISTING</span>
@@ -114,13 +97,13 @@ const Footer = () => {
               listed?
             </h1>
             <button type="button" className="btn btn-primary rounded-full ">
-              See Pricing
+              <Link href="/pricing">See Pricing</Link>
               <IoIosArrowForward />
             </button>
           </div>
         </div>
         <div className="mx-2 text-center text-white">
-          Made with 🌌 by <Link href="$">VOID</Link>
+          Made with 🌌 by <Link href="https://void-works.netlify.app/">VOID</Link>
         </div>
       </div>
     </div>

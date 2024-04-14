@@ -8,9 +8,9 @@ import Navbar from '../components/navbar';
 import Preloader from '../components/preloader';
 
 const AppLayout = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading(false);
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);

@@ -9,8 +9,8 @@
       "Limited exposure in search results.",
       "Shop featured for one week."
     ],
-    "price": "Free",
-    "amount": 0
+    "price": "INR 0",
+    "amount": 1
   },
   "Standard": {
     "id": 2,

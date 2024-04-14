@@ -31,12 +31,12 @@ export const responsive = {
 };
 export const ButtonGroup = ({ next, previous }) => {
   return (
-    <div className="carousel-button-group absolute bottom-0 left-1/2 -translate-x-1/2 space-x-8 mb-2 mr-8">
+    <div className="carousel-button-group absolute bottom-0 left-0 right-0 flex justify-center gap-5 mb-2">
       <button onClick={() => previous()} type="button" aria-label="Previous Slide">
-        <MdArrowBackIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary" />
+        <MdArrowBackIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary m-auto" />
       </button>
       <button onClick={() => next()} type="button" aria-label="Next Slide">
-        <MdArrowForwardIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary" />
+        <MdArrowForwardIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary m-auto" />
       </button>
     </div>
   );
@@ -54,7 +54,7 @@ const CarouselComponent = () => {
   return isLoading ? (
     <SkeletonCard />
   ) : (
-    <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14 md:pl-[160px] pl-2 py-6 z-0">
+    <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14 md:pl-[110px] pl-2 py-6 z-0">
       {blogData?.map((item) => (
         // eslint-disable-next-line no-underscore-dangle
         <Card key={item?._id} blogImage={item?.image} blogTitle={item?.title} blogAuthor={item?.postedBy} />

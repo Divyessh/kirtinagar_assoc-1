@@ -10,7 +10,7 @@ import placeholder from '../../../assets/avif/placeholder.webp';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 const ImageCarousel = ({ imageArray, fixheight }) => {
-  const filteredImages = imageArray.filter((image) => image !== null);
+  const filteredImages = imageArray.filter((image) => image == null);
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -18,6 +18,7 @@ const ImageCarousel = ({ imageArray, fixheight }) => {
       autoplay: {
         delay: 800, // Set the autoplay speed to 2 seconds (2000 milliseconds)
       },
+      dots: true, // Show dots at the bottom
     },
     [Autoplay()],
   );

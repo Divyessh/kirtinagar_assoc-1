@@ -3,13 +3,14 @@
 import React from 'react';
 import axios from 'axios';
 import { MdLocationOn } from 'react-icons/md';
-import { BsFillTelephoneFill, BsChevronDown } from 'react-icons/bs';
+import { BsFillTelephoneFill } from 'react-icons/bs';
 import { FaEnvelope, FaRegEdit } from 'react-icons/fa';
 import { useSession } from 'next-auth/react';
 import { GiEarthAfricaEurope } from 'react-icons/gi';
-import { AiFillFile, AiFillClockCircle } from 'react-icons/ai';
+import { AiFillClockCircle } from 'react-icons/ai';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
 import Heading from './heading';
 import SkeletonCard from '../../blogs/skeletonCard';
 
@@ -91,7 +92,7 @@ const Contact = ({ id }) => {
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px]">
-                  {data?.contactNumber || contactInfo?.contactNumber}
+                  {data?.contactNumber || contactInfo?.contactNumber || 12345677889}
                 </h1>
               </div>
             </div>
@@ -100,24 +101,28 @@ const Contact = ({ id }) => {
                 <GiEarthAfricaEurope className="text-black" />
               </div>
               <div className="w-[95%]">
-                <h1 className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px]">
+                <Link
+                  href={data?.websiteLink || contactInfo?.websiteLink}
+                  className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px] hover:text-blue-400"
+                  target="_blank"
+                >
                   {data?.websiteLink || contactInfo?.websiteLink}
-                </h1>
+                </Link>
               </div>
             </div>
             <div className="flex justify-center items-start gap-[10px] md:gap-[20px]">
               <div className="mt-[0px] md:mt-[7px] w-[5%] text-[13px] md:text-[30px]">
-                <FaEnvelope className="text-black" />
+                <BsFillTelephoneFill className="text-black" />
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px]">
-                  Request a quote
+                  {data?.landlineNumber || contactInfo?.landlineNumber || 12345677889}
                 </h1>
               </div>
             </div>
             <div className="flex justify-center items-start gap-[10px] md:gap-[20px] max-md:ml-1">
               <div className="mt-[0px] md:mt-[7px] w-[5%] text-[13px] md:text-[30px]">
-                <AiFillFile className="text-black" />
+                <FaEnvelope className="text-black" />
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px]">
@@ -131,20 +136,29 @@ const Contact = ({ id }) => {
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px]">Timings</h1>
+                <h1 className="font-[600] text-[15px] text-black md:text-[23px]">9 AM - 9 PM</h1>
               </div>
             </div>
           </div>
-          <div className="col-span-2 md:col-span-4 font-[700] text-[13px] text-center md:text-[28px] leading-[15px] md:leading-[40px]">
-            <h1 className="text-black">LOCATION</h1>
-            <iframe title="con" src={data?.location} className="w-full h-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade" />
-          </div>
+          {data?.location.startsWith('https') && (
+            <div className="col-span-2 md:col-span-4 font-[700] text-[13px] text-center md:text-[28px] leading-[15px] md:leading-[40px] md:pb-10">
+              <h1 className="text-black">LOCATION</h1>
+              <iframe
+                title="con"
+                src={data?.location}
+                className="w-full h-full"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          )}
         </div>
-        <div className="flex justify-center items-center gap-2 text-center">
+        {/* <div className="flex justify-start items-center gap-2 text-start pl-12">
           <h1 className="font-[600] text-[15px] text-black md:text-[23px]">9 AM - 9 PM</h1>
           <button type="button" className="bg-[#382F2A] p-[3px] rounded-full w-fit" aria-label="Time">
             <BsChevronDown className="font-[600] text-[8px] text-white md:text-[16px]" />
           </button>
-        </div>
+        </div> */}
       </div>
       <input type="checkbox" id="my_modal_9" className="modal-toggle" />
       <div className="modal" role="dialog">
