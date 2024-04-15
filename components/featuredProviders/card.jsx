@@ -27,9 +27,11 @@ const Card = ({ item }) => {
       ) : null}
 
       <span className="top-0 absolute flex justify-between items-center border-[#D9D9D9] px-6 md:px-16 border-b-2 w-full">
-        <div className="hover:cursor-pointer tooltip" data-tip="Services">
-          <Image src={services} alt="image" className="pt-1" />
-        </div>
+        <Link href={`/services/${item?._id}/services`}>
+          <div className="hover:cursor-pointer tooltip" data-tip="Services">
+            <Image src={services} alt="image" className="pt-1" />
+          </div>
+        </Link>
         <div className="bg-[#E5DFCF]">
           <Image src={line} alt="image" />
         </div>

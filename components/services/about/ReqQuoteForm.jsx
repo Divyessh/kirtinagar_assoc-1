@@ -20,7 +20,7 @@ const ReqQuoteForm = () => {
     }
   };
   return (
-    <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
+    <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }} id="quoteForm">
       <Heading title="Request a quote" />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-2 gap-[10px] md:gap-[30px] my-[20px]">

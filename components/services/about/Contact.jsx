@@ -81,9 +81,9 @@ const Contact = ({ id }) => {
                 <h1 className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px]">
                   {data?.address || contactInfo?.address}
                 </h1>
-                <h1 className="w-[80%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px]">
+                {/* <h1 className="w-[80%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px]">
                   GST No. 1234567890ABCD
-                </h1>
+                </h1> */}
               </div>
             </div>
             <div className="flex justify-center items-start gap-[10px] md:gap-[20px]">
@@ -102,7 +102,7 @@ const Contact = ({ id }) => {
               </div>
               <div className="w-[95%]">
                 <Link
-                  href={data?.websiteLink || contactInfo?.websiteLink}
+                  href={data?.websiteLink || contactInfo?.websiteLink || 'https://void-works.netlify.app/'}
                   className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px] hover:text-blue-400"
                   target="_blank"
                 >

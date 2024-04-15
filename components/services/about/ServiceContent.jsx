@@ -76,7 +76,7 @@ const ServiceContent = ({ id }) => {
 
   return (
     <>
-      <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
+      <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }} id="services">
         <div className="flex justify-center items-center gap-2 w-full">
           {isUser === id && (
             // eslint-disable-next-line jsx-a11y/label-has-associated-control

@@ -7,6 +7,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { useSession } from 'next-auth/react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
+import Link from 'next/link';
 import ImageCarousel from './imageCarousel';
 import SkeletonCard from '../../blogs/skeletonCard';
 
@@ -65,18 +66,26 @@ const AboutContent = ({ id }) => {
               className="h-[50%] flex items-center justify-center rounded-t-[3px] bg-[#F9F8F2] border-[#FF9800]"
               style={{ borderWidth: 1 }}
             >
-              <AiFillSetting className="text-[#3D2502] text-[20px] md:text-[50px]" />
+              <Link href="#services">
+                <div className="hover:cursor-pointer tooltip" data-tip="Go to Services">
+                  <AiFillSetting className="text-[#3D2502] text-[20px] md:text-[50px]" />
+                </div>
+              </Link>
             </div>
             <div
               className="h-[50%] flex items-center justify-center rounded-b-[3px] bg-[#F9F8F2] border-[#FF9800]"
               style={{ borderWidth: 1 }}
             >
-              <AiFillFile className="text-[#3D2502] text-[20px] md:text-[50px]" />
+              <Link href="#quoteForm">
+                <div className="hover:cursor-pointer tooltip" data-tip="Get Quote">
+                  <AiFillFile className="text-[#3D2502] text-[20px] md:text-[50px]" />
+                </div>
+              </Link>
             </div>
           </div>
         </div>
         <div className="flex gap-2 items-start w-full">
-          {isUser === id && (
+          {isUser && (
             // eslint-disable-next-line jsx-a11y/label-has-associated-control
             <label htmlFor="my_modal_8" aria-label="open modal">
               <FaRegEdit className="text-[30px] md:text-[38px] text-black mt-2" />

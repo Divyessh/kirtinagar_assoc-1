@@ -33,7 +33,7 @@ const AboutServices = ({ params }) => {
       <AboutContent id={id} />
       <GalleryContent id={id} />
       <Contact id={id} />
-      <ServiceContent id={id} title />
+      <ServiceContent id={id} />
       <ReqQuoteForm id={id} />
       <RelatedProviders />
     </ServiceWrapper>
