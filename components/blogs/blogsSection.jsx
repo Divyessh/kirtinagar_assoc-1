@@ -31,12 +31,12 @@ export const responsive = {
 };
 export const ButtonGroup = ({ next, previous }) => {
   return (
-    <div className="carousel-button-group absolute bottom-0 left-0 right-0 flex justify-center gap-5 mb-2">
+    <div className="right-0 bottom-0 left-0 absolute flex justify-center gap-5 mb-2 carousel-button-group">
       <button onClick={() => previous()} type="button" aria-label="Previous Slide">
-        <MdArrowBackIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary m-auto" />
+        <MdArrowBackIos className="bg-primary shadow-md m-auto p-3 rounded-full text-4xl text-black" />
       </button>
       <button onClick={() => next()} type="button" aria-label="Next Slide">
-        <MdArrowForwardIos className="text-black text-4xl shadow-md rounded-full p-3 bg-primary m-auto" />
+        <MdArrowForwardIos className="bg-primary shadow-md m-auto p-3 rounded-full text-4xl text-black" />
       </button>
     </div>
   );
@@ -54,10 +54,10 @@ const CarouselComponent = () => {
   return isLoading ? (
     <SkeletonCard />
   ) : (
-    <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="pb-14 md:pl-[110px] pl-2 py-6 z-0">
+    <Carousel arrows={false} customButtonGroup={<ButtonGroup />} responsive={responsive} className="z-0 py-6 pb-14 pl-2 md:pl-[110px]">
       {blogData?.map((item) => (
         // eslint-disable-next-line no-underscore-dangle
-        <Card key={item?._id} blogImage={item?.image} blogTitle={item?.title} blogAuthor={item?.postedBy} />
+        <Card key={item?._id} id={item?._id} blogImage={item?.image} blogTitle={item?.title} blogAuthor={item?.postedBy} />
       ))}
     </Carousel>
   );
@@ -66,8 +66,8 @@ const CarouselComponent = () => {
 const MyCarousel = () => {
   return (
     <>
-      <span className="flex justify-center items-center md:mt-[56px] mt-4">
-        <h1 className="md:text-4xl text-xl text-black text-center border-b-2 border-b-black  ">Latest From Blogs</h1>
+      <span className="flex justify-center items-center mt-4 md:mt-[56px]">
+        <h1 className="border-b-2 border-b-black text-black text-center text-xl md:text-4xl">Latest From Blogs</h1>
       </span>
       <CarouselComponent />
     </>
