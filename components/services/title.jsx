@@ -58,7 +58,7 @@ const Title = ({ id }) => {
       <div className="text-center">
         <div className="w-full flex items-center justify-center gap-3">
           <h1 className="font-[700] text-[18px] text-black leading-[20px] md:text-[50px] md:leading-[75px]">{name}</h1>
-          {isUser && (
+          {isUser === id && (
             // eslint-disable-next-line jsx-a11y/label-has-associated-control
             <label htmlFor="my_modal_7" aria-label="open modal">
               <FaRegEdit className="text-[30px] md:text-[38px] text-black" />

@@ -85,7 +85,7 @@ const AboutContent = ({ id }) => {
           </div>
         </div>
         <div className="flex gap-2 items-start w-full">
-          {isUser && (
+          {isUser === id && (
             // eslint-disable-next-line jsx-a11y/label-has-associated-control
             <label htmlFor="my_modal_8" aria-label="open modal">
               <FaRegEdit className="text-[30px] md:text-[38px] text-black mt-2" />
