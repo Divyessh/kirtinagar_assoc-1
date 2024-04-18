@@ -20,6 +20,7 @@ export async function POST(req, context) {
     throw new Error(error);
   } finally {
     await disconnectMongoDB();
+    // eslint-disable-next-line no-unsafe-finally
     return NextResponse.json(
       {
         message: status ? 'success' : 'failed',

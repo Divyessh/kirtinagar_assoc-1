@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -25,7 +27,7 @@ export default function SuperAdminTable() {
 
   const removeUser = async (id) => {
     try {
-      const response = await axios.post(`api/unlistProvider/${id}`);
+      await axios.post(`api/unlistProvider/${id}`);
       toast.success('User removed successfully!');
       getMembers();
     } catch (error) {
@@ -36,7 +38,7 @@ export default function SuperAdminTable() {
 
   const featuredUser = async (id) => {
     try {
-      const response = await axios.post(`api/activateFeatured/${id}`);
+      await axios.post(`api/activateFeatured/${id}`);
       if (selectedMembers.some((member) => member._id === id && member.isFeatured)) {
         toast.error('User is already Featured!');
       } else {
@@ -50,7 +52,7 @@ export default function SuperAdminTable() {
   };
   const featuredUserRemove = async (id) => {
     try {
-      const response = await axios.post(`api/deactivateFeatured/${id}`);
+      await axios.post(`api/deactivateFeatured/${id}`);
       if (!selectedMembers.some((member) => member._id === id && member.isFeatured)) {
         toast.error('User is not Featured!');
       } else {
@@ -65,7 +67,7 @@ export default function SuperAdminTable() {
 
   const activeUser = async (id) => {
     try {
-      const response = await axios.post(`api/activateProvider/${id}`);
+      await axios.post(`api/activateProvider/${id}`);
       if (selectedMembers.some((member) => member._id === id && member.isVerified)) {
         toast.error('User is already Active!');
       } else {
@@ -101,7 +103,7 @@ export default function SuperAdminTable() {
       <ToastContainer />
       <div className="flex justify-center items-center py-4 text-lg">SuperAdmin Panel</div>
 
-      <div className="bg-primary space-x-1 w-full flex flex-wrap justify-center items-center pt-1">
+      <div className="flex flex-wrap justify-center items-center space-x-1 bg-primary pt-1 w-full">
         <button
           type="button"
           responsive="true"
@@ -128,12 +130,12 @@ export default function SuperAdminTable() {
           placeholder="Search by name..."
           value={searchTerm}
           onChange={handleSearch}
-          className="p-2 m-2 border border-gray-300 rounded input input-group-lg"
+          className="border-gray-300 m-2 p-2 border rounded input input-group-lg"
         />
       </div>
-      <div className="overflow-x-auto bg-primary flex w-full items-center justify-center px-12 py-4 ">
-        <table className="table bg-primary text-black">
-          <thead aria-label="members-table" className="text-lg text-black">
+      <div className="flex justify-center items-center bg-primary px-12 py-4 w-full overflow-x-auto">
+        <table className="bg-primary text-black table">
+          <thead aria-label="members-table" className="text-black text-lg">
             <tr>
               <th aria-label="Member table Head" />
               <th>Name</th>
@@ -146,6 +148,7 @@ export default function SuperAdminTable() {
           </thead>
           <tbody>
             {filteredMembers.map((member, index) => (
+              // eslint-disable-next-line no-underscore-dangle
               <tr key={member._id}>
                 <th>{index}</th>
                 <td>{member.nameOftheFirm}</td>

@@ -6,7 +6,6 @@ export async function POST(req, context) {
   const userId = context.params.id;
   let status = false;
   try {
-    console.log(1);
     await connectMongoDB();
     const data = await User.findOneAndUpdate(
       { _id: userId },
@@ -14,7 +13,6 @@ export async function POST(req, context) {
         isVerified: false,
       },
     );
-    console.log(data);
     if (data) {
       status = true;
     }
@@ -23,6 +21,7 @@ export async function POST(req, context) {
     throw new Error(error);
   } finally {
     await disconnectMongoDB();
+    // eslint-disable-next-line no-unsafe-finally
     return NextResponse.json(
       {
         message: status ? 'success' : 'failed',
