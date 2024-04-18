@@ -49,23 +49,23 @@ const Navbar = () => {
 
   return (
     <div
-      className="sticky top-0 left-0 w-[100%] z-[999] navbar bg-[#F9F8F2] md:h-[95px] overflow px-2"
+      className="top-0 left-0 z-[999] sticky bg-[#F9F8F2] px-2 w-[100%] md:h-[95px] navbar overflow"
       style={{ boxShadow: '2px 2px 4px 0px #00000040' }}
     >
-      <div className="navbar-start ml-2">
+      <div className="ml-2 navbar-start">
         <Link href="/">
           <Image src={kirti} alt="kirti_timberworks" width={200} height={200} />
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+      <div className="lg:flex hidden navbar-center">
+        <ul className="px-1 menu menu-horizontal">
           {data.map((item) => {
             return item?.children ? (
-              <div className="flex items-center h-[40px]">
+              <div className="flex items-center h-[40px] translate-y-[2px]">
                 <Link
                   href={item.link}
                   key={item.id}
-                  className="text-[18px] font-bold text-[#413833] hover:text-[#EC5B2D] whitespace-nowrap m-3 mr-1"
+                  className="m-3 mr-1 font-bold text-[#413833] text-[18px] hover:text-[#EC5B2D] whitespace-nowrap"
                 >
                   {item.name}
                 </Link>
@@ -73,7 +73,7 @@ const Navbar = () => {
                   <button
                     type="button"
                     tabIndex={0}
-                    className="btn w-fit"
+                    className="w-fit btn"
                     aria-label="open team"
                     style={{
                       backgroundColor: 'transparent',
@@ -84,12 +84,12 @@ const Navbar = () => {
                     <IoIosArrowDropdownCircle className="text-[20px] text-black hover:text-[#EC5B2D]" />
                   </button>
                   <div
-                    className="dropdown-content z-[3] menu bg-[#F9F8F2] shadow rounded-box w-52 p-4"
+                    className="z-[3] bg-[#F9F8F2] shadow p-4 rounded-box w-52 dropdown-content menu"
                     style={{
                       boxShadow: '2px 2px 5px 0px rgba(0,0,0,0.75)',
                     }}
                   >
-                    <Link href="/membersection" className="text-[14px] font-bold text-[#413833] hover:text-[#EC5B2D] whitespace-nowrap">
+                    <Link href="/membersection" className="font-bold text-[#413833] text-[14px] hover:text-[#EC5B2D] whitespace-nowrap">
                       Members Listing
                     </Link>
                   </div>
@@ -99,7 +99,7 @@ const Navbar = () => {
               <Link
                 href={item.link}
                 key={item.id}
-                className="text-[18px] font-bold text-[#413833] hover:text-[#EC5B2D] whitespace-nowrap m-3"
+                className="m-3 font-bold text-[#413833] text-[18px] hover:text-[#EC5B2D] whitespace-nowrap"
               >
                 {item.name}
               </Link>
