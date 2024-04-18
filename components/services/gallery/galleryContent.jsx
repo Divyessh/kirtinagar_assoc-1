@@ -112,25 +112,27 @@ const GalleryContent = ({ id }) => {
 
   if (isLoading) return <SkeletonCard />;
   return (
-    <div className="flex items-center gap-10 flex-wrap justify-center" style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
-      <div className="w-full flex items-center gap-10 flex-wrap ml-[10px]">
+    <div className="flex flex-wrap justify-center items-center gap-10" style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
+      <div className="flex flex-wrap items-center gap-10 ml-[10px] w-full">
         {imageArray?.length === 0 ? (
-          <div className="w-full flex items-center justify-center">
-            <h1 className="bg-[#ff2600] flex items-center justify-center gap-2 text-black p-2 rounded-lg">
+          <div className="flex justify-center items-center w-full">
+            <h1 className="flex justify-center items-center gap-2 bg-[#ff2600] p-2 rounded-lg text-black">
               <BiError /> No Image in Gallery
             </h1>
           </div>
         ) : (
           imageArray?.map((image, i) => (
             // eslint-disable-next-line react/no-array-index-key
-            <div key={i} className="relative w-[100%] md:w-[48%] rounded-[8px]">
-              <button
-                type="button"
-                onClick={() => handleDelete(i)}
-                className="bg-[orange] px-[10px] py-[5px] text-[16px] tracking-[5px] font-bold uppercase rounded-md text-[black] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-              >
-                Delete
-              </button>
+            <div key={i} className="relative rounded-[8px] w-[100%] md:w-[48%]">
+              {id === isUser && (
+                <button
+                  type="button"
+                  onClick={() => handleDelete(i)}
+                  className="top-1/2 left-1/2 absolute bg-[orange] px-[10px] py-[5px] rounded-md font-bold text-[16px] text-[black] uppercase tracking-[5px] -translate-x-1/2 -translate-y-1/2"
+                >
+                  Delete
+                </button>
+              )}
               <Image
                 alt="gallery"
                 placeholder="empty"
@@ -145,21 +147,21 @@ const GalleryContent = ({ id }) => {
           ))
         )}
         {preview && (
-          <div className="w-[100%] md:w-[48%] relative rounded-[8px] overflow-hidden">
-            <div className="absolute transition-all ease-in-out duration-2000 w-full h-full top-0 left-0 bg-[#0000003e] z-[2]" />
-            <div className="flex absolute transition-all ease-in-out duration-2000 w-full h-full top-0 left-0 items-center justify-center gap-3 z-[3]">
+          <div className="relative rounded-[8px] w-[100%] md:w-[48%] overflow-hidden">
+            <div className="top-0 left-0 z-[2] absolute bg-[#0000003e] w-full h-full transition-all duration-2000 ease-in-out" />
+            <div className="top-0 left-0 z-[3] absolute flex justify-center items-center gap-3 w-full h-full transition-all duration-2000 ease-in-out">
               <button
                 type="button"
                 onClick={uploadImage}
                 disabled={!newImage}
-                className="bg-[orange] font-semibold text-black px-[10px] py-[4px] rounded-md"
+                className="bg-[orange] px-[10px] py-[4px] rounded-md font-semibold text-black"
               >
                 Upload
               </button>
               <button
                 type="button"
                 onClick={handleResetClick}
-                className="bg-[orange] font-semibold text-black px-[10px] py-[4px] rounded-md"
+                className="bg-[orange] px-[10px] py-[4px] rounded-md font-semibold text-black"
               >
                 Reset
               </button>
@@ -169,13 +171,13 @@ const GalleryContent = ({ id }) => {
               height={300}
               src={preview}
               alt="preview"
-              className="w-[100%] rounded-[8px]"
+              className="rounded-[8px] w-[100%]"
               style={{ objectFit: 'cover', height: '300px' }}
             />
           </div>
         )}
         {isUser === id && (
-          <div className="flex items-center justify-center w-[100%] md:w-[48%] rounded-[8px] h-[300px] bg-[#85858567]">
+          <div className="flex justify-center items-center bg-[#85858567] rounded-[8px] w-[100%] md:w-[48%] h-[300px]">
             <input type="file" id="imageUploader" className="hidden" onChange={handleImageChange} accept="image/*" />
             <button
               type="button"

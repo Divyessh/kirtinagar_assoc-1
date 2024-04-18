@@ -42,9 +42,9 @@ const Title = ({ id }) => {
     },
   });
   const { data: session } = useSession();
+  // eslint-disable-next-line no-underscore-dangle
   const isUser = session?.user?._id;
   const providerData = data;
-
   const [name, setName] = useState(providerData?.nameOftheFirm);
 
   const handleSave = async () => {
@@ -56,37 +56,37 @@ const Title = ({ id }) => {
   return (
     <>
       <div className="text-center">
-        <div className="w-full flex items-center justify-center gap-3">
-          <h1 className="font-[700] text-[18px] text-black leading-[20px] md:text-[50px] md:leading-[75px]">{name}</h1>
+        <div className="flex justify-center items-center gap-3 w-full">
+          <h1 className="font-[700] text-[18px] text-black md:text-[50px] leading-[20px] md:leading-[75px]">{name}</h1>
           {isUser === id && (
             // eslint-disable-next-line jsx-a11y/label-has-associated-control
             <label htmlFor="my_modal_7" aria-label="open modal">
-              <FaRegEdit className="text-[30px] md:text-[38px] text-black" />
+              <FaRegEdit className="text-[30px] text-black md:text-[38px]" />
             </label>
           )}
         </div>
-        <p className="font-[300] text-[15px] md:text-[23px] text-[#302f2f]">New Delhi, India</p>
-        <Link href="/services" className="text-center flex justify-center items-center mt-[15px] mb-[20px]">
+        <p className="font-[300] text-[#302f2f] text-[15px] md:text-[23px]">New Delhi, India</p>
+        <Link href="/services" className="flex justify-center items-center mt-[15px] mb-[20px] text-center">
           <div
-            className="flex justify-center items-center gap-[12px] rounded-[12px] md:rounded-[20px] px-[12px] md:px-[25px] py-[7px] md:py-[10px] bg-[#FF9800] w-fit"
+            className="flex justify-center items-center gap-[12px] bg-[#FF9800] px-[12px] md:px-[25px] py-[7px] md:py-[10px] rounded-[12px] md:rounded-[20px] w-fit"
             style={{ boxShadow: '6px 4px 4px 0px #00000040' }}
           >
-            <h1 className="font-[400] text-[14px] md:text-[20px] text-black">VISIT WEBSITE</h1>
+            <h1 className="font-[400] text-[14px] text-black md:text-[20px]">VISIT WEBSITE</h1>
             <Image alt="icons" src={shareIcon} width={20} height={20} />
           </div>
         </Link>
       </div>
       <input type="checkbox" id="my_modal_7" className="modal-toggle" />
       <div className="modal" role="dialog">
-        <div className="modal-box bg-white text-black flex flex-col gap-4">
-          <h3 className="text-lg font-bold">Edit Name!</h3>
+        <div className="flex flex-col gap-4 bg-white text-black modal-box">
+          <h3 className="font-bold text-lg">Edit Name!</h3>
           <input
             type="text"
-            className="border p-2 rounded-md outline-black"
+            className="p-2 border rounded-md outline-black"
             defaultValue={name || providerData?.nameOftheFirm}
             onChange={(e) => setName(e.target.value)}
           />
-          <button type="button" aria-label="Save Info" onClick={handleSave} className="bg-[#FF9800] text-black p-2 rounded-lg w-fit">
+          <button type="button" aria-label="Save Info" onClick={handleSave} className="bg-[#FF9800] p-2 rounded-lg w-fit text-black">
             Save
           </button>
         </div>

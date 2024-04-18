@@ -8,7 +8,7 @@ const ContactServices = ({ params }) => {
   const { id } = params;
   return (
     <ServiceWrapper>
-      <Title />
+      <Title id={id} />
       <Nav pageName="Contact" id={id} />
       <Contact id={id} />
     </ServiceWrapper>

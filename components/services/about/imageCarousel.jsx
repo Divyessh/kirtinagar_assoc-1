@@ -10,7 +10,7 @@ import placeholder from '../../../assets/avif/placeholder.webp';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 const ImageCarousel = ({ imageArray, fixheight }) => {
-  const filteredImages = imageArray.filter((image) => image == null);
+  const filteredImages = imageArray.filter((image) => image !== null);
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -31,7 +31,7 @@ const ImageCarousel = ({ imageArray, fixheight }) => {
   }, [emblaApi]);
   return (
     <div className="col-span-7 md:rounded-[2px] embla">
-      <div className="embla__viewport relative" ref={emblaRef}>
+      <div className="relative embla__viewport" ref={emblaRef}>
         <div className="relative embla__container">
           {filteredImages?.length > 0
             ? filteredImages.map((image, i) => (
@@ -71,25 +71,25 @@ const ImageCarousel = ({ imageArray, fixheight }) => {
                     width: '100%',
                     height: fixheight && '300px',
                   }}
-                  className="embla__slide h-auto md:h-[500px]"
+                  className="h-auto md:h-[500px] embla__slide"
                 />
               ))}
         </div>
         <button
           type="button"
-          className="embla__prev absolute top-1/2 left-[3%] -translate-y-1/2 w-fit rounded-full p-[3px] bg-[#F5F5F5]"
+          className="top-1/2 left-[3%] absolute bg-[#F5F5F5] p-[3px] rounded-full w-fit -translate-y-1/2 embla__prev"
           onClick={scrollPrev}
           aria-label="Prev Scroll"
         >
-          <BsChevronLeft className="font-[600] text-black text-[1rem] md:text-[2rem]" />
+          <BsChevronLeft className="font-[600] text-[1rem] text-black md:text-[2rem]" />
         </button>
         <button
           type="button"
-          className="embla__next absolute top-1/2 right-[3%] -translate-y-1/2 w-fit rounded-full p-[3px] bg-[#F5F5F5]"
+          className="top-1/2 right-[3%] absolute bg-[#F5F5F5] p-[3px] rounded-full w-fit -translate-y-1/2 embla__next"
           onClick={scrollNext}
           aria-label="Next Scroll"
         >
-          <BsChevronRight className="font-[600] text-black text-[1rem] md:text-[2rem]" />
+          <BsChevronRight className="font-[600] text-[1rem] text-black md:text-[2rem]" />
         </button>
       </div>
     </div>

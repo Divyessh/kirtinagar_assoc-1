@@ -9,7 +9,7 @@ const GalleryServices = ({ params }) => {
   const { id } = params;
   return (
     <ServiceWrapper>
-      <Title />
+      <Title id={id} />
       <Nav pageName="Gallery" id={id} />
       <GalleryContent id={id} />
       <RelatedProviders />

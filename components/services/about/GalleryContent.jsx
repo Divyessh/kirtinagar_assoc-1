@@ -14,14 +14,15 @@ const GalleryContent = ({ id }) => {
     },
   });
   const providerData = data;
+  // console.log(providerData?.shopgallery);
   return (
     <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
       <Heading title="Gallery" />
-      <div className="grid grid-cols-7 h-[auto] max-h-[500px] rounded-[2px] overflow-hidden relative">
+      <div className="relative grid grid-cols-7 rounded-[2px] h-[auto] max-h-[500px] overflow-hidden">
         <ImageCarousel imageArray={providerData?.shopgallery} />
         <Link
           href={`/services/${id}/gallery`}
-          className="bg-[#626262]  rounded-sm md:rounded-[11px] px-[6px] md:px-[16px] py-[2px] text-[13px] md:text-[25px] font-[700] text-[#D9D9D9] absolute bottom-1 left-1/2 -translate-x-1/2"
+          className="bottom-1 left-1/2 absolute bg-[#626262] px-[6px] md:px-[16px] py-[2px] rounded-sm md:rounded-[11px] font-[700] text-[#D9D9D9] text-[13px] md:text-[25px] -translate-x-1/2"
         >
           View All
         </Link>
