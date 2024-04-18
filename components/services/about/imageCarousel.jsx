@@ -10,7 +10,7 @@ import placeholder from '../../../assets/avif/placeholder.webp';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 const ImageCarousel = ({ imageArray, fixheight }) => {
-  const filteredImages = imageArray.filter((image) => image !== null);
+  const filteredImages = imageArray?.filter((image) => image !== null) || [];
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
