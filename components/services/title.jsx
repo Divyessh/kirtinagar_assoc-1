@@ -66,7 +66,11 @@ const Title = ({ id }) => {
           )}
         </div>
         <p className="font-[300] text-[#302f2f] text-[15px] md:text-[23px]">New Delhi, India</p>
-        <Link href="/services" className="flex justify-center items-center mt-[15px] mb-[20px] text-center">
+        <Link
+          href={'https://void-works.netlify.app/' || providerData?.websiteLink}
+          target="_blank"
+          className="flex justify-center items-center mt-[15px] mb-[20px] text-center"
+        >
           <div
             className="flex justify-center items-center gap-[12px] bg-[#FF9800] px-[12px] md:px-[25px] py-[7px] md:py-[10px] rounded-[12px] md:rounded-[20px] w-fit"
             style={{ boxShadow: '6px 4px 4px 0px #00000040' }}

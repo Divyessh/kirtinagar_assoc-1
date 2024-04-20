@@ -146,6 +146,7 @@ const Contact = ({ id }) => {
               <iframe
                 title="con"
                 src={data?.location}
+                preconnect
                 className="w-full h-full"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"

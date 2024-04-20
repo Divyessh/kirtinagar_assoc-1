@@ -7,7 +7,7 @@ import { BiSearchAlt } from 'react-icons/bi';
 // Importing necessary Next.js modules
 import { useRouter } from 'next/navigation'; // Correct import statement
 import { useForm } from 'react-hook-form';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
 import { TbSofaOff } from 'react-icons/tb';
 
@@ -18,6 +18,7 @@ const CategoryDropdown = () => {
   const [filteredProviders, setFilteredProviders] = useState([]);
   const [loading, setLoading] = useState(false);
   const keywordValue = watch('keyword', '');
+  const dropdownRef = useRef(null); // Added dropdownRef using useRef
 
   useEffect(() => {
     const fetchProviders = async () => {
@@ -34,6 +35,16 @@ const CategoryDropdown = () => {
       }
     };
     fetchProviders();
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setFilteredProviders([]);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   useEffect(() => {
@@ -56,7 +67,7 @@ const CategoryDropdown = () => {
   };
 
   return (
-    <form className="z-10 w-full" onSubmit={handleSubmit(onSubmit)}>
+    <form className="z-10 w-full" onSubmit={handleSubmit(onSubmit)} ref={dropdownRef}>
       <div
         className="place-items-center md:place-items-stretch gap-3 md:gap-6 grid grid-cols-2 md:grid-cols-5 bg-[#E5DFCF] px-[15px] md:px-[24px] py-[15px] md:py-[30px] w-full"
         style={{ boxShadow: '6px 9px 12px 0px #00000040' }}
@@ -72,7 +83,7 @@ const CategoryDropdown = () => {
             {loading ? (
               <BallTriangle height={50} width={50} color="green" ariaLabel="loading" visible />
             ) : filteredProviders?.length > 0 ? (
-              <div className="top-full left-0 z-100 absolute bg-white shadow-md mt-1 rounded-[10px] w-full max-h-[20vh] text-black overflow-y-scroll">
+              <div className="top-full left-0 absolute z-10 bg-white shadow-md mt-1 rounded-[10px] w-full md:max-h-[20vh] max-h-[40vh] text-black overflow-y-scroll">
                 {filteredProviders?.map((provider) => (
                   <button
                     type="button"

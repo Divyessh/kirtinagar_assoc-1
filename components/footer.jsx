@@ -32,13 +32,13 @@ const Footer = () => {
   ];
 
   return (
-    <div className="relative  bg-white z-0">
-      <div className="w-full flex space-between ">
+    <div className="  bg-white z-0">
+      {/* <div className="w-full flex space-between ">
         <Image src="/footer.svg" alt="footer" width={233} height={215} className="absolute z-0 -top-14" />
         <Image src="/footerright.svg" alt="footer" width={260} height={215} className="absolute  z-0 -top-16 right-0" />
-      </div>
+      </div> */}
 
-      <div className="bg-[#413833]  absolute">
+      <div className="bg-[#413833]  ">
         <h1 className="text-white text-4xl font-bold text-center py-2 border-b-1 tracking-4">New Timber Market Dealer</h1>
         <div className="md:flex ">
           {data.map((item) => (
@@ -80,9 +80,8 @@ const Footer = () => {
             <h1 className="text-xl text-center uppercase text-white ">Location</h1>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14005.909523688018!2d77.14124300000002!3d28.64542155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0304934fb67d%3A0x232534e44837b1bf!2sKirti%20Nagar%2C%20Delhi!5e0!3m2!1sen!2sin!4v1712821987844!5m2!1sen!2sin"
-              width="400"
-              height="230"
               allowfullscreen=""
+              preconnect
               loading="lazy"
               title="footermaps"
               className="p-4"
@@ -96,7 +95,7 @@ const Footer = () => {
               <br />
               listed?
             </h1>
-            <button type="button" className="btn btn-primary rounded-full ">
+            <button type="button" className="btn btn-primary rounded-full">
               <Link href="/pricing">See Pricing</Link>
               <IoIosArrowForward />
             </button>
