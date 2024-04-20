@@ -4,6 +4,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { ToastContainer, toast } from 'react-toastify';
 import { useSession } from 'next-auth/react';
 import { BiError } from 'react-icons/bi';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -89,6 +90,10 @@ const GalleryContent = ({ id }) => {
       });
       const uploadedImageData = await uploadResponse.json();
       const imageUrl = uploadedImageData.secure_url;
+      if (!imageUrl || typeof imageUrl === 'undefined') {
+        toast.error('Error generating image URL');
+        return;
+      }
       setPreview(null);
       setNewImage(null);
       setImageArray((prev) => [...prev, imageUrl]);
@@ -189,6 +194,7 @@ const GalleryContent = ({ id }) => {
           </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };
