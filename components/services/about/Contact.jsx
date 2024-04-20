@@ -103,7 +103,7 @@ const Contact = ({ id }) => {
               <div className="w-[95%]">
                 <Link
                   href={data?.websiteLink || contactInfo?.websiteLink || 'https://void-works.netlify.app/'}
-                  className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px] hover:text-blue-400"
+                  className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] hover:text-blue-400 leading-[15px] md:leading-[40px]"
                   target="_blank"
                 >
                   {data?.websiteLink || contactInfo?.websiteLink}
@@ -140,8 +140,8 @@ const Contact = ({ id }) => {
               </div>
             </div>
           </div>
-          {data?.location.startsWith('https') && (
-            <div className="col-span-2 md:col-span-4 font-[700] text-[13px] text-center md:text-[28px] leading-[15px] md:leading-[40px] md:pb-10">
+          {typeof data?.location === 'string' && data?.location?.startsWith('https') && (
+            <div className="col-span-2 md:col-span-4 md:pb-10 font-[700] text-[13px] text-center md:text-[28px] leading-[15px] md:leading-[40px]">
               <h1 className="text-black">LOCATION</h1>
               <iframe
                 title="con"
@@ -153,7 +153,7 @@ const Contact = ({ id }) => {
             </div>
           )}
         </div>
-        {/* <div className="flex justify-start items-center gap-2 text-start pl-12">
+        {/* <div className="flex justify-start items-center gap-2 pl-12 text-start">
           <h1 className="font-[600] text-[15px] text-black md:text-[23px]">9 AM - 9 PM</h1>
           <button type="button" className="bg-[#382F2A] p-[3px] rounded-full w-fit" aria-label="Time">
             <BsChevronDown className="font-[600] text-[8px] text-white md:text-[16px]" />
