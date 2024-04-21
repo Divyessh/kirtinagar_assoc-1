@@ -37,7 +37,12 @@ const LoginModal = () => {
           {isForgotPassword ? (
             <>
               <ForgotPassForm />
-              <ModalContent btnName="Sign Up" modalContent="New here?" setisLoginModal={setisLoginModal} />
+              <ModalContent
+                btnName="Sign Up"
+                modalContent="New here?"
+                setisLoginModal={setisLoginModal}
+                setisForgotPassword={setisForgotPassword}
+              />
             </>
           ) : isLoginModal ? (
             <>
