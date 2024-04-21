@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { BiSolidUser, BiLogInCircle } from 'react-icons/bi';
 import { AiOutlineLock } from 'react-icons/ai';
@@ -5,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
 import { CgDanger } from 'react-icons/cg';
 
-const LoginForm = () => {
+const LoginForm = ({ setisForgotPassword }) => {
   const { register, handleSubmit, reset } = useForm();
   const [verified, setVerified] = React.useState(true);
   const [error, setError] = React.useState('');
@@ -37,24 +39,24 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="py-10 md:p-0 col-span-11 md:col-span-7 flex items-center justify-center flex-col gap-[18px] relative"
+      className="relative flex flex-col justify-center items-center gap-[18px] col-span-11 md:col-span-7 py-10 md:p-0"
     >
       <div>
         <BiLogInCircle className="text-[#FBBC05] text-[60px]" />
         <h1 className="font-extrabold text-[21px]">Log In</h1>
       </div>
-      <div className="flex gap-[15px] flex-col text-black">
+      <div className="flex flex-col gap-[15px] text-black">
         <div
-          className="flex items-center gap-[10px] bg-[#f1f0f1] w-[205px] md:w-fit px-[6px] py-[11px] rounded-[7px]  border-[#8B8484]"
+          className="flex items-center gap-[10px] border-[#8B8484] bg-[#f1f0f1] px-[6px] py-[11px] rounded-[7px] w-[205px] md:w-fit"
           style={{
             boxShadow: '7px 8px 10px 0px #00000040',
           }}
         >
-          <BiSolidUser className="rounded-full text-[#6D6D6D] border-2 text-[18px]  border-[#6D6D6D]" />
+          <BiSolidUser className="border-[#6D6D6D] border-2 rounded-full text-[#6D6D6D] text-[18px]" />
           <input
             type="text"
             placeholder="Username"
-            className="outline-none bg-[#f1f0f1] w-full md:w-[200px] text-black"
+            className="bg-[#f1f0f1] w-full md:w-[200px] text-black outline-none"
             // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
             {...register('username', {
               required: true,
@@ -62,7 +64,7 @@ const LoginForm = () => {
           />
         </div>
         <div
-          className="flex items-center gap-[10px] bg-[#f1f0f1] w-[205px] md:w-fit px-[6px] py-[11px] rounded-[7px]  border-[#8B8484]"
+          className="flex items-center gap-[10px] border-[#8B8484] bg-[#f1f0f1] px-[6px] py-[11px] rounded-[7px] w-[205px] md:w-fit"
           style={{
             boxShadow: '7px 8px 10px 0px #00000040',
           }}
@@ -71,7 +73,7 @@ const LoginForm = () => {
           <input
             type="password"
             placeholder="Password"
-            className="outline-none bg-[#f1f0f1] w-full md:w-[200px]"
+            className="bg-[#f1f0f1] w-full md:w-[200px] outline-none"
             // eslint-disable-next-line react/jsx-props-no-spreading, react/destructuring-assignment
             {...register('password', {
               required: true,
@@ -79,9 +81,9 @@ const LoginForm = () => {
           />
         </div>
       </div>
-      <div className="flex items-center justify-center flex-col">
+      <div className="flex flex-col justify-center items-center">
         {!verified && (
-          <p className="text-[white] flex items-center gap-[5px] border-2 bg-[red] border-[red] p-[5px] rounded-lg">
+          <p className="flex items-center gap-[5px] border-[red] border-2 bg-[red] p-[5px] rounded-lg text-[white]">
             <CgDanger /> {error}
           </p>
         )}
@@ -89,17 +91,19 @@ const LoginForm = () => {
       </div>
       <div className="modal-action">
         <button
-          className="btn bg-[#FBBC05] hover:bg-[#fbbd05dc] border-none text-[#765D5F] px-[47px] normal-case font-700"
+          className="bg-[#FBBC05] hover:bg-[#fbbd05dc] px-[47px] border-none font-700 text-[#765D5F] normal-case btn"
           type="submit"
           style={{ boxShadow: '7px 8px 10px 0px #00000040' }}
         >
           Log In
         </button>
       </div>
-      <div className="grid grid-cols-7 gap-[2px] w-[80%] place-items-center">
-        <p className="col-span-3 text-[#00000080] text-[13px] font-400 text-center">Don’t have an account?</p>
-        <span className="w-[0.8px] h-full bg-[#8B8484]" />
-        <p className="col-span-3 text-[#00000080] text-[13px] font-400 text-center">Forgot password</p>
+      <div className="place-items-center gap-[2px] grid grid-cols-7 w-[80%]">
+        <p className="col-span-3 font-400 text-[#00000080] text-[13px] text-center">Don’t have an account?</p>
+        <span className="bg-[#8B8484] w-[0.8px] h-full" />
+        <p onClick={() => setisForgotPassword(true)} className="col-span-3 font-400 text-[#00000080] text-[13px] text-center">
+          Forgot password
+        </p>
       </div>
     </form>
   );
