@@ -16,7 +16,7 @@ export default function ResetPasswordPage() {
 
   const verifyUserEmail = async () => {
     try {
-      const res = await axios.post('/api/reset-email', { token });
+      const res = await axios.post('/api/reset-pass', { token });
       setEmail(true);
       // eslint-disable-next-line no-console
       console.log(res.data);
