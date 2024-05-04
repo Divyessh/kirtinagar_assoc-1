@@ -50,7 +50,7 @@ const Footer = () => {
               </div>
               <div className="card-body flex-col justify-center items-center">
                 <h1 className="text-xl text-white">{item.title}</h1>
-                <p className="text-md text-[#DDC5C5] text-center px-8">{item.subtitle}</p>
+                <p className="text-md text-[#DDC5C5] text-center ">{item.subtitle}</p>
               </div>
             </div>
           ))}

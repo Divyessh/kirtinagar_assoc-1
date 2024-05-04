@@ -28,7 +28,7 @@ export default function MembersTable() {
 
   return (
     <div>
-      <div className="bg-primary space-x-1 w-full flex flex-wrap justify-center items-center pt-1">
+      <div className="bg-primary space-x-1 w-full flex flex-wrap justify-center items-center pt-1 ">
         <button
           type="button"
           responsive="true"
@@ -51,7 +51,7 @@ export default function MembersTable() {
           </button>
         ))}
       </div>
-      <div className="overflow-x-auto bg-primary flex w-full items-center justify-center px-12 py-4 ">
+      <div className="overflow-x-auto bg-primary flex w-full items-center justify-center md:px-12 py-4 ">
         <table className="table bg-primary text-black">
           {/* head */}
           <thead aria-label="members-table" className="text-lg text-black">

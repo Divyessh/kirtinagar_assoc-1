@@ -17,6 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="mytheme">
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" />
       <body className={poppins.className}>
         <AppLayout>{children}</AppLayout>
       </body>

@@ -48,7 +48,7 @@ const NavBarUser = ({ navItems }) => {
         <LoginModal />
       )}
       <div className="dropdown">
-        <button type="button" className="btn btn-ghost lg:hidden " aria-label="Open Menu">
+        <button type="button" className="btn btn-ghost lg:hidden menu menu-sm" aria-label="Open Menu">
           <GiHamburgerMenu className="text-black object-cover text-4xl" />
         </button>
         <div className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box z-50 bg-primary right-2 text-black border-secondary">

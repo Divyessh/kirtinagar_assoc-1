@@ -21,7 +21,7 @@ export default function SuperAdminTable() {
       const response = await axios.get('api/provider');
       setSelectedMembers(response.data.data);
     } catch (error) {
-      console.error('Error fetching members:', error);
+      // console.error('Error fetching members:', error);
     }
   };
 
@@ -31,7 +31,7 @@ export default function SuperAdminTable() {
       toast.success('User removed successfully!');
       getMembers();
     } catch (error) {
-      console.error('Error deleting user:', error);
+      // console.error('Error deleting user:', error);
       toast.error('Error removing user!');
     }
   };
@@ -46,7 +46,7 @@ export default function SuperAdminTable() {
         getMembers();
       }
     } catch (error) {
-      console.error('Error activating user:', error);
+      // console.error('Error activating user:', error);
       toast.error('Error activating user!');
     }
   };
@@ -60,7 +60,7 @@ export default function SuperAdminTable() {
         getMembers();
       }
     } catch (error) {
-      console.error('Error deactivating user:', error);
+      // console.error('Error deactivating user:', error);
       toast.error('Error deactivating user!');
     }
   };
@@ -75,7 +75,7 @@ export default function SuperAdminTable() {
         getMembers();
       }
     } catch (error) {
-      console.error('Error activating user:', error);
+      // console.error('Error activating user:', error);
       toast.error('Error activating user!');
     }
   };
