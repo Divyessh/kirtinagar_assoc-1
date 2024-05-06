@@ -56,7 +56,13 @@ const userSchema = new Schema({
     type: String,
   },
   contactNumber: {
-    type: Number,
+    type: String,
+    validate: {
+      validator(numbers) {
+        return numbers.split(',').length <= 4;
+      },
+      message: 'Landline numbers should not be more than 4',
+    },
   },
   contacts: [
     {
@@ -65,8 +71,13 @@ const userSchema = new Schema({
     },
   ],
   landlineNumber: {
-    // done
-    type: Number,
+    type: String,
+    validate: {
+      validator(numbers) {
+        return numbers.split(',').length <= 4;
+      },
+      message: 'Landline numbers should not be more than 4',
+    },
   },
   services: [
     {

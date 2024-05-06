@@ -8,8 +8,9 @@ import { FaEnvelope, FaRegEdit } from 'react-icons/fa';
 import { useSession } from 'next-auth/react';
 import { GiEarthAfricaEurope } from 'react-icons/gi';
 import { AiFillClockCircle } from 'react-icons/ai';
+import 'react-toastify/dist/ReactToastify.css';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import Link from 'next/link';
 import Heading from './heading';
 import SkeletonCard from '../../blogs/skeletonCard';
@@ -27,6 +28,7 @@ const Contact = ({ id }) => {
     contactNumber: data?.contactNumber,
     websiteLink: data?.websiteLink,
     email: data?.email,
+    landlineNumber: data?.landlineNumber,
     location: data?.location,
   });
   const { data: session } = useSession();
@@ -55,12 +57,23 @@ const Contact = ({ id }) => {
   });
 
   const handleSave = async () => {
+    const landlineNumber = data?.landlineNumber?.split(',')?.map((number) => number.trim());
+    if (landlineNumber?.length > 4) {
+      toast.error('Landline number should be less than 4');
+      return;
+    }
+    const contactNumber = contactInfo?.contactNumber?.split(',')?.map((number) => number.trim());
+    if (contactNumber?.length > 4) {
+      toast.error('Contact number should be less than 4');
+      return;
+    }
     handleUpdate({ ...data, ...contactInfo });
   };
   return isLoading || data?.length === 0 ? (
     <SkeletonCard />
   ) : (
     <>
+      <ToastContainer />
       <div style={{ borderBottom: '1px solid #2B1607', paddingBottom: '16px' }}>
         <div className="flex justify-center items-center gap-2 w-full">
           {isUser === id && (
@@ -116,8 +129,11 @@ const Contact = ({ id }) => {
               </div>
               <div className="w-[95%]">
                 <h1 className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px]">
-                  {data?.landlineNumber || contactInfo?.landlineNumber || 12345677889}
+                  {contactInfo?.landlineNumber}
                 </h1>
+                {/* <h1 className="w-[100%] font-[700] text-[13px] text-black md:text-[28px] leading-[15px] md:leading-[40px]">
+                  {data?.landlineNumber[0] || contactInfo?.landlineNumber[0] || 12345677889}
+                </h1> */}
               </div>
             </div>
             <div className="flex justify-center items-start gap-[10px] md:gap-[20px] max-md:ml-1">
@@ -174,9 +190,9 @@ const Contact = ({ id }) => {
           />
           <input
             type="text"
-            placeholder="Enter Contact Number"
+            placeholder="Enter Contact Number (Comma separated)"
             className="p-2 border rounded-md outline-black"
-            defaultValue={contactInfo?.contactNumber || data?.contactNumber}
+            defaultValue={contactInfo?.contactNumber || ''}
             onChange={(e) => setContactInfo({ ...contactInfo, contactNumber: e.target.value })}
           />
           <input
@@ -192,6 +208,13 @@ const Contact = ({ id }) => {
             className="p-2 border rounded-md outline-black"
             defaultValue={contactInfo?.email || data?.email}
             onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
+          />
+          <input
+            type="text"
+            placeholder="Enter Landline Number (Comma separated)"
+            className="p-2 border rounded-md outline-black"
+            defaultValue={contactInfo?.landlineNumber || ''}
+            onChange={(e) => setContactInfo({ ...contactInfo, landlineNumber: e.target.value })}
           />
           <input
             type="text"
