@@ -6,35 +6,31 @@ import styles from '../page.module.css';
 import MemberCard from './MemberCard';
 
 const TeamSection = () => {
-  const [members, setMembers] = React.useState(5);
-  const dummy = [1, 2, 3, 4, 5, 6, 7, 8];
+  const [members] = React.useState();
+  const membersData = [
+    {
+      'S.NO.': 1,
+      'NAME OF THE CANDIDATE': 'Sh. Kanti Lal Patel',
+      'POST OF THE CANDIDATE': 'Chairman',
+      ADDRESS: '1/57A',
+      'MOBILE NO.': 9811251020,
+    },
+  ];
   return (
     <div className={styles.bg_office}>
-      <TeamHeader title="Office - Bearers" />
-      <div className="grid grid-cols-4 md:grid-cols-5 gap-[10px] md:gap-[60px] px-2 py-8">
-        {dummy.slice(0, members)?.map((item) => (
-          <MemberCard key={item} />
+      <TeamHeader title="Honorary Member" />
+      <div className="gap-[10px] md:gap-[60px] grid grid-cols-4 md:grid-cols-5 md:px-6 py-8">
+        {membersData.slice(0, members)?.map((member) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <MemberCard
+            key={member['S.NO.']}
+            name={member['NAME OF THE CANDIDATE']}
+            phone={member['MOBILE NO.']}
+            address={member.ADDRESS}
+            position={member['POST OF THE CANDIDATE']}
+            img={member.img}
+          />
         ))}
-      </div>
-      <div className="flex items-center justify-center pb-4">
-        <button
-          type="button"
-          onClick={() => setMembers(dummy.length - 1)}
-          className="bg-[#413833] text-white p-2 rounded-lg"
-          style={{ display: members === dummy.length - 1 ? 'none' : 'block' }}
-        >
-          {'View All >'}
-        </button>
-      </div>
-      <div className="flex items-center justify-center pb-4">
-        <button
-          type="button"
-          onClick={() => setMembers(5)}
-          className="bg-[#413833] text-white p-2 rounded-lg"
-          style={{ display: members !== dummy.length - 1 ? 'none' : 'block' }}
-        >
-          {'Show Less >'}
-        </button>
       </div>
     </div>
   );
