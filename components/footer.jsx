@@ -32,33 +32,33 @@ const Footer = () => {
   ];
 
   return (
-    <div className="  bg-white z-0">
-      {/* <div className="w-full flex space-between ">
-        <Image src="/footer.svg" alt="footer" width={233} height={215} className="absolute z-0 -top-14" />
-        <Image src="/footerright.svg" alt="footer" width={260} height={215} className="absolute  z-0 -top-16 right-0" />
+    <div className="z-0 bg-white">
+      {/* <div className="flex w-full space-between">
+        <Image src="/footer.svg" alt="footer" width={233} height={215} className="-top-14 z-0 absolute" />
+        <Image src="/footerright.svg" alt="footer" width={260} height={215} className="-top-16 right-0 z-0 absolute" />
       </div> */}
 
-      <div className="bg-[#413833]  ">
-        <h1 className="text-white text-4xl font-bold text-center py-2 border-b-1 tracking-4">New Timber Market Dealer</h1>
-        <div className="md:flex ">
+      <div className="bg-[#413833]">
+        <h1 className="py-2 border-b-1 font-bold text-4xl text-center text-white tracking-4">New Timber Market Dealer</h1>
+        <div className="md:flex">
           {data.map((item) => (
-            <div className="card p-8 text-white" key={item.id}>
-              <div className="flex items-center justify-center">
-                <span className="flex items-center justify-center bg-stone-200 w-[94px] h-[92px] rounded-full">
+            <div className="p-8 text-white card" key={item.id}>
+              <div className="flex justify-center items-center">
+                <span className="flex justify-center items-center bg-stone-200 rounded-full w-[94px] h-[92px]">
                   <Image src={item.icon} alt="members" className="object-cover" />
                 </span>
               </div>
-              <div className="card-body flex-col justify-center items-center">
-                <h1 className="text-xl text-white">{item.title}</h1>
-                <p className="text-md text-[#DDC5C5] text-center ">{item.subtitle}</p>
+              <div className="flex-col justify-center items-center card-body">
+                <h1 className="text-white text-xl">{item.title}</h1>
+                <p className="text-[#DDC5C5] text-center text-md">{item.subtitle}</p>
               </div>
             </div>
           ))}
         </div>
-        <div className="md:flex flex-2 justify-evenly text-center items-center border-b-2 border-white space-y-2">
+        <div className="md:flex flex-2 justify-evenly items-center space-y-2 border-white border-b-2 text-center">
           <div>
-            <span className="text-xl text-white">USEFUL LINKS</span>
-            <ul className="text-[#DDC5C5] text-lg  text-center">
+            <span className="text-white text-xl">USEFUL LINKS</span>
+            <ul className="text-[#DDC5C5] text-center text-lg">
               <li>
                 <Link className="hover:border-b-2 hover:text-white" href="/aboutus">
                   About us
@@ -76,8 +76,8 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="flex flex-col items-center justify-center">
-            <h1 className="text-xl text-center uppercase text-white ">Location</h1>
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="text-center text-white text-xl uppercase">Location</h1>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14005.909523688018!2d77.14124300000002!3d28.64542155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0304934fb67d%3A0x232534e44837b1bf!2sKirti%20Nagar%2C%20Delhi!5e0!3m2!1sen!2sin!4v1712821987844!5m2!1sen!2sin"
               allowfullscreen=""
@@ -89,14 +89,14 @@ const Footer = () => {
             />
           </div>
           <div className="space-y-3 text-white">
-            <span className="text-xl text-center uppercase">SHOP LISTING</span>
+            <span className="text-center text-xl uppercase">SHOP LISTING</span>
             <h1 className="text-2xl">
               Want the shop to be
               <br />
               listed?
             </h1>
-            <button type="button" className="btn btn-primary rounded-full">
-              <Link href="/pricing">See Pricing</Link>
+            <button type="button" className="rounded-full btn btn-primary">
+              <Link href="/contactus">Contact Us</Link>
               <IoIosArrowForward />
             </button>
           </div>
