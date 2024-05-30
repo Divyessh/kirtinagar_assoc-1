@@ -39,7 +39,7 @@ export default function SuperAdminTable() {
   const featuredUser = async (id) => {
     try {
       await axios.post(`api/activateFeatured/${id}`);
-      if (selectedMembers.some((member) => member._id === id && member.isFeatured)) {
+      if (selectedMembers.some((member) => member?._id === id && member?.isFeatured)) {
         toast.error('User is already Featured!');
       } else {
         toast.success('User is now Featured!');
@@ -53,7 +53,7 @@ export default function SuperAdminTable() {
   const featuredUserRemove = async (id) => {
     try {
       await axios.post(`api/deactivateFeatured/${id}`);
-      if (!selectedMembers.some((member) => member._id === id && member.isFeatured)) {
+      if (!selectedMembers.some((member) => member?._id === id && member?.isFeatured)) {
         toast.error('User is not Featured!');
       } else {
         toast.success('User is no longer Featured!');
@@ -68,7 +68,7 @@ export default function SuperAdminTable() {
   const activeUser = async (id) => {
     try {
       await axios.post(`api/activateProvider/${id}`);
-      if (selectedMembers.some((member) => member._id === id && member.isVerified)) {
+      if (selectedMembers.some((member) => member?._id === id && member?.isVerified)) {
         toast.error('User is already Active!');
       } else {
         toast.success('User Activated!');
@@ -153,22 +153,22 @@ export default function SuperAdminTable() {
                 <th>{index}</th>
                 <td>{member.nameOftheFirm}</td>
                 <td>
-                  <div className={`badge badge-outline ${member.isVerified ? 'text-green-500' : 'text-red-500'}`}>
-                    {member.isVerified ? 'Active' : 'Inactive'}
+                  <div className={`badge badge-outline ${member?.isVerified ? 'text-green-500' : 'text-red-500'}`}>
+                    {member?.isVerified ? 'Active' : 'Inactive'}
                   </div>
                 </td>
                 <td>
-                  <div className={`badge badge-outline ${member.isFeatured ? 'text-green-500' : 'text-red-500'}`}>
-                    {member.isFeatured ? 'Active' : 'Inactive'}
+                  <div className={`badge badge-outline ${member?.isFeatured ? 'text-green-500' : 'text-red-500'}`}>
+                    {member?.isFeatured ? 'Active' : 'Inactive'}
                   </div>
                 </td>
-                <td>{member.address}</td>
+                <td>{member?.address}</td>
                 {session && session?.user?.role === 'superadmin' && (
                   <td className="flex justify-center items-center space-x-4">
-                    <button type="button" className="btn btn-success" onClick={() => activeUser(member._id)}>
+                    <button type="button" className="btn btn-success" onClick={() => activeUser(member?._id)}>
                       Active
                     </button>
-                    <button type="button" className="btn btn-error" onClick={() => removeUser(member._id)}>
+                    <button type="button" className="btn btn-error" onClick={() => removeUser(member?._id)}>
                       Remove
                     </button>
                   </td>
@@ -176,10 +176,10 @@ export default function SuperAdminTable() {
                 <td className="">
                   <button
                     type="button"
-                    className={`btn ${member.isFeatured ? 'btn-error' : 'btn-success'}`}
-                    onClick={() => (member.isFeatured ? featuredUserRemove(member._id) : featuredUser(member._id))}
+                    className={`btn ${member?.isFeatured ? 'btn-error' : 'btn-success'}`}
+                    onClick={() => (member?.isFeatured ? featuredUserRemove(member?._id) : featuredUser(member?._id))}
                   >
-                    {member.isFeatured ? 'Deactivate' : 'Activate'}
+                    {member?.isFeatured ? 'Deactivate' : 'Activate'}
                   </button>
                 </td>
               </tr>
