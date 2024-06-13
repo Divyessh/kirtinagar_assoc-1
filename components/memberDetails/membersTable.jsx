@@ -1,19 +1,21 @@
-'use client';
+"use client";
 
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 export default function MembersTable() {
-  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const initialLetter = ''; // Initial selected letter
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const initialLetter = ""; // Initial selected letter
   const [selectedLetter, setSelectedLetter] = useState(initialLetter);
   // const [filteredMembers, setFilteredMembers] = useState([]);
   const [selectedMembers, setSelectedMembers] = useState([]);
   // Sample data (you can replace this with your actual data)
   const getMembers = async () => {
-    const response = await axios.get('api/provider');
+    const response = await axios.get("/api/provider");
     // console.log(response.data.data);
-    setSelectedMembers(response.data.data);
+    setSelectedMembers(
+      response.data.data.filter((provider) => provider?.isVerified)
+    );
   };
   useEffect(() => {
     getMembers();
@@ -32,17 +34,21 @@ export default function MembersTable() {
         <button
           type="button"
           responsive="true"
-          className={`btn btn-primary border-1 border-secondary ${selectedLetter === '' ? 'btn-secondary' : ''}`}
+          className={`btn btn-primary border-1 border-secondary ${
+            selectedLetter === "" ? "btn-secondary" : ""
+          }`}
           value=""
-          onClick={() => filterMembersByLetter('')}
+          onClick={() => filterMembersByLetter("")}
         >
           All
         </button>
-        {letters.split('').map((letter) => (
+        {letters.split("").map((letter) => (
           <button
             type="button"
             responsive="true"
-            className={`btn btn-primary border-1 border-secondary ${selectedLetter === letter ? 'btn-secondary' : ''}`}
+            className={`btn btn-primary border-1 border-secondary ${
+              selectedLetter === letter ? "btn-secondary" : ""
+            }`}
             key={letter}
             value={letter}
             onClick={() => filterMembersByLetter(letter)}
@@ -64,7 +70,11 @@ export default function MembersTable() {
           </thead>
           <tbody>
             {selectedMembers
-              .filter((member) => selectedLetter === '' || member.nameOftheFirm.startsWith(selectedLetter))
+              .filter(
+                (member) =>
+                  selectedLetter === "" ||
+                  member.nameOftheFirm.startsWith(selectedLetter)
+              )
               .map((member, index) => (
                 // eslint-disable-next-line no-underscore-dangle
                 <tr key={member._id}>

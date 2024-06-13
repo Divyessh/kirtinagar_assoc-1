@@ -29,6 +29,7 @@ const CategoryDropdown = () => {
           headers: {
             "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
           },
+          cache: "no-store",
         });
         const data = await res.json();
         setProviders(data?.data);

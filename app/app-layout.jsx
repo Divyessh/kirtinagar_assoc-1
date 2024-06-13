@@ -8,10 +8,6 @@ import Navbar from "../components/navbar";
 import Preloader from "../components/preloader";
 import axios from "axios";
 
-axios.defaults.headers.common = {
-  "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
-};
-
 const AppLayout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
