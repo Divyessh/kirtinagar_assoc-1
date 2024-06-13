@@ -12,6 +12,7 @@ export async function GET() {
       { status: 200 }
     );
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { message: "Something went completely wrong" },
       { status: 500 }
