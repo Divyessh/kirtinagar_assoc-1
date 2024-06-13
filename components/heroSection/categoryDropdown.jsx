@@ -1,15 +1,16 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-props-no-spreading */
 
-'use client';
+"use client";
 
-import { BiSearchAlt } from 'react-icons/bi';
+import { BiSearchAlt } from "react-icons/bi";
 // Importing necessary Next.js modules
-import { useRouter } from 'next/navigation'; // Correct import statement
-import { useForm } from 'react-hook-form';
-import { useEffect, useRef, useState } from 'react';
-import { BallTriangle } from 'react-loader-spinner';
-import { TbSofaOff } from 'react-icons/tb';
+import { useRouter } from "next/navigation"; // Correct import statement
+import { useForm } from "react-hook-form";
+import { useEffect, useRef, useState } from "react";
+import { BallTriangle } from "react-loader-spinner";
+import { TbSofaOff } from "react-icons/tb";
+import { headers } from "@/next.config";
 
 const CategoryDropdown = () => {
   const router = useRouter();
@@ -17,14 +18,18 @@ const CategoryDropdown = () => {
   const [providers, setProviders] = useState([]);
   const [filteredProviders, setFilteredProviders] = useState([]);
   const [loading, setLoading] = useState(false);
-  const keywordValue = watch('keyword', '');
+  const keywordValue = watch("keyword", "");
   const dropdownRef = useRef(null); // Added dropdownRef using useRef
 
   useEffect(() => {
     const fetchProviders = async () => {
       setLoading(true);
       try {
-        const res = await fetch('/api/provider');
+        const res = await fetch("/api/provider", {
+          headers: {
+            "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+          },
+        });
         const data = await res.json();
         setProviders(data?.data);
       } catch (error) {
@@ -41,22 +46,28 @@ const CategoryDropdown = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   useEffect(() => {
     setFilteredProviders(
       keywordValue?.length >= 3
-        ? providers?.filter((provider) => provider?.nameOftheFirm.toLowerCase().includes(keywordValue.toLowerCase()))
-        : [],
+        ? providers
+            ?.filter((provider) => provider?.isVerified)
+            .filter((provider) =>
+              provider?.nameOftheFirm
+                .toLowerCase()
+                .includes(keywordValue.toLowerCase())
+            )
+        : []
     );
   }, [keywordValue, providers]);
 
   const handleSelect = (selectedKeyword) => {
-    setValue('keyword', selectedKeyword);
+    setValue("keyword", selectedKeyword);
     setFilteredProviders([]);
     router.push(`/services?keyword=${encodeURIComponent(selectedKeyword)}`);
   };
@@ -67,21 +78,31 @@ const CategoryDropdown = () => {
   };
 
   return (
-    <form className="z-10 w-full" onSubmit={handleSubmit(onSubmit)} ref={dropdownRef}>
+    <form
+      className="z-10 w-full"
+      onSubmit={handleSubmit(onSubmit)}
+      ref={dropdownRef}
+    >
       <div
         className="place-items-center md:place-items-stretch gap-3 md:gap-6 grid grid-cols-2 md:grid-cols-5 bg-[#E5DFCF] px-[15px] md:px-[24px] py-[15px] md:py-[30px] w-full"
-        style={{ boxShadow: '6px 9px 12px 0px #00000040' }}
+        style={{ boxShadow: "6px 9px 12px 0px #00000040" }}
       >
         <div className="relative flex items-center col-span-2 md:col-span-4 bg-white px-[18px] py-[8px] md:py-[12px] rounded-[10px] w-[97%] md:w-full text-black">
           <input
             className="w-full text-black outline-none"
             placeholder="Search for services"
             type="text"
-            {...register('keyword', { required: true, maxLength: 40 })}
+            {...register("keyword", { required: true, maxLength: 40 })}
           />
           <div>
             {loading ? (
-              <BallTriangle height={50} width={50} color="green" ariaLabel="loading" visible />
+              <BallTriangle
+                height={50}
+                width={50}
+                color="green"
+                ariaLabel="loading"
+                visible
+              />
             ) : filteredProviders?.length > 0 ? (
               <div className="top-full left-0 absolute z-10 bg-white shadow-md mt-1 rounded-[10px] w-full md:max-h-[20vh] max-h-[40vh] text-black overflow-y-scroll">
                 {filteredProviders?.map((provider) => (
