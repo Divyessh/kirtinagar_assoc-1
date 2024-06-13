@@ -1,28 +1,25 @@
 {
-    // Configuration for JavaScript files
-    "extends": ["airbnb-base", "plugin:prettier/recommended"],
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true,
-          "endOfLine": "auto",
-          "printWidth": 140
-        }
-      ],
-      "no-underscore-dangle":"off",
-      "no-param-reassign":"off",
-      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
-    },
-    "overrides": 
-      [{
+  // Configuration for JavaScript files
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "printWidth": 140
+      }
+    ],
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+  },
+  "overrides": [
+    {
       // Configuration for TypeScript files
-      "files":[
-        "**/*.test.js"
-      ]
-  }],
+      "files": ["**/*.test.js"]
+    }
+  ],
   "env": {
     "jest": true
   }
-  }
-  
+}
