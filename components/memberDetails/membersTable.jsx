@@ -78,7 +78,7 @@ export default function MembersTable() {
               .map((member, index) => (
                 // eslint-disable-next-line no-underscore-dangle
                 <tr key={member._id}>
-                  <th>{index}</th>
+                  <th>{index + 1}</th>
                   <td>{member.nameOftheFirm}</td>
                   <td>{member.contactNumber}</td>
                   <td>{member.address}</td>
