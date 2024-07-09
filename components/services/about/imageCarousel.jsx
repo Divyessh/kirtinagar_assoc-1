@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import React, { useCallback } from 'react';
-import Image from 'next/image';
-import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
-import useEmblaCarousel from 'embla-carousel-react';
+import React, { useCallback } from "react";
+import Image from "next/image";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import useEmblaCarousel from "embla-carousel-react";
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Autoplay from 'embla-carousel-autoplay';
-import placeholder from '../../../assets/avif/placeholder.webp';
+import Autoplay from "embla-carousel-autoplay";
+import placeholder from "../../../assets/avif/placeholder.webp";
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 const ImageCarousel = ({ imageArray, fixheight }) => {
@@ -20,7 +20,7 @@ const ImageCarousel = ({ imageArray, fixheight }) => {
       },
       dots: true, // Show dots at the bottom
     },
-    [Autoplay()],
+    [Autoplay()]
   );
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -45,13 +45,13 @@ const ImageCarousel = ({ imageArray, fixheight }) => {
                   placeholder="empty"
                   loading="lazy"
                   style={{
-                    borderRadius: '2px',
+                    borderRadius: "2px",
                     zIndex: 20,
-                    objectFit: 'cover',
-                    width: '100%',
-                    height: fixheight && '300px',
+                    objectFit: "contain",
+                    // width: '100%',
+                    maxHeight: "50vh",
                   }}
-                  className={`embla__slide ${fixheight ? '' : 'h-auto md:h-[500px]'}`}
+                  className={`embla__slide`}
                 />
               ))
             : [1, 2].map((i) => (
@@ -65,13 +65,14 @@ const ImageCarousel = ({ imageArray, fixheight }) => {
                   placeholder="empty"
                   loading="lazy"
                   style={{
-                    borderRadius: '2px',
+                    borderRadius: "2px",
                     zIndex: 20,
-                    objectFit: 'cover',
-                    width: '100%',
-                    height: fixheight && '300px',
+                    objectFit: "contain",
+                    // width: "100%",
+                    // height: fixheight && "300px",
+                    maxHeight: "50vh",
                   }}
-                  className="h-auto md:h-[500px] embla__slide"
+                  className="relative "
                 />
               ))}
         </div>

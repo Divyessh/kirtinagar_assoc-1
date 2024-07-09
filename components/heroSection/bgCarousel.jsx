@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 // eslint-disable-next-line import/no-extraneous-dependencies
-import useEmblaCarousel from 'embla-carousel-react';
+import useEmblaCarousel from "embla-carousel-react";
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Autoplay from 'embla-carousel-autoplay';
-import Image from 'next/image';
-import heroBanner from '../../assets/png/Frame 1 (1).png';
-import heroBanner2 from '../../assets/png/Banner 2 (1).png';
-import heroBanner3 from '../../assets/png/Frame 3 (1).png';
+import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
+import heroBanner from "../../assets/png/Frame 1 (1).png";
+import heroBanner2 from "../../assets/png/Banner 2 (1).png";
+import heroBanner3 from "../../assets/png/Frame 3 (1).png";
 
 const BgCarousel = () => {
   const [emblaRef] = useEmblaCarousel(
@@ -19,7 +19,7 @@ const BgCarousel = () => {
         delay: 800, // Set the autoplay speed to 2 seconds (2000 milliseconds)
       },
     },
-    [Autoplay()],
+    [Autoplay()]
   );
   const imageArray = [
     {
@@ -36,7 +36,10 @@ const BgCarousel = () => {
     },
   ];
   return (
-    <div className="absolute rounded-[10px] top-0 left-0 z-12 w-[100%] h-[500px] md:h-[600px] embla" ref={emblaRef}>
+    <div
+      className="absolute rounded-[10px] top-0 left-0 z-12 w-[100%] embla"
+      ref={emblaRef}
+    >
       <div className="relative embla__container">
         {imageArray.map((image) => (
           <Image
@@ -47,12 +50,12 @@ const BgCarousel = () => {
             placeholder="blur"
             loading="lazy"
             style={{
-              borderRadius: '10px 10px 0 0',
+              borderRadius: "10px 10px 0 0",
               zIndex: 20,
-              objectFit: 'fill',
-              width: '100%',
+              objectFit: "contain",
+              maxHeight: "60vh",
             }}
-            className="embla__slide h-[500px] md:h-[550px]"
+            className="embla__slide h-[35vh] md:h-[60vh]"
           />
         ))}
       </div>

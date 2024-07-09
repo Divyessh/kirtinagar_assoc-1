@@ -40,7 +40,7 @@ const Footer = () => {
 
       <div className="bg-[#413833]">
         <h1 className="py-2 border-b-1 font-bold text-4xl text-center text-white tracking-4">
-          New Timber Market Dealer
+          KIRTI NAGAR TIMBER AND FURNITURE DEALERS ASSOCIATION
         </h1>
         <div className="md:flex">
           {data.map((item) => (

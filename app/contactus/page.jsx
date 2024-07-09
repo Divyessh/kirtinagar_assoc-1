@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import React from "react";
 
 const ContactSection = () => {
   return (
@@ -8,7 +8,9 @@ const ContactSection = () => {
         <div className="text-center">
           <p className="font-medium text-secondary ">Contact us</p>
 
-          <h1 className="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl ">We’d love to hear from you</h1>
+          <h1 className="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl ">
+            We’d love to hear from you
+          </h1>
         </div>
 
         <Image
@@ -38,9 +40,17 @@ const ContactSection = () => {
               </svg>
             </span>
 
-            <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">Mail us</h2>
-            <p className="mt-2 text-sm text-white">Merchant Legal entity name: NEW TIMBER MARKET DEALERS ASSOCIATION</p>
-            <a className="mt-2 text-sm text-white" href="mailto:kirtinagarwood@gmail.com">
+            <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
+              Mail us
+            </h2>
+            <p className="mt-2 text-sm text-white">
+              Merchant Legal entity name: KIRTI NAGAR TIMBER AND FURNITURE
+              DEALERS ASSOCIATION
+            </p>
+            <a
+              className="mt-2 text-sm text-white"
+              href="mailto:kirtinagarwood@gmail.com"
+            >
               kirtinagarwood@gmail.com
             </a>
           </div>
@@ -55,7 +65,11 @@ const ContactSection = () => {
                 stroke="currentColor"
                 className="w-5 h-5"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                />
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -64,9 +78,13 @@ const ContactSection = () => {
               </svg>
             </span>
 
-            <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">Visit us</h2>
+            <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
+              Visit us
+            </h2>
             <p className="mt-2 text-sm text-white">Visit our office HQ..</p>
-            <p className="mt-2 text-sm text-white">Kirti Nagar West Delhi DELHI 110015</p>
+            <p className="mt-2 text-sm text-white">
+              Kirti Nagar West Delhi DELHI 110015
+            </p>
           </div>
 
           <div className="p-4 rounded-lg bg-secondary md:p-6 ">
@@ -87,7 +105,9 @@ const ContactSection = () => {
               </svg>
             </span>
 
-            <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">Call us</h2>
+            <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
+              Call us
+            </h2>
             <p className="mt-2 text-sm ">Mon-Fri from 8am to 5pm.</p>
             <p className="mt-2 text-sm text-white ">9810829271</p>
           </div>
