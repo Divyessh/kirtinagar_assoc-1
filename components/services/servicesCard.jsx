@@ -2,27 +2,31 @@
 /* eslint-disable import/order */
 /* eslint-disable no-underscore-dangle */
 
-'use client';
+"use client";
 
-import { useQuery } from '@tanstack/react-query';
-import { useSearchParams } from 'next/navigation';
-import Card from '../featuredProviders/card';
-import SkeletonCard from '../blogs/skeletonCard';
-import SearchedProvider from './SearchedProvider';
-import axios from 'axios';
+import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "next/navigation";
+import Card from "../featuredProviders/card";
+import SkeletonCard from "../blogs/skeletonCard";
+import SearchedProvider from "./SearchedProvider";
+import axios from "axios";
+import CategoryDropdown from "../heroSection/categoryDropdown";
+
 // import { useMemo } from 'react';
 
 const ServicesCard = () => {
   const queryParams = useSearchParams();
-  const searchEle = queryParams.get('keyword');
+  const searchEle = queryParams.get("keyword");
   const { data, isLoading } = useQuery({
-    queryKey: ['providers'],
+    queryKey: ["providers"],
     queryFn: async () => {
       const res = await axios.get(`/api/provider`);
       return res;
     },
   });
-  const providerData = data?.data?.data?.filter((item) => item?.isFeatured === true);
+  const providerData = data?.data?.data?.filter(
+    (item) => item?.isFeatured === true
+  );
   function getRandomElements() {
     const shuffledArray = providerData?.slice().sort(() => Math.random() - 0.5);
     return shuffledArray?.slice(0, 4);
@@ -36,12 +40,17 @@ const ServicesCard = () => {
           <SkeletonCard />
         ) : (
           randomEle?.map((item) => (
-            <div key={item?._id} className="bg-transparent px-8 md:px-0 col-span-4 md:col-span-1 flex items-center justify-center">
+            <div
+              key={item?._id}
+              className="bg-transparent px-8 md:px-0 col-span-4 md:col-span-1 flex items-center justify-center"
+            >
               <Card item={item} />
             </div>
           ))
         )}
       </div>
+      <CategoryDropdown />
+
       {searchEle && <SearchedProvider searchEle={searchEle} />}
     </div>
   );
