@@ -18,7 +18,6 @@ const Navbar = () => {
       id: 2,
       name: "Our Team",
       link: "/ourteam",
-      children: true,
     },
     {
       id: 3,
@@ -34,6 +33,7 @@ const Navbar = () => {
       id: 5,
       name: "Members Section",
       link: "/pricing",
+      children: true,
     },
     {
       id: 6,
@@ -91,6 +91,13 @@ const Navbar = () => {
                       boxShadow: "2px 2px 5px 0px rgba(0,0,0,0.75)",
                     }}
                   >
+                    <Link
+                      href="/pricing"
+                      className="font-bold text-[#413833] text-[14px] hover:text-[#EC5B2D] whitespace-nowrap"
+                    >
+                      Membership
+                    </Link>
+                    <br></br>
                     <Link
                       href="/membersection"
                       className="font-bold text-[#413833] text-[14px] hover:text-[#EC5B2D] whitespace-nowrap"

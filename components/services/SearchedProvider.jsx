@@ -51,9 +51,27 @@ const SearchedProvider = ({ searchEle }) => {
   ) : (
     <div>
       <span className="flex justify-center items-center">
-        <h1 className="md:text-4xl text-xl text-black text-center border-b-2 border-b-black mb-3 mt-6">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height={"30px"}
+          className="mt-[4px]"
+          viewBox="0 0 384 512"
+        >
+          <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
+
+        <h1 className="md:text-4xl text-xl text-black text-center border-b-2 border-b-black mb-3 mt-6 mx-[4px]">
           Search Result
         </h1>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="mt-[4px]"
+          height={"30px"}
+          viewBox="0 0 384 512"
+        >
+          <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
       </span>
       <div className="grid grid-cols-4 gap-[20px] pt-4 pb-12">
         {searchedArr?.map(

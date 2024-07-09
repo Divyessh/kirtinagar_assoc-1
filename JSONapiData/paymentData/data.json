@@ -1,41 +1,35 @@
 {
   "Basic": {
     "id": 1,
-    "title": "Annual Membership",
+    "title": "Annual Membership Renewal",
     "features": [
-      "Shop featured for one week.",
       "Shop logo and description displayed.",
       "One product showcase.",
-      "Limited exposure in search results.",
-      "Shop featured for one week."
+      "Limited exposure in search results."
     ],
-    "price": "INR 0",
-    "amount": 1
+    "price": "INR 3500 per year",
+    "amount": 3500
   },
   "Standard": {
     "id": 2,
-    "title": "Ads On Landing Page",
+    "title": "Ads On Main Page",
     "features": [
       "Shop featured for one Month.",
       "Shop logo, description, and Banner displayed.",
-      "Up to 5 products showcased.",
-      "Enhanced Visibility in search results.",
-      "Social Media Promotion."
+      "Enhanced Visibility in search results."
     ],
-    "price": "INR 1000",
+    "price": "INR 1000 per month",
     "amount": 1000
   },
   "Premium": {
     "id": 3,
-    "title": "Featured Providers",
+    "title": "Ads on Search Page",
     "features": [
-      "Shop featured for 3 Months.",
+      "Shop featured for 1 Months.",
       "Shop logo, description and banner displayed.",
-      "Up to 10 products showcase.",
-      "Social media promotion with targeted ads.",
       "Priority placement in search results."
     ],
-    "price": "INR 3000",
-    "amount": 3000
+    "price": "INR 300 per month",
+    "amount": 300
   }
 }

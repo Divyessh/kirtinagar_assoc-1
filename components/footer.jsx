@@ -11,6 +11,7 @@ const Footer = () => {
     {
       id: 1,
       title: "Members Directory",
+      link: "/membersection",
       subtitle:
         "This section provides information about individuals or entities in our directory. Find the right Taskers for your job based on their skills and expertise.",
       icon: members,
@@ -18,6 +19,7 @@ const Footer = () => {
     {
       id: 2,
       title: "Members Welfare",
+      link: "#",
       subtitle:
         "Explore the well-being of our members. Learn about programs and initiatives designed to support the welfare of our community.",
       icon: welfare,
@@ -25,6 +27,7 @@ const Footer = () => {
     {
       id: 3,
       title: "Members Business",
+      link: "#",
       subtitle:
         "Discover businesses associated with our members. Find the right services or products offered by businesses within our community.",
       icon: business,
@@ -45,21 +48,23 @@ const Footer = () => {
         <div className="md:flex">
           {data.map((item) => (
             <div className="p-8 text-white card" key={item.id}>
-              <div className="flex justify-center items-center">
-                <span className="flex justify-center items-center bg-stone-200 rounded-full w-[94px] h-[92px]">
-                  <Image
-                    src={item.icon}
-                    alt="members"
-                    className="object-cover"
-                  />
-                </span>
-              </div>
-              <div className="flex-col justify-center items-center card-body">
-                <h1 className="text-white text-xl">{item.title}</h1>
-                <p className="text-[#DDC5C5] text-center text-md">
-                  {item.subtitle}
-                </p>
-              </div>
+              <a href={item.link}>
+                <div className="flex justify-center items-center">
+                  <span className="flex justify-center items-center bg-stone-200 rounded-full w-[94px] h-[92px]">
+                    <Image
+                      src={item.icon}
+                      alt="members"
+                      className="object-cover"
+                    />
+                  </span>
+                </div>
+                <div className="flex-col justify-center items-center card-body">
+                  <h1 className="text-white text-xl">{item.title}</h1>
+                  <p className="text-[#DDC5C5] text-center text-md">
+                    {item.subtitle}
+                  </p>
+                </div>
+              </a>
             </div>
           ))}
         </div>
