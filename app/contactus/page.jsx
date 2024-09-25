@@ -109,7 +109,7 @@ const ContactSection = () => {
               Call us
             </h2>
             <p className="mt-2 text-sm ">Mon-Fri from 8am to 5pm.</p>
-            <p className="mt-2 text-sm text-white ">9810829271</p>
+            <p className="mt-2 text-sm text-white ">011-46037694</p>
           </div>
         </div>
       </div>
